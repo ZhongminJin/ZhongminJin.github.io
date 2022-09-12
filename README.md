@@ -1,2 +1,0 @@
-# ZhongminJin.github.io
-MyWebsite
