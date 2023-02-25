@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="test the new branch">
-      <change afterPath="$PROJECT_DIR$/arxiv.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-code_can't_include.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hornor_students.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/teaching_statement.html" afterDir="false" />
+    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="fail to use load function, use a common file to copy and paste instead">
+      <change afterPath="$PROJECT_DIR$/res.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contest.html" beforeDir="false" afterPath="$PROJECT_DIR$/contest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teaching.html" beforeDir="false" afterPath="$PROJECT_DIR$/teaching.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hornor_students.html" beforeDir="false" afterPath="$PROJECT_DIR$/hornor_students.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +46,8 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "D:/Dropbox/Code/webstorm/ZhongminJin.github.io",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "vcs.Git",
     "vue.rearranger.settings.migration": "true"
@@ -72,6 +68,7 @@
       <updated>1662988154877</updated>
       <workItem from="1662988159094" duration="3541000" />
       <workItem from="1663027663757" duration="2353000" />
+      <workItem from="1677332390912" duration="2156000" />
     </task>
     <task id="LOCAL-00001" summary="delete old ones">
       <created>1662988353213</created>
@@ -143,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663029791068</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="fail to use load function, use a common file to copy and paste instead">
+      <created>1676781702361</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1676781702361</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +172,7 @@
     <MESSAGE value="github twitter fixed" />
     <MESSAGE value="github" />
     <MESSAGE value="small change" />
-    <option name="LAST_COMMIT_MESSAGE" value="small change" />
+    <MESSAGE value="fail to use load function, use a common file to copy and paste instead" />
+    <option name="LAST_COMMIT_MESSAGE" value="fail to use load function, use a common file to copy and paste instead" />
   </component>
 </project>
