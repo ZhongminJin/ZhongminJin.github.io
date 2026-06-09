@@ -4,15 +4,56 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="fail to use load function, use a common file to copy and paste instead">
-      <change afterPath="$PROJECT_DIR$/res.txt" afterDir="false" />
+    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="partial work on honor students">
+      <change afterPath="$PROJECT_DIR$/cv.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javascripts/site.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stylesheets/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ZhongminJin.github.io.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ZhongminJin.github.io.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CNAME" beforeDir="false" afterPath="$PROJECT_DIR$/CNAME" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/arxiv.txt" beforeDir="false" afterPath="$PROJECT_DIR$/arxiv.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/assets/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/bower.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/bower.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/academicons.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/academicons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/docs/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/docs/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/docs/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/docs/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/docs/_includes/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/_includes/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/docs/_includes/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/_includes/head.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/docs/_includes/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/_includes/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/docs/_layouts/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/_layouts/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/docs/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/css/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/docs/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/academicons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fonts/academicons.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-code_can't_include.html" beforeDir="false" afterPath="$PROJECT_DIR$/common-code_can't_include.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest.html" beforeDir="false" afterPath="$PROJECT_DIR$/contest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/econometricslabs.html" beforeDir="false" afterPath="$PROJECT_DIR$/econometricslabs.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hornor_students.html" beforeDir="false" afterPath="$PROJECT_DIR$/hornor_students.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascripts/scale.fix.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascripts/scale.fix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stylesheets/pygment_trac.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheets/pygment_trac.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stylesheets/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheets/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teaching.html" beforeDir="false" afterPath="$PROJECT_DIR$/teaching.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teaching_statement.html" beforeDir="false" afterPath="$PROJECT_DIR$/teaching_statement.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/template.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_/Users/zhongmin/Library/CloudStorage/Dropbox/Code/webstorm/ZhongminJin.github.io" value="2EfYYgGkLrVHPfFwCpbR0PFw4Oa" />
+    </persistenceIdMap>
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="43" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -32,6 +73,75 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.5369770304897912" />
+      <entry key="MS500" value="3.486716693342476" />
+      <entry key="S2" value="8.901727678526708" />
+      <entry key="S5" value="19.069690679066433" />
+      <entry key="S10" value="34.68094001337472" />
+      <entry key="S30" value="86.13308247183497" />
+      <entry key="S60" value="134.54480617246764" />
+      <entry key="M2" value="192.05413972332727" />
+      <entry key="M5" value="265.11910871737786" />
+      <entry key="M10" value="303.97689623317484" />
+      <entry key="M15" value="319.424631403711" />
+      <entry key="M30" value="336.37187597520466" />
+      <entry key="H1" value="345.4635883887175" />
+      <entry key="H2" value="350.1745919077592" />
+      <entry key="H4" value="352.5727879487024" />
+      <entry key="D1" value="354.59343178542565" />
+      <entry key="W1" value="354.94186880699226" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.515805339343848" />
+      <entry key="MS500" value="3.4761182770545846" />
+      <entry key="S2" value="8.893545847157101" />
+      <entry key="S5" value="19.062346781406404" />
+      <entry key="S10" value="34.67413939322311" />
+      <entry key="S30" value="86.12721545883798" />
+      <entry key="S60" value="134.5400462439179" />
+      <entry key="M2" value="192.05049424130993" />
+      <entry key="M5" value="265.11686810890404" />
+      <entry key="M10" value="303.97553920638154" />
+      <entry key="M15" value="319.42366073273007" />
+      <entry key="M30" value="336.3713534546964" />
+      <entry key="H1" value="345.4633169493275" />
+      <entry key="H2" value="350.17445352352513" />
+      <entry key="H4" value="352.5727180748506" />
+      <entry key="D1" value="354.59342004374435" />
+      <entry key="W1" value="354.9418671272392" />
+    </decayedShown>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2EfYYgGkLrVHPfFwCpbR0PFw4Oa" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -41,15 +151,26 @@
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Dropbox/Code/webstorm/ZhongminJin.github.io",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "bycodex",
+    "javascript.preferred.runtime.type.id": "node",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/zhongmin/Library/CloudStorage/Dropbox/Code/webstorm/ZhongminJin.github.io",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "vcs.Git",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -57,6 +178,13 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Dropbox\Code\webstorm\ZhongminJin.github.io" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-WS-261.25134.101" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -68,7 +196,11 @@
       <updated>1662988154877</updated>
       <workItem from="1662988159094" duration="3541000" />
       <workItem from="1663027663757" duration="2353000" />
-      <workItem from="1677332390912" duration="2156000" />
+      <workItem from="1677332390912" duration="3532000" />
+      <workItem from="1689722888755" duration="19000" />
+      <workItem from="1728214321238" duration="32000" />
+      <workItem from="1780992663036" duration="271000" />
+      <workItem from="1780992942674" duration="896000" />
     </task>
     <task id="LOCAL-00001" summary="delete old ones">
       <created>1662988353213</created>
@@ -147,7 +279,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676781702361</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="partial work on honor students">
+      <created>1677334714656</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1677334714656</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,7 +297,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -173,6 +324,7 @@
     <MESSAGE value="github" />
     <MESSAGE value="small change" />
     <MESSAGE value="fail to use load function, use a common file to copy and paste instead" />
-    <option name="LAST_COMMIT_MESSAGE" value="fail to use load function, use a common file to copy and paste instead" />
+    <MESSAGE value="partial work on honor students" />
+    <option name="LAST_COMMIT_MESSAGE" value="partial work on honor students" />
   </component>
 </project>
