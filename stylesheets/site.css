@@ -19,6 +19,37 @@
   padding: 12px 16px;
 }
 
+.resource-list {
+  margin-bottom: 16px;
+}
+
+.resource-list li {
+  margin-bottom: 6px;
+}
+
+.resource-year {
+  margin-bottom: 28px;
+}
+
+.resource-year h3 {
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 8px;
+}
+
+.resource-table-wrap {
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+.resource-table th,
+.resource-table td {
+  white-space: nowrap;
+}
+
+.placeholder-link {
+  color: #777;
+}
+
 button.accordion {
   font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
   cursor: pointer;

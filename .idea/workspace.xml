@@ -4,43 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="partial work on honor students">
-      <change afterPath="$PROJECT_DIR$/cv.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javascripts/site.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stylesheets/site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ZhongminJin.github.io.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ZhongminJin.github.io.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="first clean up by codex">
+      <change afterPath="$PROJECT_DIR$/myTeaching/local html/binomial-to-poisson-offline.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myTeaching/local html/poisson-addition-company-example.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNAME" beforeDir="false" afterPath="$PROJECT_DIR$/CNAME" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arxiv.txt" beforeDir="false" afterPath="$PROJECT_DIR$/arxiv.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/assets/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/bower.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/bower.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/academicons.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/academicons.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/docs/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/docs/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/docs/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/docs/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/_config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/docs/_includes/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/_includes/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/docs/_includes/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/_includes/head.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/docs/_includes/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/_includes/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/docs/_layouts/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/_layouts/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/docs/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/css/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/docs/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/assets/docs/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/academicons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fonts/academicons.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-code_can't_include.html" beforeDir="false" afterPath="$PROJECT_DIR$/common-code_can't_include.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contest.html" beforeDir="false" afterPath="$PROJECT_DIR$/contest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/econometricslabs.html" beforeDir="false" afterPath="$PROJECT_DIR$/econometricslabs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hornor_students.html" beforeDir="false" afterPath="$PROJECT_DIR$/hornor_students.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javascripts/scale.fix.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascripts/scale.fix.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stylesheets/pygment_trac.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheets/pygment_trac.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stylesheets/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheets/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascripts/site.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascripts/site.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stylesheets/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheets/site.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teaching.html" beforeDir="false" afterPath="$PROJECT_DIR$/teaching.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teaching_statement.html" beforeDir="false" afterPath="$PROJECT_DIR$/teaching_statement.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/template.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +24,7 @@
     </persistenceIdMap>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="43" />
+    <option name="cachedIndexableFilesCount" value="69" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -79,23 +50,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.5369770304897912" />
-      <entry key="MS500" value="3.486716693342476" />
-      <entry key="S2" value="8.901727678526708" />
-      <entry key="S5" value="19.069690679066433" />
-      <entry key="S10" value="34.68094001337472" />
-      <entry key="S30" value="86.13308247183497" />
-      <entry key="S60" value="134.54480617246764" />
-      <entry key="M2" value="192.05413972332727" />
-      <entry key="M5" value="265.11910871737786" />
-      <entry key="M10" value="303.97689623317484" />
-      <entry key="M15" value="319.424631403711" />
-      <entry key="M30" value="336.37187597520466" />
-      <entry key="H1" value="345.4635883887175" />
-      <entry key="H2" value="350.1745919077592" />
-      <entry key="H4" value="352.5727879487024" />
-      <entry key="D1" value="354.59343178542565" />
-      <entry key="W1" value="354.94186880699226" />
+      <entry key="MS100" value="1.5823667932342278" />
+      <entry key="MS500" value="1.8975100506672615" />
+      <entry key="S2" value="1.9733293741582383" />
+      <entry key="S5" value="1.9892451553579138" />
+      <entry key="S10" value="1.9946092838143135" />
+      <entry key="S30" value="2.1915053585490725" />
+      <entry key="S60" value="8.043566222128373" />
+      <entry key="M2" value="43.19661609256632" />
+      <entry key="M5" value="193.21632644743454" />
+      <entry key="M10" value="454.9763841499547" />
+      <entry key="M15" value="671.2487440709399" />
+      <entry key="M30" value="1068.265162409058" />
+      <entry key="H1" value="1393.2483887898586" />
+      <entry key="H2" value="1605.6172341928402" />
+      <entry key="H4" value="1727.692424251827" />
+      <entry key="D1" value="1838.7076061936555" />
+      <entry key="W1" value="1858.6494770163981" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -117,23 +88,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.515805339343848" />
-      <entry key="MS500" value="3.4761182770545846" />
-      <entry key="S2" value="8.893545847157101" />
-      <entry key="S5" value="19.062346781406404" />
-      <entry key="S10" value="34.67413939322311" />
-      <entry key="S30" value="86.12721545883798" />
-      <entry key="S60" value="134.5400462439179" />
-      <entry key="M2" value="192.05049424130993" />
-      <entry key="M5" value="265.11686810890404" />
-      <entry key="M10" value="303.97553920638154" />
-      <entry key="M15" value="319.42366073273007" />
-      <entry key="M30" value="336.3713534546964" />
-      <entry key="H1" value="345.4633169493275" />
-      <entry key="H2" value="350.17445352352513" />
-      <entry key="H4" value="352.5727180748506" />
-      <entry key="D1" value="354.59342004374435" />
-      <entry key="W1" value="354.9418671272392" />
+      <entry key="MS100" value="1.4951508505934108" />
+      <entry key="MS500" value="1.8744197270289482" />
+      <entry key="S2" value="1.9672125359341157" />
+      <entry key="S5" value="1.9867694306591857" />
+      <entry key="S10" value="1.9933665319623761" />
+      <entry key="S30" value="2.190994019244394" />
+      <entry key="S60" value="8.042322257907731" />
+      <entry key="M2" value="43.19390637389916" />
+      <entry key="M5" value="193.2131086866121" />
+      <entry key="M10" value="454.9735834235174" />
+      <entry key="M15" value="671.2463008726182" />
+      <entry key="M30" value="1068.2634273757615" />
+      <entry key="H1" value="1393.247311013143" />
+      <entry key="H2" value="1605.616626097309" />
+      <entry key="H4" value="1727.6921002061304" />
+      <entry key="D1" value="1838.7075491433861" />
+      <entry key="W1" value="1858.649468788116" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -147,42 +118,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "bycodex",
-    "javascript.preferred.runtime.type.id": "node",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/zhongmin/Library/CloudStorage/Dropbox/Code/webstorm/ZhongminJin.github.io",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;bycodex&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/zhongmin/Library/CloudStorage/Dropbox/Code/webstorm/ZhongminJin.github.io/myTeaching/local html&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/myTeaching/local html" />
       <recent name="D:\Dropbox\Code\webstorm\ZhongminJin.github.io" />
     </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-WS-261.25134.101" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-WS-262.9437.145" />
       </set>
     </attachedChunks>
   </component>
@@ -200,7 +172,13 @@
       <workItem from="1689722888755" duration="19000" />
       <workItem from="1728214321238" duration="32000" />
       <workItem from="1780992663036" duration="271000" />
-      <workItem from="1780992942674" duration="896000" />
+      <workItem from="1780992942674" duration="4733000" />
+      <workItem from="1788250520740" duration="821000" />
+      <workItem from="1788251361739" duration="122000" />
+      <workItem from="1788251494176" duration="1787000" />
+      <workItem from="1788274940400" duration="191000" />
+      <workItem from="1788275155106" duration="432000" />
+      <workItem from="1788275688150" duration="720000" />
     </task>
     <task id="LOCAL-00001" summary="delete old ones">
       <created>1662988353213</created>
@@ -286,7 +264,15 @@
       <option name="project" value="LOCAL" />
       <updated>1677334714656</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="first clean up by codex">
+      <option name="closed" value="true" />
+      <created>1780993862194</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1780993862194</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,6 +311,7 @@
     <MESSAGE value="small change" />
     <MESSAGE value="fail to use load function, use a common file to copy and paste instead" />
     <MESSAGE value="partial work on honor students" />
-    <option name="LAST_COMMIT_MESSAGE" value="partial work on honor students" />
+    <MESSAGE value="first clean up by codex" />
+    <option name="LAST_COMMIT_MESSAGE" value="first clean up by codex" />
   </component>
 </project>

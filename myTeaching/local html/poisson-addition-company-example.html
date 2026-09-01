@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Adding Independent Poisson Variables</title>
+<style>
+body{margin:0;background:#fff;color:#182235;font-family:Arial,sans-serif}main{max-width:1000px;margin:auto;padding:26px}h1{margin:0 0 12px;font-size:28px}.example{font-size:17px;line-height:1.55;margin-bottom:18px}.example p{margin:4px 0}.math{font-family:Georgia,serif}.controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0}.controls input{width:210px;accent-color:#2563eb}.equation{text-align:center;font:18px Georgia,serif;margin:8px}.legend{text-align:center;font-size:14px}.blue{color:#2563eb}.orange{color:#e45d33}canvas{display:block;width:100%;height:500px}.status{text-align:center;color:#506079;font-size:14px}@media(max-width:600px){main{padding:15px}canvas{height:430px}.example{font-size:15px}}
+</style>
+</head>
+<body>
+<main>
+<h1>Adding Independent Poisson Variables</h1>
+<section class="example">
+<p><strong>Example: a company receives complaints through two independent channels.</strong></p>
+<p>Phone complaints arrive at an average rate of <span class="math">2 per hour</span>, so <span class="math">X ~ Poisson(2)</span>.</p>
+<p>Website complaints arrive at an average rate of <span class="math">5 per hour</span>, so <span class="math">Y ~ Poisson(5)</span>.</p>
+<p>Therefore, <span class="math">X + Y ~ Poisson(2 + 5) = Poisson(7)</span>.</p>
+</section>
+<div class="controls"><label>Small event probability <span class="math">p = <strong id="pv">0.100</strong></span></label><input id="slider" type="range" min="0" max="5" step="1" value="1"></div>
+<div class="equation" id="eq"></div>
+<div class="legend"><span class="blue">■</span> Binomial sum &nbsp;&nbsp; <span class="orange">●</span> Poisson(7) limit</div>
+<canvas id="chart" aria-label="Binomial construction converging to the sum of two independent Poisson variables"></canvas>
+<div class="status">Move p towards zero: the blue bars approach the orange Poisson curve.</div>
+</main>
+<script>
+const c=document.getElementById('chart'),g=c.getContext('2d'),s=document.getElementById('slider'),ps=[.2,.1,.05,.02,.01,.005];
+function lf(k){let v=0;for(let i=2;i<=k;i++)v+=Math.log(i);return v}function bi(k,n,p){return Math.exp(lf(n)-lf(k)-lf(n-k)+k*Math.log(p)+(n-k)*Math.log1p(-p))}function po(k,l){return Math.exp(-l+k*Math.log(l)-lf(k))}
+function draw(){const dpr=devicePixelRatio||1,W=c.clientWidth,H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,W,H);const p=ps[+s.value],n1=Math.round(2/p),n2=Math.round(5/p),n=n1+n2;pv.textContent=p.toFixed(3);eq.textContent=`Bin(${n1}, ${p}) + Bin(${n2}, ${p}) = Bin(${n}, ${p}) → Poisson(7)`;g.font='13px Arial';g.fillStyle='#182235';
+const lanes=[['Phone: 2/hour',n1,42,'#2a7f62'],['Website: 5/hour',n2,92,'#8b5fc7']];lanes.forEach(([label,count,y,color])=>{g.fillStyle='#182235';g.fillText(label,8,y+4);const x0=145,w=W-165,marks=Math.min(count,85),step=w/marks;g.strokeStyle='#cbd2dd';g.lineWidth=8;g.beginPath();g.moveTo(x0,y);g.lineTo(x0+w,y);g.stroke();g.strokeStyle=color;g.lineWidth=1;for(let i=0;i<=marks;i++){g.beginPath();g.moveTo(x0+i*step,y-6);g.lineTo(x0+i*step,y+6);g.stroke()}g.textAlign='right';g.fillStyle='#182235';g.fillText(`${count} trials`,W-20,y-12);g.textAlign='left'});g.textAlign='center';g.fillText(`Combine independent trials: ${n1} + ${n2} = ${n}`,W/2,127);
+const a=Array.from({length:20},(_,k)=>({k,b:bi(k,n,p),q:po(k,7)})),M={l:58,r:18,t:150,b:48},pw=W-M.l-M.r,ph=H-M.t-M.b,ymax=Math.max(...a.flatMap(d=>[d.b,d.q]))*1.15,gap=pw/a.length,bw=gap*.7,X=k=>M.l+gap*k+(gap-bw)/2,Y=v=>M.t+ph*(1-v/ymax);g.font='12px Arial';g.textAlign='right';for(let i=0;i<=5;i++){let v=ymax*i/5,y=Y(v);g.strokeStyle='#e1e5ec';g.lineWidth=1;g.beginPath();g.moveTo(M.l,y);g.lineTo(W-M.r,y);g.stroke();g.fillStyle='#182235';g.fillText(v.toFixed(2),M.l-7,y+4)}g.strokeStyle='#687589';g.beginPath();g.moveTo(M.l,M.t);g.lineTo(M.l,H-M.b);g.lineTo(W-M.r,H-M.b);g.stroke();a.forEach(d=>{g.fillStyle='rgba(37,99,235,.62)';g.fillRect(X(d.k),Y(d.b),bw,H-M.b-Y(d.b));if(d.k%2===0){g.fillStyle='#182235';g.textAlign='center';g.fillText(d.k,X(d.k)+bw/2,H-M.b+18)}});g.strokeStyle='#e45d33';g.lineWidth=2.5;g.beginPath();a.forEach((d,i)=>{let x=X(d.k)+bw/2,y=Y(d.q);i?g.lineTo(x,y):g.moveTo(x,y)});g.stroke();a.forEach(d=>{g.fillStyle='#e45d33';g.beginPath();g.arc(X(d.k)+bw/2,Y(d.q),3.2,0,Math.PI*2);g.fill()});g.fillStyle='#182235';g.textAlign='center';g.fillText('total number of complaints, k',(M.l+W-M.r)/2,H-9);g.save();g.translate(14,(M.t+H-M.b)/2);g.rotate(-Math.PI/2);g.fillText('probability',0,0);g.restore()}
+s.addEventListener('input',draw);addEventListener('resize',draw);draw();
+</script>
+</body>
+</html>

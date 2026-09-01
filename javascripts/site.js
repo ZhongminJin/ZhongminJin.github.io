@@ -5,7 +5,8 @@
     { href: "teaching.html", label: "Teaching" },
     { href: "teaching_statement.html", label: "Teaching Statement" },
     { href: "hornor_students.html", label: "Honor Students" },
-    { href: "contest.html", label: "Math Contest Coaching" }
+    { href: "contest.html", label: "Oxbridge Advanced Maths Preparation" },
+    { href: "step.html", label: "STEP Past Paper Video Guides" }
   ];
 
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
