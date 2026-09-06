@@ -4,10 +4,11 @@
   <script src="https://use.fontawesome.com/baff6f55f5.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Zhognmin Jin Homepages</title>
+    <title>Zhongmin Jin Homepages</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
+    <link rel="stylesheet" href="stylesheets/site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -37,96 +38,127 @@
     <link rel="stylesheet" href="assets/css/academicons.css"/>
     
     <style>
-      button.accordion {
-      font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-      cursor: pointer;
-      padding: 0px;
-      border: none;
-      text-align: left;
-      outline: none;
-      font-size: 100%;
-      transition: 0.3s;
-      background-color: #f8f8f8;
+      .prep-intro {
+        margin-bottom: 24px;
+        color: #555;
+        font-size: 16px;
+        line-height: 1.7;
       }
-      button.accordion.active, button.accordion:hover {
-      background-color: #f8f8f8;
+      .prep-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
       }
-      button.accordion:after {
-      content: " [+] ";
-      font-size: 90%;
-      color:#777;
-      float: left;
-      margin-left: 1px;
+      .prep-card {
+        padding: 20px;
+        border: 1px solid #e2e7ec;
+        border-top: 4px solid #39c;
+        border-radius: 8px;
+        background: linear-gradient(180deg, #fff 0%, #f8fbfd 100%);
+        box-shadow: 0 4px 14px rgba(31, 45, 61, 0.07);
       }
-
-      button.accordion.active:after {
-      content: " [\2212] ";
+      .prep-card h3 {
+        margin: 0 0 8px;
+        color: #24445c;
       }
-      div.panel {
-      padding: 0 20px;
-      margin-top: 5px;
-      display: none;
-      background-color: white;
-      font-size: 100%;
+      .prep-card p {
+        margin-bottom: 12px;
       }
-      div.panel.show {
-      display: block !important;
+      .prep-card ul {
+        margin-bottom: 14px;
       }
-      .social-row {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+      .prep-card li {
+        margin-bottom: 5px;
+      }
+      .resource-link {
+        display: inline-block;
+        padding: 7px 11px;
+        border-radius: 4px;
+        background: #267cb9;
+        color: #fff;
+        font-weight: 600;
+      }
+      .resource-link:hover,
+      .resource-link:focus {
+        color: #fff;
+        background: #1d628f;
+      }
+      .coming-soon {
+        display: inline-block;
+        padding: 4px 9px;
+        border: 1px solid #d8e0e6;
+        border-radius: 999px;
+        color: #687784;
+        background: #f4f6f8;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+      }
+      @media print, screen and (max-width: 720px) {
+        .prep-grid {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
   <body>
     <div class="wrapper">
-      <header>
-        <h1>Zhongmin</h1>
-        <h3><a href="arxiv/research/CV.pdf">CV</a></h3>
-        <h3><a href="teaching.html">Teaching</a></h3>
-        <h3><a href="teaching_statement.html">Teaching Statement</a></h3>
-        <h3><a href="hornor_students.html">Honor Students</a></h3>
-        <h3><a href="contest.html">Math Contest Coaching</a></h3>
-        <b>Social</b><br>
-        <div class="social-row">
-          <a href="mailto:zhongmin.jin@hotmial.com" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a><br>
-
-          <a href="jin.zhongmin.club"><i class="fa fa-fw fa-github-square"></i> GitHub</a><br>
-          <a href="jin.zhongmin.club" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a><br>
-          <br>
-        </div>
-        <br>
-      </header>
+      <site-header></site-header>
 
       <section>
-      <!-- <h2>Teaching Statement</h2> -->
-      <!-- <p><a href="https://tyleransom.github.io/teaching/Teaching-Statement.pdf">Download (PDF)</a><br></p> -->
-      
-      <h2>Maths Contest Coaching</h2>
-<!--      <p><a href="https://tyleransom.github.io/teaching/EvalsSummary.pdf">Overall Summary of Teaching Evaluations</a></p>-->
-     
-      <hr />
-      <h3>STEP </h3>
-<!--        <h4></h4>-->
-        <ur>
-          <li><a href="contest/Syllabus-Lecture%20for%20Step2%20and%20Step3%20Preparation.pdf">The teaching syllabus</a></li>
-          <li>The introduction</li>
-        </ur>
+      <h2>Oxbridge Advanced Maths Preparation</h2>
+      <p class="prep-intro">Focused preparation for motivated students applying to mathematics and mathematics-related courses at leading UK universities. The programme develops mathematical reasoning, unfamiliar problem-solving, clear written solutions, and confident discussion of ideas.</p>
 
-        <h3>MAT</h3>
+      <div class="prep-grid">
+        <article class="prep-card">
+          <h3>STEP 2 &amp; STEP 3</h3>
+          <p>Structured preparation for advanced problems requiring persistence, precision, and creative mathematical thinking.</p>
+          <ul>
+            <li>Topic-based problem-solving lessons</li>
+            <li>Past-paper strategy and timed practice</li>
+            <li>Detailed feedback on written solutions</li>
+          </ul>
+          <a class="resource-link" href="contest/Syllabus-Lecture%20for%20Step2%20and%20Step3%20Preparation.pdf">View teaching syllabus</a>
+        </article>
 
-        <h3>AMC12</h3>>
+        <article class="prep-card">
+          <h3>TMUA</h3>
+          <p>Preparation for mathematical thinking, logical reasoning, and efficient problem-solving under time pressure.</p>
+          <ul>
+            <li>Core skills and question-type practice</li>
+            <li>Timing and accuracy strategies</li>
+            <li>Mock tests with individual feedback</li>
+          </ul>
+          <span class="coming-soon">Resources coming soon</span>
+        </article>
 
-<!--      <h4><b>Further Pure Maths 2</b></h4>-->
-<!--        For year13 students.-->
+        <article class="prep-card">
+          <h3>MAT</h3>
+          <p>Practice in applying familiar mathematics to challenging and unfamiliar admissions-test problems.</p>
+          <ul>
+            <li>Problem-solving techniques</li>
+            <li>Past-paper walkthroughs</li>
+            <li>Personalized improvement plans</li>
+          </ul>
+          <span class="coming-soon">Resources coming soon</span>
+        </article>
 
-<!--      <hr />-->
-
-      
+        <article class="prep-card">
+          <h3>Oxbridge Interviews</h3>
+          <p>One-to-one mock interviews that develop clear mathematical communication and confidence when responding to new ideas.</p>
+          <ul>
+            <li>Thinking aloud and explaining reasoning</li>
+            <li>Responding constructively to hints</li>
+            <li>Individual feedback after each session</li>
+          </ul>
+          <span class="coming-soon">More details coming soon</span>
+        </article>
+      </div>
 
       </section>
     </div>
+    <script src="javascripts/site.js"></script>
     <script src="javascripts/scale.fix.js"></script>
   </body>
 </html>

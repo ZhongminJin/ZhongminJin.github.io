@@ -1,178 +1,237 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <script src="https://use.fontawesome.com/baff6f55f5.js"></script>
+    <script src="https://use.fontawesome.com/baff6f55f5.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Zhongmin Jin Homepages</title>
-
+    <title>Teaching | Zhongmin Jin</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
     <link rel="stylesheet" href="stylesheets/site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-
-    <!-- New GA4 tracking code, see https://support.google.com/analytics/answer/10271001#analyticsjs-enable-basic --> 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNJD50R0Z7"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-GNJD50R0Z7');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GNJD50R0Z7');
     </script>
-
-    <!-- For all browsers -->
     <link rel="stylesheet" href="assets/css/academicons.min.css">
-    
+    <style>
+      .teaching-intro {
+        color: #4c5b66;
+        font-size: 16px;
+        line-height: 1.7;
+      }
+      .current-teaching {
+        margin: 0 0 24px;
+        padding: 18px 20px;
+        border-left: 4px solid #267cb9;
+        border-radius: 6px;
+        background: #f4f9fc;
+      }
+      .current-teaching h2,
+      .current-teaching h3 {
+        margin-top: 0;
+      }
+      .current-teaching ul {
+        margin-bottom: 0;
+      }
+      .teaching-summary {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin: 24px 0 30px;
+      }
+      .summary-item {
+        padding: 16px;
+        border: 1px solid #dfe7ed;
+        border-radius: 8px;
+        background: #f7fafc;
+        text-align: center;
+      }
+      .summary-item strong {
+        display: block;
+        margin-bottom: 4px;
+        color: #267cb9;
+        font-size: 22px;
+      }
+      .section-heading {
+        margin-top: 34px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #e5edf2;
+      }
+      .timeline {
+        margin: 22px 0 0 7px;
+        padding-left: 24px;
+        border-left: 2px solid #cbdbe6;
+      }
+      .timeline-item {
+        position: relative;
+        margin-bottom: 26px;
+      }
+      .timeline-item::before {
+        position: absolute;
+        top: 5px;
+        left: -31px;
+        width: 12px;
+        height: 12px;
+        border: 3px solid #fff;
+        border-radius: 50%;
+        background: #267cb9;
+        box-shadow: 0 0 0 1px #8fb7d2;
+        content: "";
+      }
+      .timeline-item h3 {
+        margin-bottom: 3px;
+        color: #2f4658;
+      }
+      .timeline-meta {
+        margin-bottom: 8px;
+        color: #71808c;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .course-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 12px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      .course-list li {
+        padding: 5px 9px;
+        border: 1px solid #dce5eb;
+        border-radius: 999px;
+        background: #fff;
+        color: #526674;
+        font-size: 12px;
+      }
+      .achievement-panel {
+        padding: 20px 22px;
+        border-left: 4px solid #d4a017;
+        border-radius: 6px;
+        background: #fff9e7;
+      }
+      .achievement-panel li {
+        margin-bottom: 8px;
+      }
+      .resource-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .resource-card {
+        padding: 18px;
+        border: 1px solid #dfe7ed;
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 3px 12px rgba(31, 45, 61, 0.06);
+      }
+      .resource-card h3 {
+        margin: 0 0 8px;
+      }
+      .resource-card ul {
+        margin-bottom: 0;
+      }
+      @media print, screen and (max-width: 720px) {
+        .teaching-summary,
+        .resource-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="wrapper">
       <site-header></site-header>
-
       <section>
-      <!-- <h2>Teaching Statement</h2> -->
-      <!-- <p><a href="https://tyleransom.github.io/teaching/Teaching-Statement.pdf">Download (PDF)</a><br></p> -->
-      
-      <h2>Teaching Experience</h2>
-<!--      <p><a href="https://tyleransom.github.io/teaching/EvalsSummary.pdf">Overall Summary of Teaching Evaluations</a></p>-->
-
-      <h2>Current Teaching</h2>
-      <h3>Edexcel S2</h3>
-      <ul>
-        <li><a href="myTeaching/local%20html/poisson-addition-company-example.html">possion-addition-company</a></li>
-        <li><a href="myTeaching/local%20html/binomial-to-poisson-offline.html">Binomial to Poisson</a></li>
-        <li><a href="myTeaching/local%20html/s2-approximations-visualizer.html">S2 Approximations Visualizer</a></li>
-      </ul>
-     
-      <hr />
-      <h3>Instructor and Designer</h3>
-      <h4><b>Further Pure Maths 2</b></h4>
-        <p>During academic year 2022-2022, I teach 23 year13 students.  6 of them are aim for Oxfrod, Cambridge, or G5 Universities.  2 are planing study mathematics.</p>
-
-        <ul>
-          <li>Course Syllabus,  <a href="https://www.cambridgeinternational.org/Images/597381-2023-2025-syllabus.pdf">CIE Further Maths 9231 Syllabus (2023-2025)</a></li>
-          <li> Teaching progress Recording. </li>
-          <li> Homework Assignment
-            <ol>
-              <li><a href="myTeaching/fp2hw1.pdf">Homework for Hyperbolic functions.</a> (<a href="myTeaching/fpHw1Solutions.pdf">Solutions to HW1</a>) </li>
-              <li>  <a href="myTeaching/fp2Hw2.pdf">Homework for Matrix 2.</a></li>
-            </ol>
-          </li>
-          <li>Quizs
-            <ol>
-                <li> Quiz 1 on eigenvalues and Eigenvectors.</li>
-                <li> Quiz 2 on diagonalization and Cayley–Hamilton theorem.</li>
-            </ol>
-          </li>
-        </ul>
-<!--      <ul>-->
-<!--       <li><a href="https://www.amazon.com/Economics-Education-Michael-Lovenheim/dp/0716777045">Textbook</a></li>-->
-<!--       <li><a href="research/LectureCollegeMajorChoiceCh15p2.pdf">Slides on college major choice & consequences</a></li>-->
-<!--       <li><a href="https://tyleransom.github.io/research/TenPrinciplesOfEconOfEd.pdf">10 Principles of the Economics of Education</a></li>-->
-<!--       <li>Student course evaluations (<a href="https://tyleransom.github.io/teaching/EconOfEdEvalsF17.pdf">Fall 2017</a>,<a href="https://tyleransom.github.io/teaching/EconOfEdEvalsS18.pdf">Spring 2018</a>,<a href="https://tyleransom.github.io/teaching/EconOfEdEvalsF18.pdf">Fall 2018</a>,<a href="https://tyleransom.github.io/teaching/EconOfEdEvalsF19.pdf">Fall 2019</a>)</li>-->
-<!--       <li>Other course materials available upon request</li>-->
-<!--      </ul>-->
-
-<!--          another temp course -->
-<!--      <h4><b>Econ 5970/5253: Data Science for Economists (University of Oklahoma, Spring 2018, Spring 2019, Spring 2020, Spring 2021)</b></h4>-->
-<!--      Master's course designed to build data science skills from the perspective of economics-->
-<!--      <ul>-->
-<!--       <li>Course GitHub repository (<a href="https://github.com/tyleransom/DScourseS18">Spring 2018</a>,<a href="https://github.com/tyleransom/DScourseS19">Spring 2019</a>,<a href="https://github.com/tyleransom/DScourseS20">Spring 2020</a>,<a href="https://github.com/tyleransom/DScourseS21">Spring 2021</a>),<a href="https://github.com/tyleransom/DScourseS22">Spring 2022</a>)</li>-->
-<!--       <li>Student course evaluations (<a href="https://tyleransom.github.io/teaching/DSevalsS18.pdf">Spring 2018</a>,<a href="https://tyleransom.github.io/teaching/DSevalsS19.pdf">Spring 2019</a>,<a href="https://tyleransom.github.io/teaching/DSevalsS20.pdf">Spring 2020</a>,<a href="https://tyleransom.github.io/teaching/DSevalsS21.pdf">Spring 2021</a>),<a href="https://tyleransom.github.io/teaching/DSevalsS22.pdf">Spring 2022</a>)</li>-->
-<!--      </ul>-->
-<!--      <h4><b>Econ 6343: Econometrics III (University of Oklahoma, Fall 2020, Fall 2021)</b></h4>-->
-<!--      PhD course on advanced topics in applied micro econometrics (structural estimation, machine learning)-->
-<!--      <ul>-->
-<!--       <li>Course GitHub repository (<a href="https://github.com/OU-PhD-Econometrics/fall-2020">Fall 2020</a>,<a href="https://github.com/OU-PhD-Econometrics/fall-2021">Fall 2021</a>)</li>-->
-<!--       <li>Student course evaluations (<a href="https://tyleransom.github.io/teaching/PhDeconometricsEvalsF20.pdf">Fall 2020</a>,<a href="https://tyleransom.github.io/teaching/PhDeconometricsEvalsF21.pdf">Fall 2021</a>)</li>-->
-<!--       <li>Other course materials available upon request</li>-->
-<!--      </ul>-->
-
-
-<!--      <h4><b>Econ 4223: Econometric Analysis (University of Oklahoma, Fall 2018, Spring 2019, Fall 2019, Spring 2020, Fall 2020, Spring 2021, Fall 2021)</b></h4>-->
-<!--      Undergraduate introductory econometrics course-->
-<!--      <ul>-->
-<!--       <li><a href="https://www.amazon.com/gp/product/130527010X">Primary Textbook</a></li>-->
-<!--       <li><a href="http://urfie.net/">Secondary Textbook</a></li>-->
-<!--       <li><a href="http://r4ds.had.co.nz/">Additional Secondary Textbook</a></li>-->
-<!--       <li>Collection of <a href="https://tyleransom.github.io/econometricslabs.html">in-class group labs</a> to help students get hands-on experience coding with R</li>-->
-<!--       <li><a href="https://github.com/tyleransom/EconometricsLabs/blob/master/tidyRcheatsheet.pdf">Econometrics in R cheat sheet</a></li>-->
-<!--       <li><a href="https://github.com/tyleransom/EconometricsLabs/blob/master/econometricsCheatSheet.pdf">Econometric theory cheat sheet</a></li>-->
-<!--       <li>Student course evaluations (<a href="https://tyleransom.github.io/teaching/EconometricsEvalsF18.pdf">Fall 2018</a>,<a href="https://tyleransom.github.io/teaching/EconometricsEvalsS19.pdf">Spring 2019</a>,<a href="https://tyleransom.github.io/teaching/EconometricsEvalsF19.pdf">Fall 2019</a>,<a href="https://tyleransom.github.io/teaching/EconometricsEvalsS20.pdf">Spring 2020</a>,<a href="https://tyleransom.github.io/teaching/EconometricsEvalsF20.pdf">Fall 2020</a>,<a href="https://tyleransom.github.io/teaching/EconometricsEvalsS21.pdf">Spring 2021</a>,<a href="https://tyleransom.github.io/teaching/EconometricsEvalsF21.pdf">Fall 2021</a>),<a href="https://tyleransom.github.io/teaching/EconometricsEvalsS22.pdf">Spring 2022</a>)</li>-->
-<!--       <li>Other course materials available upon request</li>-->
-<!--      </ul>-->
-
-
-<!--      <h4><b>Causal Inference with R (hosted on <a href="https://www.datacamp.com/">DataCamp</a> with support from <a href="https://www.ebayinc.com/">eBay, Inc.</a>)</b></h4>-->
-<!--      Introduction to Causal Inference using R. The course is free on DataCamp. I co-created the programming exercises with <a href="https://sociology.duke.edu/people/brian-aronson">Brian Aronson</a>, <a href="https://ssri.duke.edu/people/jim-speckart">Jim Speckart</a> and <a href="https://ssri.duke.edu/people/alexandra-cooper">Alexandra Cooper</a>. The course instructors are <a href="https://sites.duke.edu/masten/">Matt Masten</a> and <a href="https://www.mercatus.org/bentley-coffey">Bentley Coffey</a>.-->
-<!--      <ul>-->
-<!--       <li><a href="https://www.datacamp.com/community/open-courses/causal-inference-with-r-introduction">Introduction to Causal Inference</a></li>-->
-<!--       <li><a href="https://www.datacamp.com/community/open-courses/causal-inference-with-r-experiments">Using Experiments</a></li>-->
-<!--       <li><a href="https://www.datacamp.com/community/open-courses/causal-inference-with-r-regression">Regression</a></li>-->
-<!--      </ul>-->
-<!--      <h4><b>Econ 360: Foundations of Matlab (Duke University, Summer 2012)</b></h4>-->
-<!--      This course is geared towards rising second-year PhD students in order to equip them with the quantitative skills required for courses and research beyond the first year of graduate school.-->
-<!--      <ul>-->
-<!--       <li><a href="https://github.com/tyleransom/MatlabCourse">Course GitHub repository</a></li>-->
-<!--       <li><a href="https://tyleransom.github.io/teaching/MatlabRatingsSu2012.pdf">Aggregated Course Ratings</a></li>-->
-<!--       <li><a href="https://tyleransom.github.io/teaching/MatlabRatings.pdf">Individual Course Ratings</a></li>-->
-<!--      </ul>-->
-
-
-        <h4><b>Pure Math 2 & 3</b></h4>
+        <h2>Teaching</h2>
+        <div class="current-teaching">
+          <h2>Current Teaching</h2>
+          <h3>Edexcel S2</h3>
           <ul>
-            <li>Course Syllabus</li>
-            <li>Course Progress Recording.</li>
-            <li>
-              <ol>
-                <li> Quiz 1 on long division, factor, and reminder theorem.</li>
-                <li> Quiz 2 on trigonometric.</li>
-              </ol>
-            </li>
+            <li><a href="myTeaching/local%20html/poisson-addition-company-example.html">Poisson Addition: Company Example</a></li>
+            <li><a href="myTeaching/local%20html/binomial-to-poisson-offline.html">Binomial to Poisson</a></li>
+            <li><a href="myTeaching/local%20html/s2-approximations-visualizer.html">S2 Approximations Visualizer</a></li>
           </ul>
+        </div>
+        <p class="teaching-intro">My teaching combines strong mathematical foundations with careful preparation for advanced study. I teach A-Level Mathematics and Further Mathematics and coach motivated students for STEP, TMUA, ESAT, and Oxbridge interviews.</p>
 
+        <div class="teaching-summary">
+          <div class="summary-item"><strong>6+ years</strong>Mathematics teaching</div>
+          <div class="summary-item"><strong>AP &amp; A-Level</strong>International curricula</div>
+          <div class="summary-item"><strong>STEP &amp; TMUA</strong>Admissions preparation</div>
+        </div>
 
-        <h4><b>Further Pure Math 1</b></h4>
+        <h2 class="section-heading">Teaching Experience</h2>
+        <div class="timeline">
+          <article class="timeline-item">
+            <h3>Senior Mathematics Teacher &amp; Mathematics Group Leader</h3>
+            <p class="timeline-meta">Chiway Repton School, Xiamen · Fall 2024 - Present</p>
+            <p>Teach Mathematics and Further Mathematics and lead specialized preparation for mathematics-related admissions tests. Current coaching focuses on TMUA, ESAT, STEP 2, and STEP 3, with individual support for advanced problem-solving and university applications.</p>
+            <ul class="course-list">
+              <li>A-Level Mathematics</li><li>Further Mathematics</li><li>TMUA</li><li>ESAT</li><li>STEP 2 &amp; 3</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <h3>A-Level Mathematics &amp; Further Mathematics Teacher</h3>
+            <p class="timeline-meta">Tianjin Yinghua Experimental School · Fall 2021 - Summer 2024</p>
+            <p>Taught Pure Mathematics, Further Pure Mathematics, Statistics, and Mechanics. I also coached AMC12, STEP 2 and STEP 3, supported personal statements, and conducted individual mock Oxbridge interviews.</p>
+            <ul class="course-list">
+              <li>Pure Mathematics 3</li><li>Further Pure Mathematics 1 &amp; 2</li><li>Further Mechanics</li><li>Statistics 1</li><li>Oxbridge Interviews</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <h3>AP Mathematics Instructor</h3>
+            <p class="timeline-meta">Tianjin Yinghua Experimental School · May 2020 - 2021</p>
+            <p>Designed and taught full-year AP Calculus BC and AP Statistics courses. Most Calculus students earned the highest possible AP score, and the Statistics class achieved an average score of approximately 4 out of 5.</p>
+            <ul class="course-list"><li>AP Calculus BC</li><li>AP Statistics</li></ul>
+          </article>
+
+          <article class="timeline-item">
+            <h3>Teaching Associate &amp; Teaching Assistant</h3>
+            <p class="timeline-meta">University of California, Santa Barbara · 2013 - 2018</p>
+            <p>Served as instructor for single-variable and multivariable calculus and supported students across lower- and upper-division mathematics tutoring classes.</p>
+            <ul class="course-list"><li>Math 3A: Single-Variable Calculus</li><li>Math 6A: Multivariable Calculus</li><li>Mathematics Tutoring</li></ul>
+          </article>
+        </div>
+
+        <h2 class="section-heading">Selected Student Outcomes</h2>
+        <div class="achievement-panel">
           <ul>
-            <li> Course Syllabus.
-            <li>  The official exam raw score distribution.  (insert the dotplot  here / stemplot)
-              </li>
+            <li>The 2023 Further Mathematics cohort received nine Oxbridge interview invitations, including two students applying for Mathematics.</li>
+            <li>The 2024 Further Mathematics cohort received seven Oxbridge interview invitations and four conditional offers.</li>
+            <li>Students have received offers from Cambridge, Oxford, Imperial College London, UCL, UCLA, Columbia University, and other leading universities.</li>
+            <li>Recent individual support has included STEP, TMUA, MAT, advanced mathematical projects, personal statements, and mock interviews.</li>
           </ul>
+          <a href="hornor_students.html">View Honor Students and their achievements</a>
+        </div>
 
-        <h4><b>Statistics 1</b></h4>
-
-        <hr />
-
-        <h4><b>AP Caclulus AB and BC</b></h4>
-        4 socre 5, 2 score 4, one Score 3 for the AP Calculus BC (June 2021).
-
-        <hr />
-
-        <h4><b>AP Statistics</b></h4>
-
-<!--      <h4><b>Introduction to the Julia programming language (Duke, Spring 2016, 2017)</b></h4>-->
-<!--      This 1-day workshop focused on introducing Julia as an alternative to existing programming languages. Participants engaged in hands-on examples and were instructed about best practices in Julia.-->
-<!--      <ul>-->
-<!--        <li>Co-taught with <a href="https://dibs.duke.edu/scholars/john-pearson">John Pearson</a></li>-->
-<!--        <li><a href="https://github.com/jmxpearson/duke-julia-ssri-2016">Github repository</a> containing course materials</li>-->
-<!--      </ul>-->
-
-      <hr />
-        <h3 style="margin-top:2px; margin-bottom:6px">Teaching Associates in US</h3>
-
-
-        <hr />
-      <h3 style="margin-top:2px; margin-bottom:6px">Teaching Assistant in US</h3>
-<!--      <h4>Conducting Research Using the SIPP (3-day Workshop held at Duke, Spring 2014)</h4>-->
-<!--      <ul>-->
-<!--        <li>Professor Luke Shaefer</li>-->
-<!--      </ul>-->
-<!--      <h4 style="margin-top:6px">Econ 110: Principles of Economics (Brigham Young University, Winter 2008)</h4>-->
-<!--      <ul>-->
-<!--        <li>Professor Larry T. Wimmer</li>-->
-<!--        <li>Voted Outstanding Econ 110 TA (out of 10 others)</li>-->
-<!--      </ul>-->
-
-
+        <h2 class="section-heading">Teaching Resources</h2>
+        <div class="resource-grid">
+          <article class="resource-card">
+            <h3>Further Mathematics</h3>
+            <ul>
+              <li><a href="https://www.cambridgeinternational.org/Images/597381-2023-2025-syllabus.pdf">CIE Further Mathematics 9231 Syllabus</a></li>
+              <li><a href="myTeaching/fp2hw1.pdf">Hyperbolic Functions Homework</a> (<a href="myTeaching/fpHw1Solutions.pdf">solutions</a>)</li>
+              <li><a href="myTeaching/fp2Hw2.pdf">Matrices Homework</a></li>
+            </ul>
+          </article>
+          <article class="resource-card">
+            <h3>Admissions Preparation</h3>
+            <p>Advanced coaching in problem-solving, mathematical communication, and timed examination technique.</p>
+            <a href="contest.html">Explore STEP, TMUA, MAT, and interview preparation</a>
+          </article>
+          <article class="resource-card">
+            <h3>Teaching Philosophy</h3>
+            <p>I aim to help students see mathematics as a connected subject and become confident, independent problem-solvers.</p>
+            <a href="teaching_statement.html">Read my teaching statement</a>
+          </article>
+        </div>
       </section>
     </div>
     <script src="javascripts/site.js"></script>

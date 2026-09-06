@@ -4,10 +4,11 @@
   <script src="https://use.fontawesome.com/baff6f55f5.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Zhognmin Jin Homepages</title>
+    <title>Zhongmin Jin Homepages</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
+    <link rel="stylesheet" href="stylesheets/site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,62 +73,63 @@
       div.panel.show {
       display: block !important;
       }
-      .social-row {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+      li.top-honor {
+        margin: 8px 0;
+        padding: 10px 12px;
+        border-left: 4px solid #d4a017;
+        border-radius: 4px;
+        background: #fff8dc;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      }
+      li.top-honor::marker {
+        color: #d4a017;
       }
     </style>
   </head>
   <body>
     <div class="wrapper">
-      <header>
-        <h1>Zhongmin</h1>
-        <h3><a href="arxiv/research/CV.pdf">CV</a></h3>
-        <h3><a href="teaching.html">Teaching</a></h3>
-        <h3>Teaching Statement</a></h3>
-        <h3><a href="contest.html">Math Contest Coaching</a></h3>
-        <b>Social</b><br>
-        <div class="social-row">
-          <a href="mailto:zhongmin.jin@hotmial.com" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a><br>
-
-          <a href="jin.zhongmin.club"><i class="fa fa-fw fa-github-square"></i> GitHub</a><br>
-          <a href="jin.zhongmin.club" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a><br>
-          <br>
-        </div>
-        <br>
-      </header>
+      <site-header></site-header>
       <section>
 
       
-      <h2>Hornor Students</h2>
+      <h2>Honor Students</h2>
 
       <hr />
-        <h3><b>UK Top Univesrities</b></h3>
-        <b> Cambridge University </b>
-          <ul>
-            <li>Wang, Zian (Addision), majoring in Math</li>
-          </ul>
-
-        <b>Oxford University</b>
+        <h3>Class of 2022</h3>
         <ul>
-          <li>Shan, Yuelin (Catherine), Majoring in Materials</li>
+          <li>Haoning Xue (Lemon) - New York University, Law</li>
         </ul>
 
-        Impricial Collegue London
+        <h3>Class of 2023</h3>
         <ul>
-          <li></li>
-        </ul>
-        Univesirty College London
-        <ul>
-          <li></li>
+          <li class="top-honor">Zian Wang (Addison) - Mathematics at the University of Cambridge; also received an offer from Imperial College London</li>
+          <li class="top-honor">Yuelin Shan (Catherine) - Materials Science at the University of Oxford; also received an offer from Imperial College London</li>
+          <li class="top-honor">George - received a Mathematics offer from Imperial College London</li>
+          <li>Eliade - received and fulfilled an offer from University College London</li>
         </ul>
 
-        <hr />
-        <h3><b>US Top Universities</b></h3>
-        <b>New York Unviersity</b>
+        <h3>Class of 2024</h3>
         <ul>
-          <li>Xue, Haoning(Lemon), majoring in Law</li>
+          <li class="top-honor">Alex - received Mathematics offers from the University of Cambridge and Imperial College London</li>
+          <li class="top-honor">Susan - received Natural Sciences offers from the University of Cambridge and Imperial College London</li>
+          <li class="top-honor">Allen - received an Engineering offer from the University of Cambridge</li>
+          <li class="top-honor">Eve - received an Economics offer from the University of Cambridge</li>
+          <li class="top-honor">Winter - received an Aerospace Engineering offer from Imperial College London</li>
+          <li class="top-honor">Lambert - received an Aerospace Engineering offer from Imperial College London</li>
+          <li class="top-honor">Eugene - received a Physics offer from Imperial College London</li>
+          <li class="top-honor">Jacen - received a Mathematics offer from Imperial College London</li>
+        </ul>
+
+        <h3>Class of 2025</h3>
+        <ul>
+          <li>Bardeen Wang - received an unconditional Mathematics offer after preparation in TMUA and an advanced project on Gaussian periods and the constructibility of the regular 17-gon</li>
+        </ul>
+
+        <h3>Class of 2026</h3>
+        <ul>
+          <li>Grace Cai - received an unconditional offer from University College London for Information, Data and Society; achieved A* grades in Mathematics and Further Mathematics</li>
+          <li class="top-honor">William Chen - interviewed for Computer Science at the University of Cambridge and received offers from Imperial College London, the University of Hong Kong, and UCLA</li>
+          <li class="top-honor">Henry Chen - received offers from UCLA and Columbia University for Statistics</li>
         </ul>
 
 
@@ -182,6 +184,7 @@
 
       </section>
     </div>
+    <script src="javascripts/site.js"></script>
     <script src="javascripts/scale.fix.js"></script>
   </body>
 </html>

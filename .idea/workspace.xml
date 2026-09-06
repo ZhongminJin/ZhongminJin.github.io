@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="fail to use load function, use a common file to copy and paste instead" />
+    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="discrete to nomral">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest.html" beforeDir="false" afterPath="$PROJECT_DIR$/contest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hornor_students.html" beforeDir="false" afterPath="$PROJECT_DIR$/hornor_students.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teaching.html" beforeDir="false" afterPath="$PROJECT_DIR$/teaching.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,6 +38,65 @@
     <commands />
     <urls />
   </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="2.3179372686591986" />
+      <entry key="MS500" value="4.955369777650128" />
+      <entry key="S2" value="10.294115684564538" />
+      <entry key="S5" value="20.08052772275895" />
+      <entry key="S10" value="30.220448224999153" />
+      <entry key="S30" value="43.5178910350403" />
+      <entry key="S60" value="48.856203055061904" />
+      <entry key="M2" value="60.52470401641163" />
+      <entry key="M5" value="144.6991330798253" />
+      <entry key="M10" value="291.7437598277427" />
+      <entry key="M15" value="391.68964164746984" />
+      <entry key="M30" value="542.4603194325429" />
+      <entry key="H1" value="645.8720009977897" />
+      <entry key="H2" value="706.8090287295407" />
+      <entry key="H4" value="739.9398481585981" />
+      <entry key="D1" value="769.0174124037748" />
+      <entry key="W1" value="774.1418641531517" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="2.2656681002123693" />
+      <entry key="MS500" value="4.930426464076835" />
+      <entry key="S2" value="10.281337848097605" />
+      <entry key="S5" value="20.070836181532382" />
+      <entry key="S10" value="30.213256179416284" />
+      <entry key="S30" value="43.51446161128562" />
+      <entry key="S60" value="48.85428233261165" />
+      <entry key="M2" value="60.52352779218152" />
+      <entry key="M5" value="144.69797119753332" />
+      <entry key="M10" value="291.7425212028906" />
+      <entry key="M15" value="391.6885043308429" />
+      <entry key="M30" value="542.4595088310206" />
+      <entry key="H1" value="645.8715108436155" />
+      <entry key="H2" value="706.8087583536857" />
+      <entry key="H4" value="739.9397060513448" />
+      <entry key="D1" value="769.0173877032606" />
+      <entry key="W1" value="774.1418605988765" />
+    </decayedShown>
+  </component>
   <component name="ProjectId" id="2EfYYgGkLrVHPfFwCpbR0PFw4Oa" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -47,7 +112,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "javascript.preferred.runtime.type.id": "node",
-    "last_opened_file_path": "D:/Dropbox/Code/webstorm/ZhongminJin.github.io",
+    "last_opened_file_path": "/Users/zhongmin/Library/CloudStorage/Dropbox/Code/webstorm/ZhongminJin.github.io/myTeaching/local html",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -57,6 +122,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/myTeaching/local html" />
       <recent name="D:\Dropbox\Code\webstorm\ZhongminJin.github.io" />
     </key>
   </component>
@@ -149,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1676781702361</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="discrete to nomral">
+      <option name="closed" value="true" />
+      <created>1788705730681</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1788705730681</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +249,7 @@
     <MESSAGE value="github" />
     <MESSAGE value="small change" />
     <MESSAGE value="fail to use load function, use a common file to copy and paste instead" />
-    <option name="LAST_COMMIT_MESSAGE" value="fail to use load function, use a common file to copy and paste instead" />
+    <MESSAGE value="discrete to nomral" />
+    <option name="LAST_COMMIT_MESSAGE" value="discrete to nomral" />
   </component>
 </project>
