@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="fail to use load function, use a common file to copy and paste instead">
-      <change afterPath="$PROJECT_DIR$/res.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hornor_students.html" beforeDir="false" afterPath="$PROJECT_DIR$/hornor_students.html" afterDir="false" />
-    </list>
+    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="fail to use load function, use a common file to copy and paste instead" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,13 +20,17 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="make_head_shared" />
+        <entry key="$PROJECT_DIR$" value="bycodex" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
   </component>
   <component name="ProjectId" id="2EfYYgGkLrVHPfFwCpbR0PFw4Oa" />
   <component name="ProjectViewState">
@@ -45,6 +45,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "javascript.preferred.runtime.type.id": "node",
     "last_opened_file_path": "D:/Dropbox/Code/webstorm/ZhongminJin.github.io",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
