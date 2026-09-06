@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="https://use.fontawesome.com/baff6f55f5.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>STEP Past Paper Video Guides | Zhongmin Jin</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <link rel="stylesheet" href="stylesheets/site.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNJD50R0Z7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GNJD50R0Z7');
+    </script>
+
+    <link rel="stylesheet" href="assets/css/academicons.min.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <site-header></site-header>
+
+      <section>
+        <h2>STEP Past Paper Video Guides</h2>
+        <p>This page collects STEP 2 and STEP 3 past-paper question resources from 2020 to 2026.</p>
+
+        <hr>
+        <h3>Course Materials</h3>
+        <ul class="resource-list">
+          <li><a href="contest/Syllabus-Lecture%20for%20Step2%20and%20Step3%20Preparation.pdf">STEP teaching syllabus</a></li>
+          <li><a href="contest.html">Back to Oxbridge Advanced Maths Preparation</a></li>
+        </ul>
+
+        <h3>Question Links</h3>
+        <p class="placeholder-note">Video links currently use placeholders. Local PDF links use the planned file path convention, so add PDFs under <code>contest/step/</code> when they are ready. Ready links are managed in <code>data/step-resources.json</code>.</p>
+
+        <div id="step-question-index"></div>
+      </section>
+    </div>
+    <script src="javascripts/site.js"></script>
+    <script>
+      const years = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
+      const papers = [
+        { label: "STEP 2", slug: "step2" },
+        { label: "STEP 3", slug: "step3" }
+      ];
+
+      let customLinks = {};
+
+      function questionId(year, paperSlug, questionNumber) {
+        return `${year}-${paperSlug}-q${String(questionNumber).padStart(2, "0")}`;
+      }
+
+      function defaultPdfPath(year, paperSlug, questionNumber) {
+        return `contest/step/${year}/${paperSlug}/question-${String(questionNumber).padStart(2, "0")}.pdf`;
+      }
+
+      function resourceLink(href, label, placeholder) {
+        const className = placeholder ? ' class="placeholder-link"' : "";
+        return `<a href="${href}"${className}>${label}</a>`;
+      }
+
+      function renderQuestionRows(year, paperSlug) {
+        return Array.from({ length: 12 }, (_, index) => {
+          const questionNumber = index + 1;
+          const id = questionId(year, paperSlug, questionNumber);
+          const links = customLinks[id] || {};
+          const pdfHref = links.pdf || defaultPdfPath(year, paperSlug, questionNumber);
+          const videoHref = links.video || "#";
+
+          return `
+            <tr>
+              <td>Question ${questionNumber}</td>
+              <td>${resourceLink(pdfHref, "Question PDF", !links.pdf)}</td>
+              <td>${resourceLink(videoHref, "Video placeholder", !links.video)}</td>
+            </tr>
+          `;
+        }).join("");
+      }
+
+      function renderStepQuestionIndex() {
+        document.getElementById("step-question-index").innerHTML = years.map((year) => `
+          <article class="resource-year">
+            <h3>${year}</h3>
+            ${papers.map((paper) => renderPaperSection(year, paper)).join("")}
+          </article>
+        `).join("");
+      }
+
+      async function loadCustomLinks() {
+        try {
+          const response = await fetch("data/step-resources.json");
+          if (!response.ok) {
+            renderStepQuestionIndex();
+            return;
+          }
+
+          const data = await response.json();
+          customLinks = data.links || {};
+        } catch (error) {
+          customLinks = {};
+        }
+
+        renderStepQuestionIndex();
+      }
+
+      function renderPaperSection(year, paper) {
+        return `
+          <h4>${paper.label}</h4>
+          <div class="resource-table-wrap">
+            <table class="resource-table">
+              <thead>
+                <tr>
+                  <th>Question</th>
+                  <th>Local PDF</th>
+                  <th>Video</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${renderQuestionRows(year, paper.slug)}
+              </tbody>
+            </table>
+          </div>
+        `;
+      }
+
+      loadCustomLinks();
+    </script>
+    <script src="javascripts/scale.fix.js"></script>
+  </body>
+</html>
