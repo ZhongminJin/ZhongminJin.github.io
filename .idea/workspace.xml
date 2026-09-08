@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="new design" />
+    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="fix bug of step.html">
+      <change afterPath="$PROJECT_DIR$/myTeaching/local html/rounding-and-density-offline.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teaching.html" beforeDir="false" afterPath="$PROJECT_DIR$/teaching.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +29,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "ZhongminJin"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ZhongminJin/ZhongminJin.github.io.git",
+    "accountId": "39f181a2-1f71-4c15-8d14-0a00e2753942"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -34,23 +50,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.1406323776575327" />
-      <entry key="MS500" value="1.721982952425778" />
-      <entry key="S2" value="2.866324769461027" />
-      <entry key="S5" value="3.8476574604650664" />
-      <entry key="S10" value="4.424836465410778" />
-      <entry key="S30" value="11.87922923074737" />
-      <entry key="S60" value="30.904317164830847" />
-      <entry key="M2" value="61.73107314872789" />
-      <entry key="M5" value="149.56171937435101" />
-      <entry key="M10" value="296.56584191658305" />
-      <entry key="M15" value="403.1208585812509" />
-      <entry key="M30" value="571.9571959419237" />
-      <entry key="H1" value="692.3437559449275" />
-      <entry key="H2" value="764.7710852728785" />
-      <entry key="H4" value="804.5726509961172" />
-      <entry key="D1" value="839.7384311567762" />
-      <entry key="W1" value="845.9578632692741" />
+      <entry key="MS100" value="1.000059284910863" />
+      <entry key="MS500" value="1.264171072635013" />
+      <entry key="S2" value="3.135819788800922" />
+      <entry key="S5" value="4.795931259241727" />
+      <entry key="S10" value="5.781058535970589" />
+      <entry key="S30" value="10.425500412088915" />
+      <entry key="S60" value="19.720901172169718" />
+      <entry key="M2" value="40.23004878133522" />
+      <entry key="M5" value="116.00867880686225" />
+      <entry key="M10" value="256.6705895438995" />
+      <entry key="M15" value="368.15039627863257" />
+      <entry key="M30" value="556.9156643335385" />
+      <entry key="H1" value="698.7123410159816" />
+      <entry key="H2" value="786.4381329897566" />
+      <entry key="H4" value="835.3477700866591" />
+      <entry key="D1" value="878.9516745381723" />
+      <entry key="W1" value="886.7005199616034" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -72,26 +88,33 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.1143238928410932" />
-      <entry key="MS500" value="1.7120271190113925" />
-      <entry key="S2" value="2.8620770313977326" />
-      <entry key="S5" value="3.845346413334963" />
-      <entry key="S10" value="4.423503511385684" />
-      <entry key="S30" value="11.878194729746276" />
-      <entry key="S60" value="30.903052889162716" />
-      <entry key="M2" value="61.729838604515656" />
-      <entry key="M5" value="149.5605173870016" />
-      <entry key="M10" value="296.5645975934393" />
-      <entry key="M15" value="403.11970327933955" />
-      <entry key="M30" value="571.9563521405911" />
-      <entry key="H1" value="692.3432369024164" />
-      <entry key="H2" value="764.7707961655781" />
-      <entry key="H4" value="804.5724982612307" />
-      <entry key="D1" value="839.7384044914605" />
-      <entry key="W1" value="845.9578594293197" />
+      <entry key="MS100" value="0.979478380813934" />
+      <entry key="MS500" value="1.2590679592726974" />
+      <entry key="S2" value="3.1329163019737205" />
+      <entry key="S5" value="4.794118075628353" />
+      <entry key="S10" value="5.779943327510821" />
+      <entry key="S30" value="10.42479941561219" />
+      <entry key="S60" value="19.72021398181544" />
+      <entry key="M2" value="40.2293150605235" />
+      <entry key="M5" value="116.00778312566455" />
+      <entry key="M10" value="256.6695390887933" />
+      <entry key="M15" value="368.14936199496503" />
+      <entry key="M30" value="556.9148551012242" />
+      <entry key="H1" value="698.7118239634268" />
+      <entry key="H2" value="786.4378392278437" />
+      <entry key="H4" value="835.3476133175063" />
+      <entry key="D1" value="878.951646934615" />
+      <entry key="W1" value="886.7005159806995" />
     </decayedShown>
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1,
+  "fromUser": false
+}]]></component>
   <component name="ProjectId" id="2EfYYgGkLrVHPfFwCpbR0PFw4Oa" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -100,17 +123,24 @@
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "master",
     "javascript.preferred.runtime.type.id": "node",
+    "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "/Users/zhongmin/Library/CloudStorage/Dropbox/Code/webstorm/ZhongminJin.github.io/myTeaching/local html",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "vcs.Git",
+    "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -119,6 +149,13 @@
       <recent name="$PROJECT_DIR$/myTeaching/local html" />
       <recent name="D:\Dropbox\Code\webstorm\ZhongminJin.github.io" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-WS-262.9437.145" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -131,6 +168,7 @@
       <workItem from="1662988159094" duration="3541000" />
       <workItem from="1663027663757" duration="2353000" />
       <workItem from="1677332390912" duration="2156000" />
+      <workItem from="1788884921191" duration="297000" />
     </task>
     <task id="LOCAL-00001" summary="delete old ones">
       <created>1662988353213</created>
@@ -225,7 +263,23 @@
       <option name="project" value="LOCAL" />
       <updated>1788707636651</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="fix bug of step.html">
+      <option name="closed" value="true" />
+      <created>1788707902472</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1788707902472</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fix bug of step.html">
+      <option name="closed" value="true" />
+      <created>1788708054031</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1788708054031</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,6 +307,7 @@
     <MESSAGE value="fail to use load function, use a common file to copy and paste instead" />
     <MESSAGE value="discrete to nomral" />
     <MESSAGE value="new design" />
-    <option name="LAST_COMMIT_MESSAGE" value="new design" />
+    <MESSAGE value="fix bug of step.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bug of step.html" />
   </component>
 </project>
