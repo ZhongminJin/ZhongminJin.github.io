@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="fix bug of step.html">
-      <change afterPath="$PROJECT_DIR$/myTeaching/local html/rounding-and-density-offline.html" afterDir="false" />
+    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="加了 continous random variable 的html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teaching.html" beforeDir="false" afterPath="$PROJECT_DIR$/teaching.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,23 +48,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000059284910863" />
-      <entry key="MS500" value="1.264171072635013" />
-      <entry key="S2" value="3.135819788800922" />
-      <entry key="S5" value="4.795931259241727" />
-      <entry key="S10" value="5.781058535970589" />
-      <entry key="S30" value="10.425500412088915" />
-      <entry key="S60" value="19.720901172169718" />
-      <entry key="M2" value="40.23004878133522" />
-      <entry key="M5" value="116.00867880686225" />
-      <entry key="M10" value="256.6705895438995" />
-      <entry key="M15" value="368.15039627863257" />
-      <entry key="M30" value="556.9156643335385" />
-      <entry key="H1" value="698.7123410159816" />
-      <entry key="H2" value="786.4381329897566" />
-      <entry key="H4" value="835.3477700866591" />
-      <entry key="D1" value="878.9516745381723" />
-      <entry key="W1" value="886.7005199616034" />
+      <entry key="MS100" value="1.0145786413238298" />
+      <entry key="MS500" value="1.4746915529675575" />
+      <entry key="S2" value="3.5814140307180495" />
+      <entry key="S5" value="6.9733118940953895" />
+      <entry key="S10" value="11.448643572745867" />
+      <entry key="S30" value="27.052291910377097" />
+      <entry key="S60" value="43.61954093187365" />
+      <entry key="M2" value="62.02832226449401" />
+      <entry key="M5" value="112.74809341776381" />
+      <entry key="M10" value="226.65147479549685" />
+      <entry key="M15" value="337.7514130151002" />
+      <entry key="M30" value="560.7117859741534" />
+      <entry key="H1" value="752.4698908092842" />
+      <entry key="H2" value="880.1994986400731" />
+      <entry key="H4" value="954.2038797187826" />
+      <entry key="D1" value="1021.7896827201977" />
+      <entry key="W1" value="1033.9553049823721" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -88,23 +86,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.979478380813934" />
-      <entry key="MS500" value="1.2590679592726974" />
-      <entry key="S2" value="3.1329163019737205" />
-      <entry key="S5" value="4.794118075628353" />
-      <entry key="S10" value="5.779943327510821" />
-      <entry key="S30" value="10.42479941561219" />
-      <entry key="S60" value="19.72021398181544" />
-      <entry key="M2" value="40.2293150605235" />
-      <entry key="M5" value="116.00778312566455" />
-      <entry key="M10" value="256.6695390887933" />
-      <entry key="M15" value="368.14936199496503" />
-      <entry key="M30" value="556.9148551012242" />
-      <entry key="H1" value="698.7118239634268" />
-      <entry key="H2" value="786.4378392278437" />
-      <entry key="H4" value="835.3476133175063" />
-      <entry key="D1" value="878.951646934615" />
-      <entry key="W1" value="886.7005159806995" />
+      <entry key="MS100" value="0.9936989148015589" />
+      <entry key="MS500" value="1.4684890960155628" />
+      <entry key="S2" value="3.5769431556623843" />
+      <entry key="S5" value="6.969522690932306" />
+      <entry key="S10" value="11.445375388924003" />
+      <entry key="S30" value="27.049640192761156" />
+      <entry key="S60" value="43.61741824435971" />
+      <entry key="M2" value="62.02680302485653" />
+      <entry key="M5" value="112.7469664614436" />
+      <entry key="M10" value="226.6503781634369" />
+      <entry key="M15" value="337.7503398529455" />
+      <entry key="M30" value="560.710902492701" />
+      <entry key="H1" value="752.4692977834665" />
+      <entry key="H2" value="880.199151277244" />
+      <entry key="H4" value="954.2036912313026" />
+      <entry key="D1" value="1021.7896490445302" />
+      <entry key="W1" value="1033.955300113316" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
@@ -139,6 +137,7 @@
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "vcs.Git",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
@@ -146,6 +145,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/myTeaching/pics" />
       <recent name="$PROJECT_DIR$/myTeaching/local html" />
       <recent name="D:\Dropbox\Code\webstorm\ZhongminJin.github.io" />
     </key>
@@ -168,7 +168,7 @@
       <workItem from="1662988159094" duration="3541000" />
       <workItem from="1663027663757" duration="2353000" />
       <workItem from="1677332390912" duration="2156000" />
-      <workItem from="1788884921191" duration="297000" />
+      <workItem from="1788884921191" duration="666000" />
     </task>
     <task id="LOCAL-00001" summary="delete old ones">
       <created>1662988353213</created>
@@ -279,7 +279,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788708054031</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="加了 continous random variable 的html">
+      <option name="closed" value="true" />
+      <created>1788885268339</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1788885268354</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,6 +316,7 @@
     <MESSAGE value="discrete to nomral" />
     <MESSAGE value="new design" />
     <MESSAGE value="fix bug of step.html" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug of step.html" />
+    <MESSAGE value="加了 continous random variable 的html" />
+    <option name="LAST_COMMIT_MESSAGE" value="加了 continous random variable 的html" />
   </component>
 </project>
