@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="加了 continous random variable 的html">
+    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="加了个 as fm 4 的QR code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,23 +48,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0145786413238298" />
-      <entry key="MS500" value="1.4746915529675575" />
-      <entry key="S2" value="3.5814140307180495" />
-      <entry key="S5" value="6.9733118940953895" />
-      <entry key="S10" value="11.448643572745867" />
-      <entry key="S30" value="27.052291910377097" />
-      <entry key="S60" value="43.61954093187365" />
-      <entry key="M2" value="62.02832226449401" />
-      <entry key="M5" value="112.74809341776381" />
-      <entry key="M10" value="226.65147479549685" />
-      <entry key="M15" value="337.7514130151002" />
-      <entry key="M30" value="560.7117859741534" />
-      <entry key="H1" value="752.4698908092842" />
-      <entry key="H2" value="880.1994986400731" />
-      <entry key="H4" value="954.2038797187826" />
-      <entry key="D1" value="1021.7896827201977" />
-      <entry key="W1" value="1033.9553049823721" />
+      <entry key="MS100" value="1.000003437997718" />
+      <entry key="MS500" value="1.0831787966033901" />
+      <entry key="S2" value="2.0755714876555644" />
+      <entry key="S5" value="3.943572827751681" />
+      <entry key="S10" value="5.451494061094901" />
+      <entry key="S30" value="7.648035152696835" />
+      <entry key="S60" value="14.255731213351842" />
+      <entry key="M2" value="32.18862749264113" />
+      <entry key="M5" value="85.59401784198872" />
+      <entry key="M10" value="196.1033568693313" />
+      <entry key="M15" value="306.3002066605612" />
+      <entry key="M30" value="534.9621230100128" />
+      <entry key="H1" value="737.4761121585119" />
+      <entry key="H2" value="874.6475659928798" />
+      <entry key="H4" value="954.8299291527637" />
+      <entry key="D1" value="1028.4694140141034" />
+      <entry key="W1" value="1041.7643444790988" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -86,23 +86,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9936989148015589" />
-      <entry key="MS500" value="1.4684890960155628" />
-      <entry key="S2" value="3.5769431556623843" />
-      <entry key="S5" value="6.969522690932306" />
-      <entry key="S10" value="11.445375388924003" />
-      <entry key="S30" value="27.049640192761156" />
-      <entry key="S60" value="43.61741824435971" />
-      <entry key="M2" value="62.02680302485653" />
-      <entry key="M5" value="112.7469664614436" />
-      <entry key="M10" value="226.6503781634369" />
-      <entry key="M15" value="337.7503398529455" />
-      <entry key="M30" value="560.710902492701" />
-      <entry key="H1" value="752.4692977834665" />
-      <entry key="H2" value="880.199151277244" />
-      <entry key="H4" value="954.2036912313026" />
-      <entry key="D1" value="1021.7896490445302" />
-      <entry key="W1" value="1033.955300113316" />
+      <entry key="MS100" value="0.9794236648316748" />
+      <entry key="MS500" value="1.0786806786994352" />
+      <entry key="S2" value="2.0733172248705407" />
+      <entry key="S5" value="3.941757485051702" />
+      <entry key="S10" value="5.450206446699271" />
+      <entry key="S30" value="7.647410476671027" />
+      <entry key="S60" value="14.255100331041623" />
+      <entry key="M2" value="32.187872510953866" />
+      <entry key="M5" value="85.59317741761299" />
+      <entry key="M10" value="196.1024143725872" />
+      <entry key="M15" value="306.2992372737461" />
+      <entry key="M30" value="534.9612819211001" />
+      <entry key="H1" value="737.4755318624291" />
+      <entry key="H2" value="874.647221282462" />
+      <entry key="H4" value="954.8297407740599" />
+      <entry key="D1" value="1028.4693801573162" />
+      <entry key="W1" value="1041.764339578852" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
@@ -133,7 +133,7 @@
     "git-widget-placeholder": "master",
     "javascript.preferred.runtime.type.id": "node",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/zhongmin/Library/CloudStorage/Dropbox/Code/webstorm/ZhongminJin.github.io/myTeaching/local html",
+    "last_opened_file_path": "/Users/zhongmin/Library/CloudStorage/Dropbox/Code/webstorm/ZhongminJin.github.io/myTeaching/pics",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -168,7 +168,7 @@
       <workItem from="1662988159094" duration="3541000" />
       <workItem from="1663027663757" duration="2353000" />
       <workItem from="1677332390912" duration="2156000" />
-      <workItem from="1788884921191" duration="666000" />
+      <workItem from="1788884921191" duration="1988000" />
     </task>
     <task id="LOCAL-00001" summary="delete old ones">
       <created>1662988353213</created>
@@ -287,7 +287,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788885268354</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="加了个 as fm 4 的QR code">
+      <option name="closed" value="true" />
+      <created>1788885911286</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1788885911286</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,6 +325,7 @@
     <MESSAGE value="new design" />
     <MESSAGE value="fix bug of step.html" />
     <MESSAGE value="加了 continous random variable 的html" />
-    <option name="LAST_COMMIT_MESSAGE" value="加了 continous random variable 的html" />
+    <MESSAGE value="加了个 as fm 4 的QR code" />
+    <option name="LAST_COMMIT_MESSAGE" value="加了个 as fm 4 的QR code" />
   </component>
 </project>
