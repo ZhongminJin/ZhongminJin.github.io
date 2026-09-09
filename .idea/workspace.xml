@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="加了个 as fm 4 的QR code">
-      <change afterPath="$PROJECT_DIR$/myTeaching/pics/AS_FM_2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="加了个 as fm 2 的QR code">
       <change beforePath="$PROJECT_DIR$/teaching.html" beforeDir="false" afterPath="$PROJECT_DIR$/teaching.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,23 +51,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000019928414" />
-      <entry key="MS500" value="1.0284565354156991" />
-      <entry key="S2" value="2.1325876427070396" />
-      <entry key="S5" value="4.52810809603729" />
-      <entry key="S10" value="7.922716432967468" />
-      <entry key="S30" value="15.718547469147401" />
-      <entry key="S60" value="20.95699224361451" />
-      <entry key="M2" value="32.07862997429143" />
-      <entry key="M5" value="77.3973848494872" />
-      <entry key="M10" value="179.4910413767601" />
-      <entry key="M15" value="286.5240811159031" />
-      <entry key="M30" value="519.6203429432743" />
-      <entry key="H1" value="734.4688535689735" />
-      <entry key="H2" value="883.2886695211029" />
-      <entry key="H4" value="971.3109907176821" />
-      <entry key="D1" value="1052.7539421532495" />
-      <entry key="W1" value="1067.5159437573454" />
+      <entry key="MS100" value="1.0000000124437798" />
+      <entry key="MS500" value="1.0270408001120905" />
+      <entry key="S2" value="1.6678242426671133" />
+      <entry key="S5" value="2.5811868943467227" />
+      <entry key="S10" value="3.1636818391222783" />
+      <entry key="S30" value="3.833826969929705" />
+      <entry key="S60" value="6.440478604230506" />
+      <entry key="M2" value="16.814787410500806" />
+      <entry key="M5" value="56.14927774090975" />
+      <entry key="M10" value="143.18038166897207" />
+      <entry key="M15" value="241.95466124995258" />
+      <entry key="M30" value="480.1047458206985" />
+      <entry key="H1" value="719.868927801482" />
+      <entry key="H2" value="894.580039638696" />
+      <entry key="H4" value="1000.7350679399858" />
+      <entry key="D1" value="1100.6456627639654" />
+      <entry key="W1" value="1118.920055051086" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -91,23 +89,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9460576485347953" />
-      <entry key="MS500" value="1.0168980352379093" />
-      <entry key="S2" value="2.1254428414956568" />
-      <entry key="S5" value="4.52210699488821" />
-      <entry key="S10" value="7.917708776985105" />
-      <entry key="S30" value="15.715438264283094" />
-      <entry key="S60" value="20.954996492053546" />
-      <entry key="M2" value="32.0772806340041" />
-      <entry key="M5" value="77.3963609559604" />
-      <entry key="M10" value="179.49003612158464" />
-      <entry key="M15" value="286.52307622719604" />
-      <entry key="M30" value="519.6194755871816" />
-      <entry key="H1" value="734.4682501806158" />
-      <entry key="H2" value="883.2883086208399" />
-      <entry key="H4" value="971.310792683004" />
-      <entry key="D1" value="1052.7539064280413" />
-      <entry key="W1" value="1067.5159385832183" />
+      <entry key="MS100" value="0.9726549595999762" />
+      <entry key="MS500" value="1.0213977914802137" />
+      <entry key="S2" value="1.665529875974602" />
+      <entry key="S5" value="2.5796394574660853" />
+      <entry key="S10" value="3.1626905646939956" />
+      <entry key="S30" value="3.8334139825092675" />
+      <entry key="S60" value="6.440130007212045" />
+      <entry key="M2" value="16.814307102137125" />
+      <entry key="M5" value="56.148611491300755" />
+      <entry key="M10" value="143.17958913689313" />
+      <entry key="M15" value="241.9538095837839" />
+      <entry key="M30" value="480.10393866476613" />
+      <entry key="H1" value="719.8683327250784" />
+      <entry key="H2" value="894.5796721255222" />
+      <entry key="H4" value="1000.7348628726675" />
+      <entry key="D1" value="1100.6456252370924" />
+      <entry key="W1" value="1118.9200496025032" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -174,7 +172,7 @@
       <workItem from="1663027663757" duration="2353000" />
       <workItem from="1677332390912" duration="2156000" />
       <workItem from="1788884921191" duration="2385000" />
-      <workItem from="1788968716006" duration="422000" />
+      <workItem from="1788968716006" duration="769000" />
     </task>
     <task id="LOCAL-00001" summary="delete old ones">
       <created>1662988353213</created>
@@ -309,7 +307,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788968318362</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="加了个 as fm 2 的QR code">
+      <option name="closed" value="true" />
+      <created>1788969151845</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1788969151845</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,6 +358,7 @@
     <MESSAGE value="fix bug of step.html" />
     <MESSAGE value="加了 continous random variable 的html" />
     <MESSAGE value="加了个 as fm 4 的QR code" />
-    <option name="LAST_COMMIT_MESSAGE" value="加了个 as fm 4 的QR code" />
+    <MESSAGE value="加了个 as fm 2 的QR code" />
+    <option name="LAST_COMMIT_MESSAGE" value="加了个 as fm 2 的QR code" />
   </component>
 </project>
