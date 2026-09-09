@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="加了个 as fm 4 的QR code">
+      <change afterPath="$PROJECT_DIR$/myTeaching/pics/AS_FM_2.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teaching.html" beforeDir="false" afterPath="$PROJECT_DIR$/teaching.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="78" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -27,18 +32,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "ZhongminJin"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ZhongminJin&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ZhongminJin/ZhongminJin.github.io.git",
-    "accountId": "39f181a2-1f71-4c15-8d14-0a00e2753942"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ZhongminJin/ZhongminJin.github.io.git&quot;,
+    &quot;accountId&quot;: &quot;39f181a2-1f71-4c15-8d14-0a00e2753942&quot;
   }
-}]]></component>
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -48,23 +53,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000003437997718" />
-      <entry key="MS500" value="1.0831787966033901" />
-      <entry key="S2" value="2.0755714876555644" />
-      <entry key="S5" value="3.943572827751681" />
-      <entry key="S10" value="5.451494061094901" />
-      <entry key="S30" value="7.648035152696835" />
-      <entry key="S60" value="14.255731213351842" />
-      <entry key="M2" value="32.18862749264113" />
-      <entry key="M5" value="85.59401784198872" />
-      <entry key="M10" value="196.1033568693313" />
-      <entry key="M15" value="306.3002066605612" />
-      <entry key="M30" value="534.9621230100128" />
-      <entry key="H1" value="737.4761121585119" />
-      <entry key="H2" value="874.6475659928798" />
-      <entry key="H4" value="954.8299291527637" />
-      <entry key="D1" value="1028.4694140141034" />
-      <entry key="W1" value="1041.7643444790988" />
+      <entry key="MS100" value="1.0000000019928414" />
+      <entry key="MS500" value="1.0284565354156991" />
+      <entry key="S2" value="2.1325876427070396" />
+      <entry key="S5" value="4.52810809603729" />
+      <entry key="S10" value="7.922716432967468" />
+      <entry key="S30" value="15.718547469147401" />
+      <entry key="S60" value="20.95699224361451" />
+      <entry key="M2" value="32.07862997429143" />
+      <entry key="M5" value="77.3973848494872" />
+      <entry key="M10" value="179.4910413767601" />
+      <entry key="M15" value="286.5240811159031" />
+      <entry key="M30" value="519.6203429432743" />
+      <entry key="H1" value="734.4688535689735" />
+      <entry key="H2" value="883.2886695211029" />
+      <entry key="H4" value="971.3109907176821" />
+      <entry key="D1" value="1052.7539421532495" />
+      <entry key="W1" value="1067.5159437573454" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -86,29 +91,29 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9794236648316748" />
-      <entry key="MS500" value="1.0786806786994352" />
-      <entry key="S2" value="2.0733172248705407" />
-      <entry key="S5" value="3.941757485051702" />
-      <entry key="S10" value="5.450206446699271" />
-      <entry key="S30" value="7.647410476671027" />
-      <entry key="S60" value="14.255100331041623" />
-      <entry key="M2" value="32.187872510953866" />
-      <entry key="M5" value="85.59317741761299" />
-      <entry key="M10" value="196.1024143725872" />
-      <entry key="M15" value="306.2992372737461" />
-      <entry key="M30" value="534.9612819211001" />
-      <entry key="H1" value="737.4755318624291" />
-      <entry key="H2" value="874.647221282462" />
-      <entry key="H4" value="954.8297407740599" />
-      <entry key="D1" value="1028.4693801573162" />
-      <entry key="W1" value="1041.764339578852" />
+      <entry key="MS100" value="0.9460576485347953" />
+      <entry key="MS500" value="1.0168980352379093" />
+      <entry key="S2" value="2.1254428414956568" />
+      <entry key="S5" value="4.52210699488821" />
+      <entry key="S10" value="7.917708776985105" />
+      <entry key="S30" value="15.715438264283094" />
+      <entry key="S60" value="20.954996492053546" />
+      <entry key="M2" value="32.0772806340041" />
+      <entry key="M5" value="77.3963609559604" />
+      <entry key="M10" value="179.49003612158464" />
+      <entry key="M15" value="286.52307622719604" />
+      <entry key="M30" value="519.6194755871816" />
+      <entry key="H1" value="734.4682501806158" />
+      <entry key="H2" value="883.2883086208399" />
+      <entry key="H4" value="971.310792683004" />
+      <entry key="D1" value="1052.7539064280413" />
+      <entry key="W1" value="1067.5159385832183" />
     </decayedShown>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1,
-  "fromUser": false
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="2EfYYgGkLrVHPfFwCpbR0PFw4Oa" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -117,32 +122,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "master",
-    "javascript.preferred.runtime.type.id": "node",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/zhongmin/Library/CloudStorage/Dropbox/Code/webstorm/ZhongminJin.github.io/myTeaching/pics",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/zhongmin/Library/CloudStorage/Dropbox/Code/webstorm/ZhongminJin.github.io/myTeaching/pics&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/myTeaching/pics" />
@@ -168,7 +173,8 @@
       <workItem from="1662988159094" duration="3541000" />
       <workItem from="1663027663757" duration="2353000" />
       <workItem from="1677332390912" duration="2156000" />
-      <workItem from="1788884921191" duration="1988000" />
+      <workItem from="1788884921191" duration="2385000" />
+      <workItem from="1788968716006" duration="422000" />
     </task>
     <task id="LOCAL-00001" summary="delete old ones">
       <created>1662988353213</created>
@@ -295,7 +301,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788885911286</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="加了个 as fm 4 的QR code">
+      <option name="closed" value="true" />
+      <created>1788968318362</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1788968318362</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,7 +320,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
