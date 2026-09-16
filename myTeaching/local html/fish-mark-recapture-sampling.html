@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fish Sampling Distribution</title>
+  <style>
+    :root {
+      --bg: #f7fafc;
+      --ink: #123047;
+      --muted: #5f7180;
+      --line: #c9d7e2;
+      --panel: #ffffff;
+      --blue: #2276c9;
+      --green: #1b9c73;
+      --orange: #f28c38;
+      --red: #cf3c3c;
+      --soft-blue: #e4f2ff;
+      --soft-green: #e2f7ef;
+      --soft-orange: #fff0df;
+      --shadow: 0 16px 40px rgba(18, 48, 71, 0.10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    main {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.08;
+    }
+    h2 { margin: 0 0 12px; font-size: 23px; }
+    h3 { margin: 0 0 8px; font-size: 17px; }
+    p { margin: 0 0 12px; color: var(--muted); line-height: 1.45; }
+    .lead { max-width: 900px; font-size: 18px; }
+    .top {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 18px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+    .formula {
+      background: var(--ink);
+      color: #fff;
+      border-radius: 10px;
+      padding: 14px 18px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .formula strong { display: block; font-size: 24px; margin-bottom: 4px; }
+    .formula span { color: #d7e8f5; font-size: 14px; }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+    .concept-grid {
+      display: grid;
+      grid-template-columns: 160px 1fr 1fr 1fr;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .concept-grid div {
+      padding: 10px 12px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      line-height: 1.35;
+    }
+    .concept-grid div:nth-child(4n) { border-right: 0; }
+    .concept-grid div:nth-last-child(-n+4) { border-bottom: 0; }
+    .head {
+      background: var(--soft-blue);
+      font-weight: 800;
+    }
+    .term { font-weight: 800; color: var(--blue); }
+    .layout {
+      display: grid;
+      grid-template-columns: 315px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .controls { position: sticky; top: 14px; }
+    .control { margin-bottom: 16px; }
+    .control label {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-weight: 750;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    output { color: var(--blue); font-variant-numeric: tabular-nums; }
+    input[type="range"] { width: 100%; }
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 11px 13px;
+      font-weight: 800;
+      font-size: 14px;
+      cursor: pointer;
+      background: var(--blue);
+      color: #fff;
+    }
+    button.secondary { background: #e7eef5; color: var(--ink); }
+    .button-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 8px 0 16px;
+    }
+    .button-row button:first-child { grid-column: 1 / -1; }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .stat {
+      background: #f4f8fb;
+      border-radius: 8px;
+      padding: 10px;
+      min-height: 70px;
+    }
+    .stat .label { color: var(--muted); font-size: 12px; margin-bottom: 5px; }
+    .stat .value { font-weight: 850; font-size: 22px; font-variant-numeric: tabular-nums; }
+    .twocol {
+      display: grid;
+      grid-template-columns: 1fr 310px;
+      gap: 16px;
+      align-items: start;
+    }
+    .pond {
+      min-height: 390px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #e5f6ff 0%, #c9ebfa 100%);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+    svg { display: block; width: 100%; height: auto; }
+    .story, .note {
+      background: #f4f8fb;
+      border-radius: 10px;
+      padding: 13px;
+      line-height: 1.48;
+    }
+    .note {
+      background: var(--soft-orange);
+      border-left: 5px solid var(--orange);
+      color: #70400f;
+      margin-top: 10px;
+    }
+    ol { margin: 8px 0 0 20px; padding: 0; }
+    li { margin: 6px 0; }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .key { display: inline-flex; align-items: center; gap: 6px; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+    .blue { background: var(--blue); }
+    .orange { background: var(--orange); }
+    .green { background: var(--green); }
+    .red { background: var(--red); }
+    .mini-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .mini-table th, .mini-table td {
+      border-bottom: 1px solid var(--line);
+      padding: 8px 6px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .mini-table th:first-child, .mini-table td:first-child { text-align: left; }
+    .assumptions {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .assumptions div {
+      background: var(--soft-green);
+      border-radius: 8px;
+      padding: 10px;
+      color: #0b5d43;
+      font-weight: 750;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    @media (max-width: 980px) {
+      .top, .layout, .twocol { grid-template-columns: 1fr; }
+      .controls { position: static; }
+      .concept-grid { grid-template-columns: 1fr; }
+      .concept-grid div { border-right: 0; }
+      .concept-grid div:nth-last-child(-n+3) { border-bottom: 1px solid var(--line); }
+      .concept-grid div:last-child { border-bottom: 0; }
+      .assumptions { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      main { padding: 16px; }
+      .button-row, .stat-grid, .assumptions { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="top">
+      <div>
+        <h1>Fish Pond Sampling Distributions</h1>
+        <p class="lead">One pond, three sampling questions: estimate the total number of fish, estimate the average fish weight, then combine them to estimate the total fish biomass. Each random sample gives a statistic; repeated samples show the sampling distribution of that statistic.</p>
+      </div>
+      <div class="formula">
+        <strong>N&#770; = Mn / R</strong>
+        <span>x&#772; = sample mean, T&#770; = N&#770; x x&#772;</span>
+      </div>
+    </div>
+
+    <section class="panel">
+      <h2>What each Chapter 6 word means in this pond</h2>
+      <div class="concept-grid">
+        <div class="head">Concept</div>
+        <div class="head">Estimating total fish number</div>
+        <div class="head">Estimating mean fish weight</div>
+        <div class="head">Estimating total fish weight</div>
+        <div class="term">Population</div>
+        <div>All fish living in this lake.</div>
+        <div>All fish living in this lake.</div>
+        <div>All fish living in this lake, viewed as a total mass.</div>
+        <div class="term">Sampling unit</div>
+        <div>One individual fish.</div>
+        <div>One individual fish.</div>
+        <div>One individual fish, with its weight contributing to the total.</div>
+        <div class="term">Sample</div>
+        <div>The fish caught in the second catch.</div>
+        <div>The fish caught and weighed.</div>
+        <div>A recapture sample to estimate N, plus a weighing sample to estimate μ.</div>
+        <div class="term">Sampling frame</div>
+        <div>The practical catchable part of the lake, represented by the fishing method and area.</div>
+        <div>The same catchable part of the lake; if big fish avoid nets, this frame is biased.</div>
+        <div>The catchable fish represented by the method; missing very small or very large fish biases total mass.</div>
+        <div class="term">Statistic</div>
+        <div>N&#770; = Mn/R, calculated from the recapture sample.</div>
+        <div>x&#772;, calculated from the sample weights only.</div>
+        <div>T&#770; = N&#770; x x&#772;, calculated from sample statistics.</div>
+        <div class="term">Sampling distribution</div>
+        <div>The distribution of N&#770; from many possible recapture samples.</div>
+        <div>The distribution of x&#772; from many possible weighing samples.</div>
+        <div>The distribution of T&#770; from many possible combined surveys.</div>
+      </div>
+    </section>
+
+    <div class="layout">
+      <section class="panel controls" aria-label="Simulation controls">
+        <h2>Controls</h2>
+        <div class="control">
+          <label for="population">True fish population N <output id="populationOut">2400</output></label>
+          <input id="population" type="range" min="800" max="8000" step="100" value="2400">
+        </div>
+        <div class="control">
+          <label for="marked">First catch marked M <output id="markedOut">300</output></label>
+          <input id="marked" type="range" min="50" max="1200" step="25" value="300">
+        </div>
+        <div class="control">
+          <label for="sample">Second catch n <output id="sampleOut">280</output></label>
+          <input id="sample" type="range" min="40" max="1000" step="20" value="280">
+        </div>
+        <div class="button-row">
+          <button id="oneRun" type="button">One recapture sample</button>
+          <button id="manyRun" type="button">200 recaptures</button>
+          <button id="resetCount" class="secondary" type="button">Reset count</button>
+        </div>
+        <div class="stat-grid" aria-live="polite">
+          <div class="stat"><div class="label">Recaptured tagged R</div><div id="rValue" class="value">-</div></div>
+          <div class="stat"><div class="label">This N&#770;</div><div id="estimateValue" class="value">-</div></div>
+          <div class="stat"><div class="label">Mean of N&#770;</div><div id="meanValue" class="value">-</div></div>
+          <div class="stat"><div class="label">Recapture runs</div><div id="runsValue" class="value">0</div></div>
+        </div>
+        <hr>
+        <div class="control">
+          <label for="weightSample">Fish weighed sample size <output id="weightSampleOut">40</output></label>
+          <input id="weightSample" type="range" min="5" max="160" step="5" value="40">
+        </div>
+        <div class="button-row">
+          <button id="oneMean" type="button">One weight sample</button>
+          <button id="manyMean" type="button">200 weight samples</button>
+          <button id="resetMean" class="secondary" type="button">Reset mean</button>
+        </div>
+        <div class="stat-grid" aria-live="polite">
+          <div class="stat"><div class="label">This sample mean x&#772;</div><div id="xbarValue" class="value">-</div></div>
+          <div class="stat"><div class="label">True mean μ</div><div id="muValue" class="value">-</div></div>
+          <div class="stat"><div class="label">Mean of x&#772;</div><div id="xbarMeanValue" class="value">-</div></div>
+          <div class="stat"><div class="label">Weight runs</div><div id="meanRunsValue" class="value">0</div></div>
+        </div>
+        <hr>
+        <div class="button-row">
+          <button id="oneTotal" type="button">One total weight survey</button>
+          <button id="manyTotal" type="button">200 total surveys</button>
+          <button id="resetTotal" class="secondary" type="button">Reset total</button>
+        </div>
+        <div class="stat-grid" aria-live="polite">
+          <div class="stat"><div class="label">This total T&#770;</div><div id="totalValue" class="value">-</div></div>
+          <div class="stat"><div class="label">True total T</div><div id="trueTotalValue" class="value">-</div></div>
+          <div class="stat"><div class="label">Mean of T&#770;</div><div id="totalMeanValue" class="value">-</div></div>
+          <div class="stat"><div class="label">Total runs</div><div id="totalRunsValue" class="value">0</div></div>
+        </div>
+      </section>
+
+      <div>
+        <section class="panel">
+          <h2>1. Mark-recapture: estimate how many fish are in the lake</h2>
+          <div class="twocol">
+            <div class="pond">
+              <svg id="pondSvg" viewBox="0 0 760 390" role="img" aria-label="Large fish pond sample sketch"></svg>
+            </div>
+            <div class="story">
+              <h3>Classroom story</h3>
+              <ol>
+                <li>Catch M fish, mark them, then release them.</li>
+                <li>Later catch n fish. Count how many of these are already marked: R.</li>
+                <li>If the marked fish mixed randomly, R/n should be close to M/N.</li>
+                <li>So N can be estimated by N&#770; = Mn/R.</li>
+              </ol>
+              <div class="legend">
+                <span class="key"><span class="dot blue"></span>unmarked fish</span>
+                <span class="key"><span class="dot orange"></span>marked fish</span>
+                <span class="key"><span class="dot green"></span>second catch</span>
+                <span class="key"><span class="dot red"></span>marked and recaptured</span>
+              </div>
+              <div id="oneRunNote" class="note">Run one recapture sample to get one possible estimate.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>2. Sampling distribution of N&#770;</h2>
+          <p>Repeat the same recapture method many times. The statistic N&#770; changes from sample to sample, so the estimates form a sampling distribution.</p>
+          <div class="twocol">
+            <svg id="histSvg" viewBox="0 0 760 390" role="img" aria-label="Histogram of population size estimates"></svg>
+            <div>
+              <table class="mini-table">
+                <thead><tr><th>Quantity</th><th>Value</th></tr></thead>
+                <tbody>
+                  <tr><td>True N</td><td id="tableN">2400</td></tr>
+                  <tr><td>Marked M</td><td id="tableM">300</td></tr>
+                  <tr><td>Second sample n</td><td id="tableSmallN">280</td></tr>
+                  <tr><td>Expected R</td><td id="tableER">35.0</td></tr>
+                  <tr><td>Typical N&#770;</td><td id="tableTypical">-</td></tr>
+                </tbody>
+              </table>
+              <div class="note">Bigger M and bigger n usually make this distribution narrower, because R becomes less volatile.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>3. Sample mean: estimate the average weight of fish</h2>
+          <p>Now the population quantity is not “how many fish”, but the true mean weight μ. One sample gives one statistic x&#772;; repeated samples give the sampling distribution of x&#772;.</p>
+          <div class="twocol">
+            <svg id="weightSvg" viewBox="0 0 760 390" role="img" aria-label="Distribution of individual fish weights and sample means"></svg>
+            <div>
+              <table class="mini-table">
+                <thead><tr><th>Quantity</th><th>Value</th></tr></thead>
+                <tbody>
+                  <tr><td>Population size</td><td id="weightN">2400</td></tr>
+                  <tr><td>True mean μ</td><td id="weightMu">-</td></tr>
+                  <tr><td>Sample size</td><td id="weightSampleTable">40</td></tr>
+                  <tr><td>Latest x&#772;</td><td id="weightLatest">-</td></tr>
+                  <tr><td>Mean of x&#772;</td><td id="weightTypical">-</td></tr>
+                </tbody>
+              </table>
+              <div class="note">As the sample size increases, x&#772; varies less from sample to sample. That narrowing histogram is the visual meaning of a more reliable estimator.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>4. Total biomass: estimate the total weight of all fish</h2>
+          <p>The target is now the population total T. A practical estimator is T&#770; = N&#770; x x&#772;: estimate how many fish there are, estimate the average weight, then multiply them.</p>
+          <div class="twocol">
+            <svg id="totalSvg" viewBox="0 0 760 390" role="img" aria-label="Histogram of total fish weight estimates"></svg>
+            <div>
+              <table class="mini-table">
+                <thead><tr><th>Quantity</th><th>Value</th></tr></thead>
+                <tbody>
+                  <tr><td>True total T</td><td id="totalTrueTable">-</td></tr>
+                  <tr><td>Latest N&#770;</td><td id="totalNhatTable">-</td></tr>
+                  <tr><td>Latest x&#772;</td><td id="totalXbarTable">-</td></tr>
+                  <tr><td>Latest T&#770;</td><td id="totalLatestTable">-</td></tr>
+                  <tr><td>Mean of T&#770;</td><td id="totalTypicalTable">-</td></tr>
+                </tbody>
+              </table>
+              <div class="note">This estimator combines two sources of sampling variation: uncertainty in the population size and uncertainty in the average weight.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>5. Conditions to say out loud</h2>
+          <div class="assumptions">
+            <div>Closed population: no births, deaths, immigration, or emigration during sampling.</div>
+            <div>Marked fish mix randomly back into the lake.</div>
+            <div>Tags stay on and are always spotted.</div>
+            <div>Every fish has roughly the same chance of being caught or weighed.</div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const root = document;
+    const $ = id => root.getElementById(id);
+    const controls = {
+      population: $("population"),
+      marked: $("marked"),
+      sample: $("sample"),
+      weightSample: $("weightSample")
+    };
+    const out = {
+      population: $("populationOut"),
+      marked: $("markedOut"),
+      sample: $("sampleOut"),
+      weightSample: $("weightSampleOut"),
+      r: $("rValue"),
+      estimate: $("estimateValue"),
+      mean: $("meanValue"),
+      runs: $("runsValue"),
+      xbar: $("xbarValue"),
+      mu: $("muValue"),
+      xbarMean: $("xbarMeanValue"),
+      meanRuns: $("meanRunsValue"),
+      note: $("oneRunNote"),
+      tableN: $("tableN"),
+      tableM: $("tableM"),
+      tableSmallN: $("tableSmallN"),
+      tableER: $("tableER"),
+      tableTypical: $("tableTypical"),
+      weightN: $("weightN"),
+      weightMu: $("weightMu"),
+      weightSampleTable: $("weightSampleTable"),
+      weightLatest: $("weightLatest"),
+      weightTypical: $("weightTypical"),
+      total: $("totalValue"),
+      trueTotal: $("trueTotalValue"),
+      totalMean: $("totalMeanValue"),
+      totalRuns: $("totalRunsValue"),
+      totalTrueTable: $("totalTrueTable"),
+      totalNhatTable: $("totalNhatTable"),
+      totalXbarTable: $("totalXbarTable"),
+      totalLatestTable: $("totalLatestTable"),
+      totalTypicalTable: $("totalTypicalTable")
+    };
+    const pondSvg = $("pondSvg");
+    const histSvg = $("histSvg");
+    const weightSvg = $("weightSvg");
+    const totalSvg = $("totalSvg");
+    let fish = [];
+    let estimates = [];
+    let xbars = [];
+    let totals = [];
+    let lastSample = new Set();
+    let lastR = null;
+    let lastXbar = null;
+    let lastTotal = null;
+    let lastTotalNhat = null;
+    let lastTotalXbar = null;
+    let rngSeed = 74291;
+
+    function rand() {
+      rngSeed = (rngSeed * 1664525 + 1013904223) >>> 0;
+      return rngSeed / 4294967296;
+    }
+    function normal() {
+      const u = Math.max(rand(), 1e-9);
+      const v = Math.max(rand(), 1e-9);
+      return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+    }
+    function sampleIds(N, n) {
+      const selected = new Set();
+      while (selected.size < n) selected.add(Math.floor(rand() * N));
+      return [...selected];
+    }
+    function values() {
+      const N = Number(controls.population.value);
+      const M = Math.min(Number(controls.marked.value), Math.floor(N * 0.55));
+      const n = Math.min(Number(controls.sample.value), Math.floor(N * 0.55));
+      const wn = Math.min(Number(controls.weightSample.value), Math.floor(N * 0.25));
+      controls.marked.max = Math.floor(N * 0.55);
+      controls.sample.max = Math.floor(N * 0.55);
+      controls.weightSample.max = Math.max(20, Math.floor(N * 0.25));
+      controls.marked.value = M;
+      controls.sample.value = n;
+      controls.weightSample.value = wn;
+      return { N, M, n, wn };
+    }
+    function makeFish() {
+      const { N, M } = values();
+      const markedIds = new Set(sampleIds(N, M));
+      fish = [];
+      const visible = Math.min(300, N);
+      for (let i = 0; i < N; i++) {
+        const rawWeight = 0.85 + 0.18 * normal() + (rand() < 0.16 ? 0.28 * rand() : 0);
+        fish.push({
+          id: i,
+          marked: markedIds.has(i),
+          weight: Math.max(0.35, rawWeight),
+          visible: i < visible,
+          x: 28 + rand() * 704,
+          y: 30 + rand() * 330,
+          r: 2.7 + rand() * 3.1
+        });
+      }
+      lastSample = new Set();
+      lastR = null;
+      lastXbar = null;
+      lastTotal = null;
+      lastTotalNhat = null;
+      lastTotalXbar = null;
+    }
+    function fmt(x, d = 1) {
+      return x === null || Number.isNaN(x) ? "-" : x.toFixed(d);
+    }
+    function mean(arr) {
+      return arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : null;
+    }
+    function sd(arr) {
+      if (arr.length < 2) return null;
+      const m = mean(arr);
+      return Math.sqrt(arr.reduce((acc, x) => acc + (x - m) ** 2, 0) / (arr.length - 1));
+    }
+    function recapture(renderNow = true) {
+      const { N, M, n } = values();
+      const ids = sampleIds(N, n);
+      lastSample = new Set(ids);
+      lastR = ids.filter(id => fish[id].marked).length;
+      const estimate = lastR === 0 ? null : M * n / lastR;
+      if (estimate !== null && estimate > 0 && estimate < N * 5) estimates.push(estimate);
+      if (renderNow) render();
+    }
+    function recaptureEstimateOnly() {
+      const { N, M, n } = values();
+      const ids = sampleIds(N, n);
+      const R = ids.filter(id => fish[id].marked).length;
+      return R === 0 ? null : M * n / R;
+    }
+    function manyRecaptures(times) {
+      for (let i = 0; i < times; i++) recapture(false);
+      render();
+    }
+    function weightSample(renderNow = true) {
+      const { N, wn } = values();
+      const ids = sampleIds(N, wn);
+      lastXbar = mean(ids.map(id => fish[id].weight));
+      xbars.push(lastXbar);
+      if (renderNow) render();
+    }
+    function weightEstimateOnly() {
+      const { N, wn } = values();
+      const ids = sampleIds(N, wn);
+      return mean(ids.map(id => fish[id].weight));
+    }
+    function manyWeights(times) {
+      for (let i = 0; i < times; i++) weightSample(false);
+      render();
+    }
+    function totalSurvey(renderNow = true) {
+      const { N } = values();
+      const nhat = recaptureEstimateOnly();
+      const xbar = weightEstimateOnly();
+      if (nhat !== null && nhat > 0 && nhat < N * 5) {
+        lastTotalNhat = nhat;
+        lastTotalXbar = xbar;
+        lastTotal = nhat * xbar;
+        totals.push(lastTotal);
+      }
+      if (renderNow) render();
+    }
+    function manyTotals(times) {
+      for (let i = 0; i < times; i++) totalSurvey(false);
+      render();
+    }
+    function resetCount() {
+      estimates = [];
+      lastSample = new Set();
+      lastR = null;
+      render();
+    }
+    function resetMean() {
+      xbars = [];
+      lastXbar = null;
+      render();
+    }
+    function resetTotal() {
+      totals = [];
+      lastTotal = null;
+      lastTotalNhat = null;
+      lastTotalXbar = null;
+      render();
+    }
+    function resetAll() {
+      estimates = [];
+      xbars = [];
+      totals = [];
+      makeFish();
+      render();
+    }
+    function renderPond() {
+      const { N, M, n } = values();
+      const sampledVisible = [...lastSample].slice(0, 90);
+      const sampledVisibleSet = new Set(sampledVisible);
+      const base = fish.filter(f => f.visible).map(f => {
+        const sampled = sampledVisibleSet.has(f.id);
+        const recaptured = sampled && f.marked;
+        const fill = recaptured ? "var(--red)" : sampled ? "var(--green)" : f.marked ? "var(--orange)" : "var(--blue)";
+        return `<circle cx="${f.x.toFixed(1)}" cy="${f.y.toFixed(1)}" r="${(sampled ? f.r + 2 : f.r).toFixed(1)}" fill="${fill}" opacity="${sampled || f.marked ? 0.9 : 0.45}"></circle>`;
+      }).join("");
+      pondSvg.innerHTML = `
+        <rect x="0" y="0" width="760" height="390" fill="transparent"></rect>
+        <path d="M18 78 C158 24 258 94 382 60 C532 18 636 48 742 96" fill="none" stroke="rgba(34,118,201,.20)" stroke-width="14"></path>
+        <path d="M6 276 C134 222 254 294 386 262 C520 230 620 254 760 207" fill="none" stroke="rgba(34,118,201,.18)" stroke-width="16"></path>
+        ${base}
+        <text x="24" y="34" font-size="18" font-weight="800" fill="var(--ink)">Large pond: N = ${N.toLocaleString()} fish</text>
+        <text x="24" y="59" font-size="14" fill="var(--muted)">Only a small visual sketch is drawn; in the simulation all ${N.toLocaleString()} fish exist.</text>
+        <text x="24" y="82" font-size="14" fill="var(--muted)">Marked first: M = ${M}; second catch: n = ${n}</text>
+      `;
+    }
+    function histogram(svg, data, opts) {
+      const w = 760, h = 390;
+      const m = { left: 58, right: 28, top: 32, bottom: 54 };
+      const pw = w - m.left - m.right;
+      const ph = h - m.top - m.bottom;
+      const minX = opts.minX;
+      const maxX = opts.maxX;
+      const binW = opts.binW;
+      const binCount = Math.ceil((maxX - minX) / binW);
+      const bins = Array(binCount).fill(0);
+      data.forEach(e => {
+        const idx = Math.floor((e - minX) / binW);
+        if (idx >= 0 && idx < bins.length) bins[idx]++;
+      });
+      const ymax = Math.max(4, ...bins);
+      const sx = x => m.left + (x - minX) / (maxX - minX) * pw;
+      const sy = y => m.top + ph - y / ymax * ph;
+      const densityScale = data.length * binW;
+      const bars = bins.map((c, i) => {
+        const x0 = minX + i * binW;
+        const x = sx(x0) + 1;
+        const bw = Math.max(1, sx(x0 + binW) - sx(x0) - 2);
+        return `<rect x="${x.toFixed(1)}" y="${sy(c).toFixed(1)}" width="${bw.toFixed(1)}" height="${(m.top + ph - sy(c)).toFixed(1)}" fill="var(--blue)" opacity="0.72"></rect>`;
+      }).join("");
+      let densityCurve = "";
+      if (data.length >= 20) {
+        const avgForCurve = mean(data);
+        const sdForCurve = sd(data);
+        if (sdForCurve && sdForCurve > 0) {
+          const pts = [];
+          for (let i = 0; i <= 160; i++) {
+            const xVal = minX + (maxX - minX) * i / 160;
+            const z = (xVal - avgForCurve) / sdForCurve;
+            const density = Math.exp(-0.5 * z * z) / (sdForCurve * Math.sqrt(2 * Math.PI));
+            const expectedCount = density * densityScale;
+            pts.push(`${sx(xVal).toFixed(1)},${sy(expectedCount).toFixed(1)}`);
+          }
+          densityCurve = `<polyline points="${pts.join(" ")}" fill="none" stroke="var(--red)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"></polyline>
+            <text x="${(m.left + pw - 8).toFixed(1)}" y="${(m.top + 20).toFixed(1)}" text-anchor="end" font-size="14" font-weight="800" fill="var(--red)">smooth density curve from ${data.length} samples</text>`;
+        }
+      }
+      const yTicks = [0, Math.ceil(ymax / 2), ymax].map(v =>
+        `<line x1="${m.left}" x2="${w - m.right}" y1="${sy(v).toFixed(1)}" y2="${sy(v).toFixed(1)}" stroke="var(--line)"></line>
+         <text x="${m.left - 10}" y="${(sy(v) + 5).toFixed(1)}" text-anchor="end" font-size="13" fill="var(--muted)">${v}</text>`
+      ).join("");
+      const step = opts.tickStep;
+      const xTicks = [];
+      for (let x = Math.ceil(minX / step) * step; x <= maxX + 1e-9; x += step) {
+        xTicks.push(`<text x="${sx(x).toFixed(1)}" y="${h - 20}" text-anchor="middle" font-size="13" fill="var(--muted)">${opts.formatTick(x)}</text>`);
+      }
+      const trueX = sx(opts.trueValue);
+      const avg = mean(data);
+      const avgLine = avg === null ? "" : `<line x1="${sx(avg).toFixed(1)}" x2="${sx(avg).toFixed(1)}" y1="${m.top}" y2="${m.top + ph}" stroke="var(--orange)" stroke-width="3"></line>
+        <text x="${(sx(avg) + 6).toFixed(1)}" y="56" font-size="14" font-weight="800" fill="var(--orange)">${opts.meanLabel} = ${opts.formatValue(avg)}</text>`;
+      svg.innerHTML = `
+        <rect x="${m.left}" y="${m.top}" width="${pw}" height="${ph}" fill="transparent" stroke="var(--line)"></rect>
+        <rect x="${m.left + 8}" y="${m.top + 10}" width="18" height="10" fill="var(--blue)" opacity="0.72"></rect>
+        <text x="${m.left + 32}" y="${m.top + 20}" font-size="13" fill="var(--muted)">histogram of repeated samples</text>
+        ${yTicks}
+        ${bars}
+        ${densityCurve}
+        <line x1="${trueX.toFixed(1)}" x2="${trueX.toFixed(1)}" y1="${m.top}" y2="${m.top + ph}" stroke="var(--green)" stroke-width="3" stroke-dasharray="8 7"></line>
+        ${avgLine}
+        <text x="${(trueX + 6).toFixed(1)}" y="34" font-size="14" font-weight="800" fill="var(--green)">${opts.trueLabel} = ${opts.formatValue(opts.trueValue)}</text>
+        <line x1="${m.left}" x2="${w - m.right}" y1="${m.top + ph}" y2="${m.top + ph}" stroke="var(--ink)"></line>
+        <line x1="${m.left}" x2="${m.left}" y1="${m.top}" y2="${m.top + ph}" stroke="var(--ink)"></line>
+        ${xTicks.join("")}
+        <text x="${m.left + pw / 2}" y="${h - 2}" text-anchor="middle" font-size="15" font-weight="800" fill="var(--ink)">${opts.xLabel}</text>
+        <text x="18" y="${m.top + ph / 2}" transform="rotate(-90 18 ${m.top + ph / 2})" text-anchor="middle" font-size="15" font-weight="800" fill="var(--ink)">Frequency from repeated samples</text>
+      `;
+    }
+    function renderCountHist() {
+      const { N } = values();
+      const minX = Math.max(0, Math.floor(N * 0.35 / 100) * 100);
+      const maxX = Math.ceil(N * 2.0 / 100) * 100;
+      histogram(histSvg, estimates, {
+        minX, maxX,
+        binW: Math.max(50, Math.round((maxX - minX) / 18 / 25) * 25),
+        tickStep: Math.max(500, Math.round((maxX - minX) / 5 / 100) * 100),
+        trueValue: N,
+        trueLabel: "true N",
+        meanLabel: "mean N^",
+        xLabel: "Population estimate N^",
+        formatValue: x => Math.round(x).toLocaleString(),
+        formatTick: x => Math.round(x).toLocaleString()
+      });
+    }
+    function renderWeightHist() {
+      const mu = mean(fish.map(f => f.weight));
+      histogram(weightSvg, xbars, {
+        minX: 0.62, maxX: 1.14, binW: 0.02, tickStep: 0.1,
+        trueValue: mu,
+        trueLabel: "true mu",
+        meanLabel: "mean x-bar",
+        xLabel: "Sample mean weight x-bar (kg)",
+        formatValue: x => `${x.toFixed(3)} kg`,
+        formatTick: x => x.toFixed(1)
+      });
+    }
+    function renderTotalHist() {
+      const trueTotal = fish.reduce((a, f) => a + f.weight, 0);
+      const minX = Math.max(0, trueTotal * 0.35);
+      const maxX = trueTotal * 2.0;
+      histogram(totalSvg, totals, {
+        minX, maxX,
+        binW: Math.max(50, Math.round((maxX - minX) / 18 / 25) * 25),
+        tickStep: Math.max(500, Math.round((maxX - minX) / 5 / 100) * 100),
+        trueValue: trueTotal,
+        trueLabel: "true T",
+        meanLabel: "mean T^",
+        xLabel: "Total fish weight estimate T^ (kg)",
+        formatValue: x => `${Math.round(x).toLocaleString()} kg`,
+        formatTick: x => Math.round(x).toLocaleString()
+      });
+    }
+    function renderStats() {
+      const { N, M, n, wn } = values();
+      const mu = mean(fish.map(f => f.weight));
+      const trueTotal = fish.reduce((a, f) => a + f.weight, 0);
+      out.population.textContent = N.toLocaleString();
+      out.marked.textContent = M;
+      out.sample.textContent = n;
+      out.weightSample.textContent = wn;
+      out.tableN.textContent = N.toLocaleString();
+      out.tableM.textContent = M;
+      out.tableSmallN.textContent = n;
+      out.tableER.textContent = fmt(n * M / N);
+      out.weightN.textContent = N.toLocaleString();
+      out.weightMu.textContent = `${mu.toFixed(3)} kg`;
+      out.weightSampleTable.textContent = wn;
+      out.mu.textContent = mu.toFixed(3);
+      const est = lastR ? M * n / lastR : null;
+      out.r.textContent = lastR === null ? "-" : lastR;
+      out.estimate.textContent = est === null ? "-" : Math.round(est).toLocaleString();
+      const countMean = mean(estimates);
+      out.mean.textContent = countMean === null ? "-" : Math.round(countMean).toLocaleString();
+      out.runs.textContent = estimates.length;
+      out.tableTypical.textContent = countMean === null ? "-" : Math.round(countMean).toLocaleString();
+      out.xbar.textContent = lastXbar === null ? "-" : lastXbar.toFixed(3);
+      out.weightLatest.textContent = lastXbar === null ? "-" : `${lastXbar.toFixed(3)} kg`;
+      const xMean = mean(xbars);
+      out.xbarMean.textContent = xMean === null ? "-" : xMean.toFixed(3);
+      out.weightTypical.textContent = xMean === null ? "-" : `${xMean.toFixed(3)} kg`;
+      out.meanRuns.textContent = xbars.length;
+      out.trueTotal.textContent = `${Math.round(trueTotal).toLocaleString()}`;
+      out.totalTrueTable.textContent = `${Math.round(trueTotal).toLocaleString()} kg`;
+      out.total.textContent = lastTotal === null ? "-" : Math.round(lastTotal).toLocaleString();
+      out.totalNhatTable.textContent = lastTotalNhat === null ? "-" : Math.round(lastTotalNhat).toLocaleString();
+      out.totalXbarTable.textContent = lastTotalXbar === null ? "-" : `${lastTotalXbar.toFixed(3)} kg`;
+      out.totalLatestTable.textContent = lastTotal === null ? "-" : `${Math.round(lastTotal).toLocaleString()} kg`;
+      const totalMean = mean(totals);
+      out.totalMean.textContent = totalMean === null ? "-" : Math.round(totalMean).toLocaleString();
+      out.totalTypicalTable.textContent = totalMean === null ? "-" : `${Math.round(totalMean).toLocaleString()} kg`;
+      out.totalRuns.textContent = totals.length;
+      if (lastR === null) {
+        out.note.textContent = "Run one recapture sample to get one possible estimate.";
+      } else if (lastR === 0) {
+        out.note.textContent = "This sample recaptured no tagged fish, so Mn/R cannot be calculated.";
+      } else {
+        out.note.textContent = `This sample has R = ${lastR}, so N^ = ${M} x ${n} / ${lastR} = ${Math.round(est).toLocaleString()}.`;
+      }
+    }
+    function render() {
+      renderStats();
+      renderPond();
+      renderCountHist();
+      renderWeightHist();
+      renderTotalHist();
+    }
+    [controls.population, controls.marked, controls.sample, controls.weightSample].forEach(input => input.addEventListener("input", resetAll));
+    $("oneRun").addEventListener("click", () => recapture(true));
+    $("manyRun").addEventListener("click", () => manyRecaptures(200));
+    $("resetCount").addEventListener("click", resetCount);
+    $("oneMean").addEventListener("click", () => weightSample(true));
+    $("manyMean").addEventListener("click", () => manyWeights(200));
+    $("resetMean").addEventListener("click", resetMean);
+    $("oneTotal").addEventListener("click", () => totalSurvey(true));
+    $("manyTotal").addEventListener("click", () => manyTotals(200));
+    $("resetTotal").addEventListener("click", resetTotal);
+    resetAll();
+  </script>
+</body>
+</html>

@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="加了个 as fm 2 的QR code">
-      <change beforePath="$PROJECT_DIR$/teaching.html" beforeDir="false" afterPath="$PROJECT_DIR$/teaching.html" afterDir="false" />
-    </list>
+    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="加了nas 网盘链接" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,23 +49,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000124437798" />
-      <entry key="MS500" value="1.0270408001120905" />
-      <entry key="S2" value="1.6678242426671133" />
-      <entry key="S5" value="2.5811868943467227" />
-      <entry key="S10" value="3.1636818391222783" />
-      <entry key="S30" value="3.833826969929705" />
-      <entry key="S60" value="6.440478604230506" />
-      <entry key="M2" value="16.814787410500806" />
-      <entry key="M5" value="56.14927774090975" />
-      <entry key="M10" value="143.18038166897207" />
-      <entry key="M15" value="241.95466124995258" />
-      <entry key="M30" value="480.1047458206985" />
-      <entry key="H1" value="719.868927801482" />
-      <entry key="H2" value="894.580039638696" />
-      <entry key="H4" value="1000.7350679399858" />
-      <entry key="D1" value="1100.6456627639654" />
-      <entry key="W1" value="1118.920055051086" />
+      <entry key="MS100" value="1.0001902384327577" />
+      <entry key="MS500" value="1.2087925093085028" />
+      <entry key="S2" value="2.2710654752355026" />
+      <entry key="S5" value="3.097063683938379" />
+      <entry key="S10" value="3.745332601056473" />
+      <entry key="S30" value="5.4770464358528" />
+      <entry key="S60" value="8.145438887736496" />
+      <entry key="M2" value="17.594521100562496" />
+      <entry key="M5" value="55.62460343083367" />
+      <entry key="M10" value="141.30605765110036" />
+      <entry key="M15" value="239.29524433351878" />
+      <entry key="M30" value="477.454805781749" />
+      <entry key="H1" value="718.8668957717463" />
+      <entry key="H2" value="895.4668094737574" />
+      <entry key="H4" value="1002.9922680199179" />
+      <entry key="D1" value="1104.3259713961336" />
+      <entry key="W1" value="1122.87362095714" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -89,23 +87,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9726549595999762" />
-      <entry key="MS500" value="1.0213977914802137" />
-      <entry key="S2" value="1.665529875974602" />
-      <entry key="S5" value="2.5796394574660853" />
-      <entry key="S10" value="3.1626905646939956" />
-      <entry key="S30" value="3.8334139825092675" />
-      <entry key="S60" value="6.440130007212045" />
-      <entry key="M2" value="16.814307102137125" />
-      <entry key="M5" value="56.148611491300755" />
-      <entry key="M10" value="143.17958913689313" />
-      <entry key="M15" value="241.9538095837839" />
-      <entry key="M30" value="480.10393866476613" />
-      <entry key="H1" value="719.8683327250784" />
-      <entry key="H2" value="894.5796721255222" />
-      <entry key="H4" value="1000.7348628726675" />
-      <entry key="D1" value="1100.6456252370924" />
-      <entry key="W1" value="1118.9200496025032" />
+      <entry key="MS100" value="0.9864190278757793" />
+      <entry key="MS500" value="1.2051210683580227" />
+      <entry key="S2" value="2.268153755972049" />
+      <entry key="S5" value="3.095010321897614" />
+      <entry key="S10" value="3.743983893000621" />
+      <entry key="S30" value="5.476375791048015" />
+      <entry key="S60" value="8.144953888096476" />
+      <entry key="M2" value="17.594001141949967" />
+      <entry key="M5" value="55.623937916327144" />
+      <entry key="M10" value="141.3052711148737" />
+      <entry key="M15" value="239.29439841808613" />
+      <entry key="M30" value="477.4540009550598" />
+      <entry key="H1" value="718.8663004033804" />
+      <entry key="H2" value="895.4664410257418" />
+      <entry key="H4" value="1002.9920622027172" />
+      <entry key="D1" value="1104.325933695645" />
+      <entry key="W1" value="1122.873615482424" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -172,7 +170,7 @@
       <workItem from="1663027663757" duration="2353000" />
       <workItem from="1677332390912" duration="2156000" />
       <workItem from="1788884921191" duration="2385000" />
-      <workItem from="1788968716006" duration="769000" />
+      <workItem from="1788968716006" duration="3524000" />
     </task>
     <task id="LOCAL-00001" summary="delete old ones">
       <created>1662988353213</created>
@@ -315,7 +313,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788969151845</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="加了nas 网盘链接">
+      <option name="closed" value="true" />
+      <created>1788969505353</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1788969505353</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,6 +365,7 @@
     <MESSAGE value="加了 continous random variable 的html" />
     <MESSAGE value="加了个 as fm 4 的QR code" />
     <MESSAGE value="加了个 as fm 2 的QR code" />
-    <option name="LAST_COMMIT_MESSAGE" value="加了个 as fm 2 的QR code" />
+    <MESSAGE value="加了nas 网盘链接" />
+    <option name="LAST_COMMIT_MESSAGE" value="加了nas 网盘链接" />
   </component>
 </project>
