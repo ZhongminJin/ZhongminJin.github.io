@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="加了fish mark 模型 html">
-      <change afterPath="$PROJECT_DIR$/myTeaching/local html/binomial-population-test-simulator.html" afterDir="false" />
+    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="加了binomial testing">
+      <change afterPath="$PROJECT_DIR$/myTeaching/local html/poisson-rate-test-simulator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myTeaching/local html/binomial-population-test-simulator.html" beforeDir="false" afterPath="$PROJECT_DIR$/myTeaching/local html/binomial-population-test-simulator.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,23 +52,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000000173062" />
-      <entry key="MS500" value="1.0082628311967445" />
-      <entry key="S2" value="1.685577844882666" />
-      <entry key="S5" value="3.5940670129575643" />
-      <entry key="S10" value="7.774011264126406" />
-      <entry key="S30" value="22.427105541668155" />
-      <entry key="S60" value="31.68878045583531" />
-      <entry key="M2" value="38.0605700884162" />
-      <entry key="M5" value="42.61216728802792" />
-      <entry key="M10" value="44.268526023872376" />
-      <entry key="M15" value="44.837165344467245" />
-      <entry key="M30" value="45.41427934649741" />
-      <entry key="H1" value="45.70605551195587" />
-      <entry key="H2" value="45.85275566725905" />
-      <entry key="H4" value="45.92655486512631" />
-      <entry key="D1" value="136.14265670236324" />
-      <entry key="W1" value="857.2503896330993" />
+      <entry key="MS100" value="1.0004077604257995" />
+      <entry key="MS500" value="1.2323768391264713" />
+      <entry key="S2" value="2.425993499161109" />
+      <entry key="S5" value="3.549222534559181" />
+      <entry key="S10" value="4.172738797967265" />
+      <entry key="S30" value="4.697415155734854" />
+      <entry key="S60" value="4.85239751558513" />
+      <entry key="M2" value="5.514877125323896" />
+      <entry key="M5" value="13.50318070962216" />
+      <entry key="M10" value="25.828395160977212" />
+      <entry key="M15" value="33.071527447462806" />
+      <entry key="M30" value="42.835345584600766" />
+      <entry key="H1" value="48.92663424914625" />
+      <entry key="H2" value="52.331193556181525" />
+      <entry key="H4" value="54.13155356591672" />
+      <entry key="D1" value="145.29575747514022" />
+      <entry key="W1" value="866.5071727676681" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -89,23 +90,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9659363289412181" />
-      <entry key="MS500" value="1.0012709142295988" />
-      <entry key="S2" value="1.6824938477738567" />
-      <entry key="S5" value="3.5915627949677433" />
-      <entry key="S10" value="7.771481687498831" />
-      <entry key="S30" value="22.424782209062673" />
-      <entry key="S60" value="31.687146784083858" />
-      <entry key="M2" value="38.05959007422277" />
-      <entry key="M5" value="42.6117285159291" />
-      <entry key="M10" value="44.26829811509821" />
-      <entry key="M15" value="44.83701145362309" />
-      <entry key="M30" value="45.41420141043034" />
-      <entry key="H1" value="45.7060162934466" />
-      <entry key="H2" value="45.85273599503045" />
-      <entry key="H4" value="45.92654501316911" />
-      <entry key="D1" value="136.14265172921841" />
-      <entry key="W1" value="857.2503851250221" />
+      <entry key="MS100" value="0.9730515575899717" />
+      <entry key="MS500" value="1.2255112793231169" />
+      <entry key="S2" value="2.4218769144823695" />
+      <entry key="S5" value="3.546507887196317" />
+      <entry key="S10" value="4.17107393641347" />
+      <entry key="S30" value="4.696772783982482" />
+      <entry key="S60" value="4.8520635849934095" />
+      <entry key="M2" value="5.514692010623791" />
+      <entry key="M5" value="13.503024672198364" />
+      <entry key="M10" value="25.828254005556424" />
+      <entry key="M15" value="33.071408606617126" />
+      <entry key="M30" value="42.835269489400304" />
+      <entry key="H1" value="48.92659099966776" />
+      <entry key="H2" value="52.33117047764289" />
+      <entry key="H4" value="54.13154164224381" />
+      <entry key="D1" value="145.29575212370855" />
+      <entry key="W1" value="866.5071682050478" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -173,7 +174,7 @@
       <workItem from="1677332390912" duration="2156000" />
       <workItem from="1788884921191" duration="2385000" />
       <workItem from="1788968716006" duration="3524000" />
-      <workItem from="1789516898202" duration="890000" />
+      <workItem from="1789516898202" duration="1642000" />
     </task>
     <task id="LOCAL-00001" summary="delete old ones">
       <created>1662988353213</created>
@@ -332,7 +333,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789517115100</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="加了binomial testing">
+      <option name="closed" value="true" />
+      <created>1789834176126</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1789834176126</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -378,6 +387,7 @@
     <MESSAGE value="加了个 as fm 2 的QR code" />
     <MESSAGE value="加了nas 网盘链接" />
     <MESSAGE value="加了fish mark 模型 html" />
-    <option name="LAST_COMMIT_MESSAGE" value="加了fish mark 模型 html" />
+    <MESSAGE value="加了binomial testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="加了binomial testing" />
   </component>
 </project>
