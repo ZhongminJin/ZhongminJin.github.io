@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poisson Testing with Type I and Type II Errors</title>
+<style>
+  :root{--ink:#15324a;--muted:#5e7182;--blue:#1678c8;--blue2:#dceefc;--red:#e84d5b;--red2:#ffe2e5;--green:#178a63;--green2:#dff5ec;--orange:#e78a1f;--paper:#fff;--bg:#f3f7fa;--line:#c8d6e1;--blackball:#25313b;--shadow:0 10px 30px rgba(27,54,75,.10)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.45}
+  button,input,select{font:inherit}
+  button{cursor:pointer}
+  .app{max-width:1240px;margin:auto;padding:22px}
+  header{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
+  h1{font-size:clamp(24px,3vw,38px);line-height:1.1;margin:0 0 8px;font-weight:750;letter-spacing:-.02em}
+  h2{font-size:20px;margin:0 0 12px} h3{font-size:16px;margin:0 0 8px}
+  .subtitle{color:var(--muted);max-width:760px}
+  .badge{background:var(--red2);color:#a52332;border:0;border-radius:999px;padding:7px 12px;font-weight:700;white-space:nowrap}.badge:hover{filter:brightness(.97)}
+  .scenario-picker{margin:12px 0 17px}.scenario-picker h2{margin-bottom:9px}.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .scenario{border:1px solid var(--line);border-radius:11px;background:var(--paper);padding:10px 11px;text-align:left;color:var(--ink)}.scenario strong{display:block}.scenario span{display:block;color:var(--muted);font-size:12px;margin-top:2px}.scenario.active{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue);background:#f5fbff}
+  .scenario-detail{margin-top:10px;background:var(--paper);border-left:5px solid var(--blue);border-radius:10px;padding:12px 14px}.scenario-detail h3{margin-bottom:5px}.scenario-detail p{margin:3px 0;color:var(--muted);font-size:13px}.scenario-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:9px}.scenario-facts div{background:#f4f7f9;border-radius:8px;padding:8px 10px}.scenario-facts span{display:block;color:var(--muted);font-size:11px}.scenario-facts strong{display:block;font-size:13px;margin-top:2px}
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:15px 0 18px}
+  .step{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 12px;color:var(--muted);font-size:13px;text-align:left;width:100%}
+  .step strong{display:block;color:var(--ink);font-size:14px}.step.active{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue);background:#f8fcff}
+  .grid{display:grid;grid-template-columns:330px minmax(0,1fr);gap:16px;align-items:start}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:16px;margin-bottom:16px}
+  .controls label{display:block;font-size:13px;font-weight:700;margin:13px 0 5px}.controls label:first-child{margin-top:0}
+  .value{float:right;color:var(--blue);font-variant-numeric:tabular-nums}
+  input[type=range]{width:100%;accent-color:var(--blue)}
+  select{width:100%;padding:9px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink)}
+  .button-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .btn{border:1px solid var(--line);border-radius:10px;padding:9px 13px;background:#fff;color:var(--ink);font-weight:700}
+  .btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .btn:disabled{opacity:.5;cursor:not-allowed}
+  .formula{background:#eef5fa;border-left:4px solid var(--blue);padding:11px 12px;border-radius:8px;margin:9px 0;font-family:Georgia,"Times New Roman",serif;font-size:16px}
+  .note{font-size:13px;color:var(--muted)}
+  .bag-wrap{display:grid;grid-template-columns:minmax(220px,.9fr) minmax(260px,1.1fr);gap:14px}
+  .bag-panel,.sample-panel{border:1px solid var(--line);border-radius:13px;padding:12px;min-height:222px}
+  .bag{height:150px;border:4px solid #8ca1b0;border-top:0;border-radius:16px 16px 44px 44px;background:linear-gradient(#f9fcfe,#e6eff5);display:grid;grid-template-columns:repeat(10,1fr);gap:4px;padding:12px;align-content:end;overflow:hidden}
+  .ball{width:100%;aspect-ratio:1;border-radius:50%;background:var(--blackball);box-shadow:inset -2px -3px 5px rgba(0,0,0,.24)}
+  .ball.red{background:var(--red)}
+  .ball.mystery{background:#91a4b2;box-shadow:none}
+  .mini-balls{display:flex;flex-wrap:wrap;gap:5px;align-content:flex-start;min-height:90px}
+  .mini-balls .ball{width:18px;height:18px;flex:0 0 18px}
+  .counter{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:11px}
+  .metric{border-radius:10px;padding:9px 10px;background:#f4f7f9}.metric span{display:block;color:var(--muted);font-size:12px}.metric strong{font-size:21px;font-variant-numeric:tabular-nums}
+  .decision{margin-top:12px;padding:11px 12px;border-radius:10px;font-weight:750}.decision.reject{background:var(--red2);color:#9f2030}.decision.keep{background:var(--green2);color:#116747}
+  .chart-card{padding-bottom:10px}
+  svg{width:100%;height:auto;display:block}
+  .axis{stroke:#7890a1;stroke-width:1}.gridline{stroke:#dce5eb;stroke-width:1}.tick{fill:var(--muted);font-size:11px}.axis-title{fill:var(--ink);font-size:12px;font-weight:700}
+  .bar0{fill:#6aaee3}.bar-true{fill:none;stroke:var(--orange);stroke-width:2.5}.true-beta{fill:#7759b7;opacity:.72}.true-power{fill:#2b9d70;opacity:.76}.critical{fill:var(--red);opacity:.82}.cutoff{stroke:#66ad55;stroke-width:2;stroke-dasharray:5 4}.observed{stroke:#172b3a;stroke-width:3}.observed-label{fill:#172b3a;font-size:12px;font-weight:700}.legend{display:flex;gap:17px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:4px 8px 0}.swatch{display:inline-block;width:13px;height:9px;margin-right:5px;vertical-align:middle}.swatch.h0{background:#6aaee3}.swatch.crit{background:var(--red)}.swatch.true{height:0;border-top:3px solid var(--orange)}.swatch.beta{background:#7759b7}.swatch.power{background:#2b9d70}.truth-errors{margin-top:10px}.truth-errors .metric{border:1px solid var(--line)}.truth-errors .beta-value{color:#6747a7}.truth-errors .power-value{color:#19764f}
+  .alpha-viz{margin:12px 8px 4px;padding:11px 12px;background:#f5f8fa;border-radius:10px}.alpha-row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px}.alpha-track{height:16px;background:#dfe7ec;border-radius:999px;overflow:hidden;margin:8px 0 5px}.alpha-fill{height:100%;background:var(--red);transition:width .25s}.alpha-scale{display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.tail-parts{color:var(--muted);font-size:12px;margin-top:5px}
+  .type1-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:center}.type1-eq{font-size:17px;background:#eef7ff;border-left:4px solid var(--blue);padding:12px 14px;border-radius:8px}.type1-result{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}.type1-result .metric strong{font-size:20px}.type1-track{height:20px;background:#e8eef3;border-radius:10px;position:relative;overflow:hidden;margin-top:8px}.type1-alpha{height:100%;background:#f9c7cc;position:absolute;left:0;top:0}.type1-actual{height:10px;background:var(--red);position:absolute;left:0;top:5px}.type1-marker{position:absolute;top:0;height:100%;width:2px;background:#8c2d37}.type1-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:6px}.type1-legend i{display:inline-block;width:14px;height:8px;margin-right:5px}.type1-legend .allowed{background:#f9c7cc}.type1-legend .exact{background:var(--red)}
+  .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:12px 0}.summary .metric{border:1px solid var(--line)}
+  .teacher{background:#fff8e8;border:1px solid #efd69d;border-radius:12px;padding:12px 14px;margin-top:12px}.teacher strong{color:#81510e}
+  .repeats{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:center}
+  .meter{height:18px;border-radius:999px;background:#e4ebef;overflow:hidden}.meter>div{height:100%;background:var(--green);transition:width .35s ease}.power-big{font-size:34px;font-weight:800;color:var(--green);font-variant-numeric:tabular-nums}
+  .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  [hidden]{display:none!important}
+  @media(max-width:850px){.grid{grid-template-columns:1fr}.steps,.scenario-grid{grid-template-columns:1fr 1fr}.bag-wrap,.repeats,.type1-grid{grid-template-columns:1fr}.scenario-facts{grid-template-columns:1fr}.controls{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.controls .button-row,.controls .formula,.controls .note{grid-column:1/-1}}
+  @media(max-width:540px){.app{padding:12px}.steps,.scenario-grid{grid-template-columns:1fr}.controls{display:block}.summary{grid-template-columns:1fr}header{display:block}.badge{display:inline-block;margin-top:10px}}
+</style>
+</head>
+<body>
+<main class="app">
+  <header>
+    <div><h1 id="mainTitle">Has the average event rate changed?</h1><div class="subtitle" id="mainSubtitle">An exact Poisson hypothesis test where <strong>X</strong> counts events during a fixed exposure.</div></div>
+    <button type="button" class="badge" id="truthBadge" aria-pressed="false" aria-label="Reveal the hidden true event rate">Reality is hidden</button>
+  </header>
+
+  <section class="scenario-picker" aria-labelledby="scenarioHeading">
+    <h2 id="scenarioHeading">Choose an average-rate question</h2>
+    <div class="scenario-grid" id="scenarioGrid">
+      <button type="button" class="scenario active" data-scenario="calls"><strong>Help-desk calls</strong><span>Has the rate risen above 3 calls per hour?</span></button>
+      <button type="button" class="scenario" data-scenario="defects"><strong>Fabric defects</strong><span>Is the rate above 2 defects per 100 m?</span></button>
+      <button type="button" class="scenario" data-scenario="accidents"><strong>Road accidents</strong><span>Has the monthly accident rate fallen?</span></button>
+      <button type="button" class="scenario" data-scenario="emails"><strong>Support emails</strong><span>Is the email-arrival rate still 8 per hour?</span></button>
+      <button type="button" class="scenario" data-scenario="mutations"><strong>Cell mutations</strong><span>Has the rate increased above 0.6 per plate?</span></button>
+      <button type="button" class="scenario" data-scenario="arrivals"><strong>Shop arrivals</strong><span>Is the arrival rate still 5 per minute?</span></button>
+    </div>
+    <div class="scenario-detail" id="scenarioDetail" aria-live="polite">
+      <h3 id="scenarioDetailTitle">Help-desk calls</h3>
+      <p id="scenarioDetailText">A help desk records incoming telephone calls. We count how many calls arrive during a fixed observation period.</p>
+      <p id="scenarioDetailWhy">Why Poisson? Calls are treated as independent arrivals occurring singly at a roughly constant average rate.</p>
+      <div class="scenario-facts"><div><span>One event</span><strong id="scenarioEvent">One incoming call</strong></div><div><span>Exposure unit</span><strong id="scenarioUnit">One hour</strong></div><div><span>Question under test</span><strong id="scenarioClaim">Is λ greater than 3 calls per hour?</strong></div></div>
+    </div>
+  </section>
+
+  <div class="steps" aria-label="Hypothesis test steps">
+    <button type="button" class="step active" data-target="controlsSection" aria-current="step"><strong>1. Hypotheses</strong>Make a claim about λ</button>
+    <button type="button" class="step" data-target="sampleSection"><strong>2. Observe</strong>Fix the exposure time or area</button>
+    <button type="button" class="step" data-target="sampleSection"><strong>3. Statistic</strong>Count the events: X</button>
+    <button type="button" class="step" data-target="probabilitySection"><strong>4. Probability</strong>Use X ~ Po(Tλ₀)</button>
+    <button type="button" class="step" data-target="decisionSummary"><strong>5. Decision</strong>Reject or do not reject H₀</button>
+  </div>
+
+  <div class="grid">
+    <aside>
+      <section class="card controls" id="controlsSection">
+        <h2>Experiment controls</h2>
+        <button type="button" class="btn" id="revealTruth" aria-pressed="false">Reveal the hidden true rate</button>
+        <div id="truthControls" hidden>
+          <label for="trueP">True event rate, λ <span class="value" id="truePVal">4.20</span></label>
+          <input id="trueP" type="range" min="0.10" max="12" step="0.10" value="4.20">
+        </div>
+        <label for="nullP">Claimed event rate, λ₀ <span class="value" id="nullPVal">3.00</span></label>
+        <input id="nullP" type="range" min="0.10" max="12" step="0.10" value="3.00">
+        <label for="sampleN">Exposure, T <span class="value" id="sampleNVal">4</span></label>
+        <input id="sampleN" type="range" min="1" max="10" step="1" value="4">
+        <label for="alpha">Significance level, α</label>
+        <select id="alpha"><option value="0.10">10%</option><option value="0.05" selected>5%</option><option value="0.01">1%</option></select>
+        <label for="alternative">Alternative hypothesis</label>
+        <select id="alternative"><option value="two">λ ≠ λ₀ (two-tailed)</option><option value="less">λ &lt; λ₀ (lower-tailed)</option><option value="greater" selected>λ &gt; λ₀ (upper-tailed)</option></select>
+        <div class="formula" id="hypotheses">H₀: λ = 3.00<br>H₁: λ &gt; 3.00<br>Under H₀: X ~ Po(12.00)</div>
+        <div class="note">The Poisson model assumes events occur independently, singly, and at a constant average rate within the observation period.</div>
+        <div class="button-row"><button type="button" class="btn primary" id="drawOne">Observe one period</button><button type="button" class="btn" id="repeat200">Run 200 tests</button><button type="button" class="btn" id="reset">Reset</button></div>
+        <div class="note" id="runStatus" aria-live="polite">Repeated-test results will appear in the final panel.</div>
+      </section>
+
+      <section class="card">
+        <h2>Why is X Poisson?</h2>
+        <div class="formula">X = number of events in exposure T</div>
+        <ul class="note"><li>Events occur independently</li><li>Events occur singly</li><li>The average rate λ is constant</li><li>The expected count is Tλ</li></ul>
+        <div class="formula">Under H₀: X ~ Po(Tλ₀)</div>
+      </section>
+    </aside>
+
+    <div>
+      <section class="card" id="sampleSection">
+        <h2>Hidden event process and one observation</h2>
+        <div class="bag-wrap">
+          <div class="bag-panel"><h3 id="populationTitle">Hidden event process</h3><div class="bag" id="bag" aria-label="An event process with a hidden true rate"></div><div class="note" id="bagLabel">The true event rate is hidden from the investigator.</div></div>
+          <div class="sample-panel"><h3>Observed count</h3><div class="mini-balls" id="sampleBalls" aria-live="polite"><span class="note">Press “Observe one period”.</span></div><div class="counter"><div class="metric"><span>Count statistic</span><strong id="xCount">X = —</strong></div><div class="metric"><span>Observed rate</span><strong id="phat">λ̂ = —</strong></div></div><div id="decision" class="decision keep">No observation yet</div></div>
+        </div>
+      </section>
+
+      <section class="card chart-card" id="probabilitySection">
+        <h2>Null and true sampling distributions on one chart</h2>
+        <svg id="distChart" viewBox="0 0 820 350" role="img" aria-labelledby="distTitle distDesc"><title id="distTitle">Poisson distributions under the null and true rates</title><desc id="distDesc">Bars show count probabilities under the null hypothesis, red bars show rejection regions, and an orange line shows the true distribution after teacher reveal.</desc></svg>
+        <div class="legend"><span><i class="swatch h0"></i>H₀ distribution</span><span><i class="swatch crit"></i>Type I error region under H₀</span><span id="trueLegend" hidden><i class="swatch true"></i>True distribution outline</span><span id="betaLegend" hidden><i class="swatch beta"></i>Type II error under the true distribution</span><span id="powerLegend" hidden><i class="swatch power"></i>Power under the true distribution</span></div>
+        <div class="alpha-viz" aria-live="polite">
+          <div class="alpha-row"><strong>Area of the red critical region under H₀</strong><span><span id="actualAlpha">—</span> out of α = <span id="targetAlpha">—</span></span></div>
+          <div class="alpha-track" aria-label="Actual significance as a proportion of alpha"><div class="alpha-fill" id="alphaFill" style="width:0%"></div></div>
+          <div class="alpha-scale"><span>0</span><span>allowed significance α</span></div>
+          <div class="tail-parts" id="tailAreas">—</div>
+        </div>
+        <div class="summary truth-errors" id="truthErrorSummary" hidden><div class="metric"><span>Type I error, α*</span><strong id="overlayType1">—</strong></div><div class="metric"><span>Type II error, β</span><strong class="beta-value" id="overlayType2">—</strong></div><div class="metric"><span>Power, 1 − β</span><strong class="power-value" id="overlayPower">—</strong></div></div>
+        <div class="teacher" id="truthErrorNote" hidden><strong>When reality is revealed:</strong> the same decision boundary is applied to both distributions. Red is a wrong rejection when H₀ is true. Purple is a missed change when the displayed true rate is different. Green is correct detection of that change.</div>
+        <div class="summary" id="decisionSummary"><div class="metric"><span>Critical region</span><strong id="criticalText">—</strong></div><div class="metric"><span>Exact p-value</span><strong id="pvalue">—</strong></div><div class="metric"><span>Decision at α</span><strong id="decisionShort">—</strong></div></div>
+        <div class="teacher"><strong>Teaching point:</strong> Test the observed count using X ~ Po(Tλ₀), the distribution assuming H₀ is true. The red bars form the critical region; their total probability under H₀ is the actual significance level.</div>
+      </section>
+
+      <section class="card" id="type1Section">
+        <h2>Type I error: rejecting a true H₀</h2>
+        <div class="type1-grid">
+          <div>
+            <div class="type1-eq"><strong>For this experiment:</strong> the true event rate is set equal to the null value, <span id="type1Truth">λ = λ₀</span>. Every rejection is therefore a Type I error.</div>
+            <div class="type1-result">
+              <div class="metric"><span>Chosen α</span><strong id="type1Alpha">—</strong></div>
+              <div class="metric"><span>Exact Type I rate</span><strong id="type1Exact">—</strong></div>
+              <div class="metric"><span>Simulated rate</span><strong id="type1Sim">—</strong></div>
+            </div>
+            <div class="type1-track" aria-label="Comparison of significance level and exact Type I error rate"><div class="type1-alpha" id="type1Allowed"></div><div class="type1-actual" id="type1Actual"></div><div class="type1-marker" id="type1Marker"></div></div>
+            <div class="type1-legend"><span><i class="allowed"></i>Allowed up to α</span><span><i class="exact"></i>Exact Type I error probability</span></div>
+          </div>
+          <div>
+            <button type="button" class="btn primary" id="runType1">Run 1000 tests with true λ = λ₀</button>
+            <p class="note" id="type1Note" aria-live="polite">The theoretical rate is the red critical-region area under H₀. Run the simulation to estimate it experimentally.</p>
+          </div>
+        </div>
+        <div class="teacher"><strong>Important:</strong> For this exact, non-randomised Poisson test, the Type I error probability is ≤ α—not necessarily strictly less. Equality can occur. Approximate tests may differ slightly from α.</div>
+      </section>
+
+      <section class="card" id="repeatSection">
+        <h2>Repeat the whole test: how often do we detect the rate change?</h2>
+        <div class="repeats">
+          <div><svg id="repeatChart" viewBox="0 0 500 240" role="img" aria-label="Histogram of event counts from repeated observation periods"></svg></div>
+          <div><div class="note">Estimated detection rate (empirical power)</div><div class="power-big" id="power">—</div><div class="meter" role="progressbar" aria-label="Estimated power" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="powerBar" style="width:0%"></div></div><p class="note" id="repeatNote">Run 200 tests to see the sampling distribution of X and the proportion that reject H₀.</p></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<script type="text/plain" id="binomialTemplateScript">
+(() => {
+  const $ = id => document.getElementById(id);
+  const els = {trueP:$('trueP'),nullP:$('nullP'),sampleN:$('sampleN'),alpha:$('alpha'),alternative:$('alternative'),bag:$('bag'),sampleBalls:$('sampleBalls'),dist:$('distChart'),repeat:$('repeatChart')};
+  const scenarios={
+    bag:{title:'Is the bag biased?',subtitle:'Count red balls in a random sample.',success:'red',failure:'black',p0:.50,p:.20,n:30,alt:'two'},
+    election:{title:'Does the candidate really have 40% support?',subtitle:'Count sampled voters who support the candidate.',success:'support',failure:'do not support',p0:.40,p:.33,n:80,alt:'two'},
+    seeds:{title:'Does 85% of the seed population germinate?',subtitle:'Count germinated seeds in a random sample.',success:'germinate',failure:'do not germinate',p0:.85,p:.76,n:50,alt:'less'},
+    quality:{title:'Is the defective proportion only 5%?',subtitle:'Count defective items in a production sample.',success:'defective',failure:'not defective',p0:.05,p:.11,n:60,alt:'greater'},
+    lunch:{title:'Do 60% of students prefer the new lunch?',subtitle:'Count sampled students who prefer the new lunch.',success:'prefer it',failure:'do not prefer it',p0:.60,p:.51,n:70,alt:'two'},
+    conversion:{title:'Is the website conversion proportion 12%?',subtitle:'Count visitors who convert in a random sample.',success:'convert',failure:'do not convert',p0:.12,p:.07,n:100,alt:'less'}
+  };
+  let currentScenario='bag',truthRevealed=false,observed=null,repeatCounts=[],repeatRejects=0,type1Total=0,type1Errors=0,animating=false;
+
+  function choose(n,k){ if(k<0||k>n)return 0; k=Math.min(k,n-k); let r=1; for(let i=1;i<=k;i++)r=r*(n-k+i)/i; return r; }
+  function pmf(n,p,k){ return choose(n,k)*Math.pow(p,k)*Math.pow(1-p,n-k); }
+  function cdf(n,p,k){ let s=0; for(let i=0;i<=Math.min(k,n);i++)s+=pmf(n,p,i); return s; }
+  function sf(n,p,k){ let s=0; for(let i=Math.max(0,k);i<=n;i++)s+=pmf(n,p,i); return s; }
+  function params(){ return {p:+els.trueP.value,p0:+els.nullP.value,n:+els.sampleN.value,a:+els.alpha.value,alt:els.alternative.value}; }
+  function crit(n,p0,a,alt){ let lo=-1,hi=n+1; if(alt==='less'||alt==='two'){const t=alt==='two'?a/2:a;for(let k=0;k<=n;k++)if(cdf(n,p0,k)<=t+1e-12)lo=k;} if(alt==='greater'||alt==='two'){const t=alt==='two'?a/2:a;for(let k=0;k<=n;k++){if(sf(n,p0,k)<=t+1e-12){hi=k;break;}}} return {lo,hi}; }
+  function isReject(x,c,alt){ return alt==='less'?x<=c.lo:alt==='greater'?x>=c.hi:(x<=c.lo||x>=c.hi); }
+  function pValue(x,n,p0,alt){ if(alt==='less')return cdf(n,p0,x); if(alt==='greater')return sf(n,p0,x); return Math.min(1,2*Math.min(cdf(n,p0,x),sf(n,p0,x))); }
+  function fmt(x,d=4){ if(x===null||Number.isNaN(x))return '—'; if(x<.0001)return '< 0.0001'; return x.toFixed(d); }
+  function sampleBin(n,p){let x=0;for(let i=0;i<n;i++)if(Math.random()<p)x++;return x;}
+
+  function updateBag(){
+    const {p}=params(),sc=scenarios[currentScenario]; els.bag.innerHTML=''; const successes=Math.round(100*p);
+    for(let i=0;i<100;i++){const b=document.createElement('i');b.className=truthRevealed?'ball'+(i<successes?' red':''):'ball mystery';els.bag.appendChild(b);}
+    $('populationTitle').textContent=truthRevealed?'Teacher reveal: actual population':'Hidden population';
+    $('bagLabel').textContent=truthRevealed?`${successes} ${sc.success} and ${100-successes} ${sc.failure} in every 100`:'The true population proportion is hidden from the investigator.';
+  }
+  function updateLabels(){
+    const {p,p0,n,alt}=params(),sc=scenarios[currentScenario];
+    $('mainTitle').textContent=sc.title; $('mainSubtitle').innerHTML=`An exact binomial test: <strong>X</strong> counts those who ${sc.success} in a random sample.`;
+    $('truePVal').textContent=p.toFixed(2); $('nullPVal').textContent=p0.toFixed(2); $('sampleNVal').textContent=n;
+    const h1=alt==='two'?`p ≠ ${p0.toFixed(2)}`:alt==='less'?`p < ${p0.toFixed(2)}`:`p > ${p0.toFixed(2)}`;
+    $('hypotheses').innerHTML=`H₀: p = ${p0.toFixed(2)}<br>H₁: ${h1}`;
+    $('truthBadge').textContent=truthRevealed?`Teacher reveal: true p = ${p.toFixed(2)}`:'Reality is hidden';
+    $('truthBadge').setAttribute('aria-pressed',truthRevealed?'true':'false');
+    $('truthBadge').setAttribute('aria-label',truthRevealed?'Hide the true population proportion':'Reveal the hidden true population proportion');
+    $('truthControls').hidden=!truthRevealed; $('trueLegend').hidden=!truthRevealed;
+    $('revealTruth').setAttribute('aria-pressed',truthRevealed?'true':'false');
+    $('revealTruth').textContent=truthRevealed?'Hide the true proportion':'Reveal the hidden true proportion';
+  }
+  function criticalLabel(c,n,alt){if(alt==='less')return c.lo<0?'none':`X ≤ ${c.lo}`;if(alt==='greater')return c.hi>n?'none':`X ≥ ${c.hi}`;let a=[];if(c.lo>=0)a.push(`X ≤ ${c.lo}`);if(c.hi<=n)a.push(`X ≥ ${c.hi}`);return a.length?a.join(' or '):'none';}
+
+  function drawDist(){
+    const {p,p0,n,a,alt}=params(),c=crit(n,p0,a,alt),sc=scenarios[currentScenario];
+    $('criticalText').textContent=criticalLabel(c,n,alt);
+    const lower=c.lo>=0?cdf(n,p0,c.lo):0,upper=c.hi<=n?sf(n,p0,c.hi):0;
+    const actual=alt==='less'?lower:alt==='greater'?upper:lower+upper;
+    $('actualAlpha').textContent=(100*actual).toFixed(2)+'%'; $('targetAlpha').textContent=(100*a).toFixed(0)+'%';
+    $('alphaFill').style.width=Math.min(100,100*actual/a)+'%';
+    $('tailAreas').textContent=alt==='two'?`Lower-tail area ${(100*lower).toFixed(2)}% + upper-tail area ${(100*upper).toFixed(2)}% = actual significance ${(100*actual).toFixed(2)}%. Because X is discrete, this is usually below α.`:`Critical-tail area = ${(100*actual).toFixed(2)}%. Because X is discrete, this is usually below α.`;
+    const svg=els.dist,W=820,H=350,m={l:58,r:20,t:24,b:48},iw=W-m.l-m.r,ih=H-m.t-m.b;
+    const vals=Array.from({length:n+1},(_,k)=>({k,h:pmf(n,p0,k),t:pmf(n,p,k)}));
+    const max=Math.max(...vals.flatMap(v=>truthRevealed?[v.h,v.t]:[v.h]))*1.14;
+    const x=k=>m.l+(k+.5)*iw/(n+1),bw=Math.max(1.5,iw/(n+1)*.78),y=v=>m.t+ih-(v/max)*ih;
+    let s='';
+    for(let j=0;j<=4;j++){const v=max*j/4,yy=y(v);s+=`<line class="gridline" x1="${m.l}" y1="${yy}" x2="${W-m.r}" y2="${yy}"/><text class="tick" x="${m.l-8}" y="${yy+4}" text-anchor="end">${v.toFixed(2)}</text>`;}
+    s+=`<line class="axis" x1="${m.l}" y1="${m.t+ih}" x2="${W-m.r}" y2="${m.t+ih}"/><line class="axis" x1="${m.l}" y1="${m.t}" x2="${m.l}" y2="${m.t+ih}"/>`;
+    for(const v of vals){const rej=isReject(v.k,c,alt);s+=`<rect class="${rej?'critical':'bar0'}" x="${x(v.k)-bw/2}" y="${y(v.h)}" width="${bw}" height="${m.t+ih-y(v.h)}"><title>X=${v.k}, P under H0=${v.h.toFixed(4)}</title></rect>`;}
+    if(truthRevealed){const path=vals.map((v,i)=>`${i?'L':'M'}${x(v.k)},${y(v.t)}`).join(' ');s+=`<path class="bar-true" d="${path}"/>`;}
+    const tickStep=n<=30?5:n<=60?10:20;for(let k=0;k<=n;k+=tickStep)s+=`<text class="tick" x="${x(k)}" y="${H-25}" text-anchor="middle">${k}</text>`;
+    s+=`<text class="axis-title" x="${m.l+iw/2}" y="${H-5}" text-anchor="middle">Count statistic, X</text><text class="axis-title" transform="translate(15 ${m.t+ih/2}) rotate(-90)" text-anchor="middle">Probability under H₀</text><text x="${W-m.r}" y="16" text-anchor="end" fill="var(--red)" font-size="12">red area = ${(100*actual).toFixed(2)}% ≤ α</text>`;
+    if(observed!==null){const xx=x(observed);s+=`<line class="observed" x1="${xx}" y1="${m.t}" x2="${xx}" y2="${m.t+ih}"/><text class="observed-label" x="${Math.min(W-90,xx+6)}" y="${m.t+16}">observed X=${observed}</text>`;}
+    svg.innerHTML=s;
+    if(observed===null){$('pvalue').textContent='—';$('decisionShort').textContent='—';}
+    else{
+      const pv=pValue(observed,n,p0,alt),rej=isReject(observed,c,alt);$('pvalue').textContent=fmt(pv);$('decisionShort').textContent=rej?'Reject H₀':'Do not reject';$('decision').className='decision '+(rej?'reject':'keep');
+      $('decision').textContent=rej?`Reject H₀: evidence that the population proportion for “${sc.success}” differs in the direction of H₁.`:`Do not reject H₀: this sample is not strong enough evidence against the claimed proportion.`;
+    }
+  }
+
+  function showSample(x,animate=true){const {n}=params();observed=x;$('xCount').textContent=`X = ${x}`;$('phat').textContent=`p̂ = ${(x/n).toFixed(3)}`;const arr=Array(x).fill(1).concat(Array(n-x).fill(0));for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}els.sampleBalls.innerHTML='';const limit=Math.min(n,70);arr.slice(0,limit).forEach((red,i)=>{const b=document.createElement('i');b.className='ball'+(red?' red':'');if(animate){b.style.opacity='0';b.style.transform='scale(.4)';setTimeout(()=>{b.style.transition='opacity .18s, transform .18s';b.style.opacity='1';b.style.transform='scale(1)';},i*20);}els.sampleBalls.appendChild(b);});if(n>limit){const more=document.createElement('span');more.className='note';more.textContent=`+ ${n-limit} more`;els.sampleBalls.appendChild(more);}drawDist();}
+  function drawRepeat(){const {n}=params(),svg=els.repeat,W=500,H=240,m={l:42,r:15,t:15,b:40},iw=W-m.l-m.r,ih=H-m.t-m.b;const freq=Array(n+1).fill(0);repeatCounts.forEach(x=>freq[x]++);const max=Math.max(1,...freq);const x=k=>m.l+(k+.5)*iw/(n+1),bw=Math.max(1,iw/(n+1)*.8),y=v=>m.t+ih-v/max*ih;let s=`<line class="axis" x1="${m.l}" y1="${m.t+ih}" x2="${W-m.r}" y2="${m.t+ih}"/>`;freq.forEach((v,k)=>{s+=`<rect class="bar0" x="${x(k)-bw/2}" y="${y(v)}" width="${bw}" height="${m.t+ih-y(v)}"><title>X=${k}: ${v} samples</title></rect>`;});const step=n<=30?5:n<=60?10:20;for(let k=0;k<=n;k+=step)s+=`<text class="tick" x="${x(k)}" y="${H-18}" text-anchor="middle">${k}</text>`;s+=`<text class="axis-title" x="${m.l+iw/2}" y="${H-2}" text-anchor="middle">Count X in each repeated sample</text>`;svg.innerHTML=s;const power=repeatCounts.length?100*repeatRejects/repeatCounts.length:0;$('power').textContent=repeatCounts.length?`${power.toFixed(1)}%`:'—';$('powerBar').style.width=`${power}%`;$('powerBar').parentElement.setAttribute('aria-valuenow',power.toFixed(1));if(repeatCounts.length){$('repeatNote').textContent=truthRevealed?`${repeatRejects} of ${repeatCounts.length} tests rejected H₀. This estimates power at the revealed true proportion p = ${params().p.toFixed(2)}.`:`${repeatRejects} of ${repeatCounts.length} tests rejected H₀. The simulator is using a hidden population proportion—reveal it when the class is ready.`;}else $('repeatNote').textContent='Run 200 tests to see the sampling distribution of X and the proportion that reject H₀.';}
+  function updateType1(){
+    const {p0,n,a,alt}=params(),c=crit(n,p0,a,alt);
+    const lower=c.lo>=0?cdf(n,p0,c.lo):0,upper=c.hi<=n?sf(n,p0,c.hi):0;
+    const exact=alt==='less'?lower:alt==='greater'?upper:lower+upper;
+    $('type1Truth').textContent=`p = p₀ = ${p0.toFixed(2)}`;
+    $('type1Alpha').textContent=(100*a).toFixed(1)+'%';
+    $('type1Exact').textContent=(100*exact).toFixed(2)+'%';
+    $('type1Sim').textContent=type1Total?(100*type1Errors/type1Total).toFixed(2)+'%':'—';
+    $('type1Allowed').style.width='100%';
+    $('type1Actual').style.width=Math.min(100,100*exact/a)+'%';
+    $('type1Marker').style.left='calc(100% - 2px)';
+    if(!type1Total)$('type1Note').textContent=`Under a true H₀, P(reject H₀) = ${fmt(exact)}. This is the exact Type I error rate for the current critical region.`;
+  }
+  function fullUpdate(clear=true){if(clear){observed=null;repeatCounts=[];repeatRejects=0;type1Total=0;type1Errors=0;$('sampleBalls').innerHTML='<span class="note">Press “Draw one sample”.</span>';$('xCount').textContent='X = —';$('phat').textContent='p̂ = —';$('decision').className='decision keep';$('decision').textContent='No sample yet';}updateLabels();updateBag();drawDist();drawRepeat();updateType1();}
+  $('drawOne').addEventListener('click',()=>{if(animating)return;animating=true;$('drawOne').disabled=true;const {n,p}=params();showSample(sampleBin(n,p),true);setTimeout(()=>{animating=false;$('drawOne').disabled=false;},Math.min(1500,n*20+200));});
+  $('repeat200').addEventListener('click',()=>{
+    const button=$('repeat200'),status=$('runStatus');
+    button.disabled=true; button.textContent='Running 200 tests…'; status.textContent='Simulating 200 independent samples…';
+    requestAnimationFrame(()=>{
+      try{
+        const {n,p,p0,a,alt}=params(),c=crit(n,p0,a,alt);
+        repeatCounts=[]; repeatRejects=0;
+        for(let i=0;i<200;i++){
+          const x=sampleBin(n,p); repeatCounts.push(x);
+          if(isReject(x,c,alt))repeatRejects++;
+        }
+        drawRepeat();
+        status.textContent=`Finished: ${repeatRejects} of 200 tests rejected H₀. See the final panel below.`;
+        $('repeatSection').scrollIntoView({behavior:'smooth',block:'start'});
+      }catch(error){
+        status.textContent='The simulation could not run. Reset the page and try again.';
+        console.error(error);
+      }finally{
+        button.disabled=false; button.textContent='Run 200 tests';
+      }
+    });
+  });
+  $('runType1').addEventListener('click',()=>{
+    const button=$('runType1');button.disabled=true;button.textContent='Running 1000 tests…';
+    requestAnimationFrame(()=>{
+      const {n,p0,a,alt}=params(),c=crit(n,p0,a,alt);type1Total=1000;type1Errors=0;
+      for(let i=0;i<type1Total;i++)if(isReject(sampleBin(n,p0),c,alt))type1Errors++;
+      updateType1();
+      $('type1Note').textContent=`${type1Errors} of ${type1Total} samples rejected a true H₀. Simulation varies from run to run; the exact rate above does not.`;
+      button.disabled=false;button.textContent='Run 1000 tests with true p = p₀';
+    });
+  });
+  function toggleTruth(){truthRevealed=!truthRevealed;fullUpdate(false);}
+  $('revealTruth').addEventListener('click',toggleTruth);
+  $('truthBadge').addEventListener('click',toggleTruth);
+  document.querySelectorAll('.step').forEach(step=>step.addEventListener('click',()=>{
+    document.querySelectorAll('.step').forEach(s=>{s.classList.toggle('active',s===step);s.removeAttribute('aria-current');});
+    step.setAttribute('aria-current','step');
+    const target=$(step.dataset.target);if(target)target.scrollIntoView({behavior:'smooth',block:'center'});
+  }));
+  document.querySelectorAll('.scenario').forEach(button=>button.addEventListener('click',()=>{
+    currentScenario=button.dataset.scenario;
+    document.querySelectorAll('.scenario').forEach(b=>b.classList.toggle('active',b===button));
+    const sc=scenarios[currentScenario];
+    els.trueP.value=sc.p;els.nullP.value=sc.p0;els.sampleN.value=sc.n;els.alpha.value=.05;els.alternative.value=sc.alt;
+    truthRevealed=false;fullUpdate(true);
+  }));
+  $('reset').addEventListener('click',()=>{const sc=scenarios[currentScenario];els.trueP.value=sc.p;els.nullP.value=sc.p0;els.sampleN.value=sc.n;els.alpha.value=.05;els.alternative.value=sc.alt;truthRevealed=false;fullUpdate(true);});
+  [els.trueP,els.nullP,els.sampleN,els.alpha,els.alternative].forEach(e=>e.addEventListener('input',()=>fullUpdate(true)));
+  fullUpdate(true);
+})();
+</script>
+<script>
+(() => {
+  const $=id=>document.getElementById(id);
+  const els={trueRate:$('trueP'),nullRate:$('nullP'),exposure:$('sampleN'),alpha:$('alpha'),alternative:$('alternative'),process:$('bag'),events:$('sampleBalls'),dist:$('distChart'),repeat:$('repeatChart')};
+  const scenarios={
+    calls:{label:'Help-desk calls',title:'Has the help-desk call rate increased?',success:'calls',unit:'hour',lambda0:3,lambda:4.2,T:4,alt:'greater',event:'One incoming telephone call',context:'A help desk records incoming calls. We count the calls arriving during a fixed number of hours.',why:'Calls are modelled as independent arrivals occurring singly at a roughly constant average rate.',claim:'Is λ greater than 3 calls per hour?'},
+    defects:{label:'Fabric defects',title:'Has the fabric defect rate increased?',success:'defects',unit:'100 m',lambda0:2,lambda:3.1,T:5,alt:'greater',event:'One visible defect in the fabric',context:'A textile inspector moves along a roll of fabric and records flaws such as holes, knots or stains. Each exposure unit is 100 metres of fabric.',why:'Defects are assumed to occur independently along the length, singly, with a constant mean number per 100 m.',claim:'Is λ greater than 2 defects per 100 m?'},
+    accidents:{label:'Road accidents',title:'Has the road-accident rate fallen?',success:'accidents',unit:'month',lambda0:1.5,lambda:.8,T:6,alt:'less',event:'One recorded road accident',context:'A road authority counts accidents on a particular road over several months after a safety change.',why:'For a fixed road and stable conditions, rare accidents can be modelled as independent events with an approximately constant monthly rate.',claim:'Is λ less than 1.5 accidents per month?'},
+    emails:{label:'Support emails',title:'Is the support-email rate still 8 per hour?',success:'emails',unit:'hour',lambda0:8,lambda:6.5,T:3,alt:'two',event:'One newly received support email',context:'A support team counts new customer emails arriving during several observed hours.',why:'Email arrivals are treated as separate, independent events with a constant average arrival rate during the chosen period.',claim:'Is λ different from 8 emails per hour?'},
+    mutations:{label:'Cell mutations',title:'Has the cell-mutation rate increased?',success:'mutant colonies',unit:'plate',lambda0:.6,lambda:1.1,T:10,alt:'greater',event:'One mutant colony detected on a culture plate',context:'Scientists grow microorganisms on identical culture plates. A colony with a detectable genetic change is counted as one mutation event; X is the total number of mutant colonies across the observed plates.',why:'Mutation events are rare and are modelled as independent; identical plates have the same mean number of detectable mutant colonies.',claim:'Is λ greater than 0.6 mutant colonies per plate?'},
+    arrivals:{label:'Shop arrivals',title:'Is the shop-arrival rate still 5 per minute?',success:'customer arrivals',unit:'minute',lambda0:5,lambda:4.1,T:4,alt:'two',event:'One customer entering the shop',context:'A shop counts customers entering during a fixed number of minutes.',why:'Arrivals are treated as independent and occurring singly, with a roughly constant average rate during the observation window.',claim:'Is λ different from 5 customer arrivals per minute?'}
+  };
+  let currentScenario='calls',truthRevealed=false,observed=null,repeatCounts=[],repeatRejects=0,type1Total=0,type1Errors=0,animating=false;
+
+  function logFact(k){let s=0;for(let i=2;i<=k;i++)s+=Math.log(i);return s;}
+  function pmf(mu,k){if(k<0||!Number.isInteger(k))return 0;return Math.exp(-mu+k*Math.log(mu)-logFact(k));}
+  function maxK(mu){return Math.max(20,Math.ceil(mu+10*Math.sqrt(mu)+20));}
+  function cdf(mu,k){if(k<0)return 0;let s=0;for(let i=0;i<=Math.min(k,maxK(mu));i++)s+=pmf(mu,i);return Math.min(1,s);}
+  function sf(mu,k){if(k<=0)return 1;let s=0;for(let i=k;i<=maxK(mu);i++)s+=pmf(mu,i);return Math.min(1,s);}
+  function samplePoisson(mu){if(mu>25){const parts=Math.ceil(mu/20);let s=0;for(let i=0;i<parts;i++)s+=samplePoisson(mu/parts);return s;}const L=Math.exp(-mu);let k=0,p=1;do{k++;p*=Math.random();}while(p>L);return k-1;}
+  function params(){const lambda=+els.trueRate.value,lambda0=+els.nullRate.value,T=+els.exposure.value;return{lambda,lambda0,T,mu:lambda*T,mu0:lambda0*T,a:+els.alpha.value,alt:els.alternative.value};}
+  function crit(mu0,a,alt){let lo=-1,hi=maxK(mu0)+1;if(alt==='less'||alt==='two'){const t=alt==='two'?a/2:a;for(let k=0;k<=maxK(mu0);k++)if(cdf(mu0,k)<=t+1e-12)lo=k;}if(alt==='greater'||alt==='two'){const t=alt==='two'?a/2:a;for(let k=0;k<=maxK(mu0);k++){if(sf(mu0,k)<=t+1e-12){hi=k;break;}}}return{lo,hi};}
+  function isReject(x,c,alt){return alt==='less'?x<=c.lo:alt==='greater'?x>=c.hi:x<=c.lo||x>=c.hi;}
+  function pValue(x,mu0,alt){if(alt==='less')return cdf(mu0,x);if(alt==='greater')return sf(mu0,x);return Math.min(1,2*Math.min(cdf(mu0,x),sf(mu0,x)));}
+  function fmt(x,d=4){if(x===null||Number.isNaN(x))return'—';if(x<.0001)return'< 0.0001';return x.toFixed(d);}
+
+  function updateProcess(){
+    const {lambda}=params(),sc=scenarios[currentScenario];els.process.innerHTML='';
+    const dots=truthRevealed?Math.min(100,Math.max(1,Math.round(lambda*8))):40;
+    for(let i=0;i<dots;i++){const b=document.createElement('i');b.className=truthRevealed?'ball red':'ball mystery';els.process.appendChild(b);}
+    $('populationTitle').textContent=truthRevealed?'Teacher reveal: actual event process':'Hidden event process';
+    $('bagLabel').textContent=truthRevealed?`True average rate: λ = ${lambda.toFixed(2)} ${sc.success} per ${sc.unit}`:'The true event rate is hidden from the investigator.';
+  }
+  function updateLabels(){
+    const {lambda,lambda0,T,mu0,alt}=params(),sc=scenarios[currentScenario];
+    $('mainTitle').textContent=sc.title;$('mainSubtitle').innerHTML=`An exact Poisson test: <strong>X</strong> counts ${sc.success} over ${T} ${sc.unit}${T===1?'':'s'}.`;
+    $('truePVal').textContent=lambda.toFixed(2);$('nullPVal').textContent=lambda0.toFixed(2);$('sampleNVal').textContent=T;
+    const h1=alt==='two'?`λ ≠ ${lambda0.toFixed(2)}`:alt==='less'?`λ < ${lambda0.toFixed(2)}`:`λ > ${lambda0.toFixed(2)}`;
+    $('hypotheses').innerHTML=`H₀: λ = ${lambda0.toFixed(2)}<br>H₁: ${h1}<br>Under H₀: X ~ Po(${mu0.toFixed(2)})`;
+    $('scenarioDetailTitle').textContent=sc.label;
+    $('scenarioDetailText').textContent=sc.context;
+    $('scenarioDetailWhy').textContent=`Why Poisson? ${sc.why}`;
+    $('scenarioEvent').textContent=sc.event;
+    $('scenarioUnit').textContent=`One ${sc.unit}`;
+    const direction=alt==='two'?'different from':alt==='less'?'less than':'greater than';
+    $('scenarioClaim').textContent=`Is λ ${direction} ${lambda0.toFixed(2)} ${sc.success} per ${sc.unit}?`;
+    $('truthBadge').textContent=truthRevealed?`Teacher reveal: true λ = ${lambda.toFixed(2)}`:'Reality is hidden';
+    $('truthBadge').setAttribute('aria-pressed',truthRevealed?'true':'false');$('truthBadge').setAttribute('aria-label',truthRevealed?'Hide the true event rate':'Reveal the hidden true event rate');
+    $('truthControls').hidden=!truthRevealed;
+    $('trueLegend').hidden=!truthRevealed;
+    $('betaLegend').hidden=!truthRevealed;
+    $('powerLegend').hidden=!truthRevealed;
+    $('truthErrorSummary').hidden=!truthRevealed;
+    $('truthErrorNote').hidden=!truthRevealed;
+    $('revealTruth').setAttribute('aria-pressed',truthRevealed?'true':'false');$('revealTruth').textContent=truthRevealed?'Hide the true rate':'Reveal the hidden true rate';
+  }
+  function criticalLabel(c,alt){if(alt==='less')return c.lo<0?'none':`X ≤ ${c.lo}`;if(alt==='greater')return`X ≥ ${c.hi}`;const a=[];if(c.lo>=0)a.push(`X ≤ ${c.lo}`);a.push(`X ≥ ${c.hi}`);return a.join(' or ');}
+  function drawDist(){
+    const {mu,mu0,a,alt}=params(),c=crit(mu0,a,alt),sc=scenarios[currentScenario];$('criticalText').textContent=criticalLabel(c,alt);
+    const lower=c.lo>=0?cdf(mu0,c.lo):0,upper=sf(mu0,c.hi),actual=alt==='less'?lower:alt==='greater'?upper:lower+upper;
+    $('actualAlpha').textContent=(100*actual).toFixed(2)+'%';$('targetAlpha').textContent=(100*a).toFixed(0)+'%';$('alphaFill').style.width=Math.min(100,100*actual/a)+'%';
+    $('tailAreas').textContent=alt==='two'?`Lower-tail area ${(100*lower).toFixed(2)}% + upper-tail area ${(100*upper).toFixed(2)}% = actual significance ${(100*actual).toFixed(2)}%.`:`Critical-tail area = ${(100*actual).toFixed(2)}%. The discrete count usually makes this smaller than α.`;
+    const trueLower=c.lo>=0?cdf(mu,c.lo):0,trueUpper=sf(mu,c.hi),truePower=alt==='less'?trueLower:alt==='greater'?trueUpper:trueLower+trueUpper,trueBeta=Math.max(0,1-truePower),sameRate=Math.abs(mu-mu0)<1e-10;
+    $('overlayType1').textContent=(100*actual).toFixed(2)+'%';
+    $('overlayType2').textContent=sameRate?'Not applicable':(100*trueBeta).toFixed(2)+'%';
+    $('overlayPower').textContent=sameRate?'Not applicable':(100*truePower).toFixed(2)+'%';
+    $('truthErrorNote').innerHTML=sameRate?'<strong>Reality matches H₀:</strong> Type I error is the relevant mistake. Type II error and power against a different rate are not defined.':'<strong>When reality is revealed:</strong> the same decision boundary is applied to both distributions. Red is a wrong rejection when H₀ is true. Purple is a missed change under the true distribution. Green is correct detection of that change.';
+    const nMax=Math.max(maxK(mu0),truthRevealed?maxK(mu):0,observed??0),vals=Array.from({length:nMax+1},(_,k)=>({k,h:pmf(mu0,k),t:pmf(mu,k)}));
+    const svg=els.dist,W=820,H=350,m={l:58,r:20,t:24,b:48},iw=W-m.l-m.r,ih=H-m.t-m.b,max=Math.max(...vals.flatMap(v=>truthRevealed?[v.h,v.t]:[v.h]))*1.14;
+    const cell=iw/(nMax+1),x=k=>m.l+(k+.5)*cell,bw=Math.max(1.5,cell*.78),tw=Math.max(1.5,cell*.34),y=v=>m.t+ih-v/max*ih;let s='';
+    for(let j=0;j<=4;j++){const v=max*j/4,yy=y(v);s+=`<line class="gridline" x1="${m.l}" y1="${yy}" x2="${W-m.r}" y2="${yy}"/><text class="tick" x="${m.l-8}" y="${yy+4}" text-anchor="end">${v.toFixed(2)}</text>`;}
+    s+=`<line class="axis" x1="${m.l}" y1="${m.t+ih}" x2="${W-m.r}" y2="${m.t+ih}"/><line class="axis" x1="${m.l}" y1="${m.t}" x2="${m.l}" y2="${m.t+ih}"/>`;
+    for(const v of vals){const rej=isReject(v.k,c,alt);s+=`<rect class="${rej?'critical':'bar0'}" x="${x(v.k)-bw/2}" y="${y(v.h)}" width="${bw}" height="${m.t+ih-y(v.h)}"><title>X=${v.k}, P under H₀=${v.h.toFixed(4)}</title></rect>`;}
+    if(truthRevealed){
+      for(const v of vals){const rej=isReject(v.k,c,alt);s+=`<rect class="${rej?'true-power':'true-beta'}" x="${x(v.k)-tw/2}" y="${y(v.t)}" width="${tw}" height="${m.t+ih-y(v.t)}"><title>X=${v.k}, P under true λ=${v.t.toFixed(4)}; ${rej?'power':'Type II'} region</title></rect>`;}
+      s+=`<path class="bar-true" d="${vals.map((v,i)=>`${i?'L':'M'}${x(v.k)},${y(v.t)}`).join(' ')}"/>`;
+      if((alt==='less'||alt==='two')&&c.lo>=0){const xx=m.l+(c.lo+1)*cell;s+=`<line class="cutoff" x1="${xx}" y1="${m.t}" x2="${xx}" y2="${m.t+ih}"/>`;}
+      if((alt==='greater'||alt==='two')&&Number.isFinite(c.hi)){const xx=m.l+c.hi*cell;s+=`<line class="cutoff" x1="${xx}" y1="${m.t}" x2="${xx}" y2="${m.t+ih}"/>`;}
+    }
+    const tickStep=nMax<=30?5:nMax<=60?10:20;for(let k=0;k<=nMax;k+=tickStep)s+=`<text class="tick" x="${x(k)}" y="${H-25}" text-anchor="middle">${k}</text>`;
+    s+=`<text class="axis-title" x="${m.l+iw/2}" y="${H-5}" text-anchor="middle">Event count, X</text><text class="axis-title" transform="translate(15 ${m.t+ih/2}) rotate(-90)" text-anchor="middle">Probability</text><text x="${W-m.r}" y="16" text-anchor="end" fill="var(--red)" font-size="12">Type I area = ${(100*actual).toFixed(2)}% ≤ α</text>`;
+    if(observed!==null){const xx=x(observed);s+=`<line class="observed" x1="${xx}" y1="${m.t}" x2="${xx}" y2="${m.t+ih}"/><text class="observed-label" x="${Math.min(W-90,xx+6)}" y="${m.t+16}">observed X=${observed}</text>`;}
+    svg.innerHTML=s;
+    if(observed===null){$('pvalue').textContent='—';$('decisionShort').textContent='—';}else{const pv=pValue(observed,mu0,alt),rej=isReject(observed,c,alt);$('pvalue').textContent=fmt(pv);$('decisionShort').textContent=rej?'Reject H₀':'Do not reject';$('decision').className='decision '+(rej?'reject':'keep');$('decision').textContent=rej?`Reject H₀: evidence that the average ${sc.success} rate has changed in the direction of H₁.`:`Do not reject H₀: the observed count is not strong enough evidence against λ₀.`;}
+  }
+  function showObservation(x,animate=true){const {T}=params();observed=x;$('xCount').textContent=`X = ${x}`;$('phat').textContent=`λ̂ = ${(x/T).toFixed(2)}`;els.events.innerHTML='';const limit=Math.min(x,70);for(let i=0;i<limit;i++){const b=document.createElement('i');b.className='ball red';if(animate){b.style.opacity='0';b.style.transform='scale(.4)';setTimeout(()=>{b.style.transition='opacity .18s, transform .18s';b.style.opacity='1';b.style.transform='scale(1)';},i*18);}els.events.appendChild(b);}if(x===0)els.events.innerHTML='<span class="note">No events occurred in this observation.</span>';if(x>limit){const more=document.createElement('span');more.className='note';more.textContent=`+ ${x-limit} more`;els.events.appendChild(more);}drawDist();}
+  function drawRepeat(){const {mu}=params(),nMax=Math.max(maxK(mu),...repeatCounts,1),svg=els.repeat,W=500,H=240,m={l:42,r:15,t:15,b:40},iw=W-m.l-m.r,ih=H-m.t-m.b,freq=Array(nMax+1).fill(0);repeatCounts.forEach(x=>freq[x]++);const max=Math.max(1,...freq),x=k=>m.l+(k+.5)*iw/(nMax+1),bw=Math.max(1,iw/(nMax+1)*.8),y=v=>m.t+ih-v/max*ih;let s=`<line class="axis" x1="${m.l}" y1="${m.t+ih}" x2="${W-m.r}" y2="${m.t+ih}"/>`;freq.forEach((v,k)=>{s+=`<rect class="bar0" x="${x(k)-bw/2}" y="${y(v)}" width="${bw}" height="${m.t+ih-y(v)}"><title>X=${k}: ${v} observations</title></rect>`;});const step=nMax<=30?5:nMax<=60?10:20;for(let k=0;k<=nMax;k+=step)s+=`<text class="tick" x="${x(k)}" y="${H-18}" text-anchor="middle">${k}</text>`;s+=`<text class="axis-title" x="${m.l+iw/2}" y="${H-2}" text-anchor="middle">Count X in each repeated observation</text>`;svg.innerHTML=s;const power=repeatCounts.length?100*repeatRejects/repeatCounts.length:0;$('power').textContent=repeatCounts.length?`${power.toFixed(1)}%`:'—';$('powerBar').style.width=`${power}%`;if(repeatCounts.length)$('repeatNote').textContent=truthRevealed?`${repeatRejects} of ${repeatCounts.length} tests rejected H₀. Estimated power at true λ = ${params().lambda.toFixed(2)}.`:`${repeatRejects} of ${repeatCounts.length} tests rejected H₀. The true rate remains hidden.`;else $('repeatNote').textContent='Run 200 tests to see the sampling distribution of X and the proportion that reject H₀.';}
+  function updateType1(){const {lambda0,mu0,a,alt}=params(),c=crit(mu0,a,alt),lower=c.lo>=0?cdf(mu0,c.lo):0,upper=sf(mu0,c.hi),exact=alt==='less'?lower:alt==='greater'?upper:lower+upper;$('type1Truth').textContent=`λ = λ₀ = ${lambda0.toFixed(2)}`;$('type1Alpha').textContent=(100*a).toFixed(1)+'%';$('type1Exact').textContent=(100*exact).toFixed(2)+'%';$('type1Sim').textContent=type1Total?(100*type1Errors/type1Total).toFixed(2)+'%':'—';$('type1Allowed').style.width='100%';$('type1Actual').style.width=Math.min(100,100*exact/a)+'%';$('type1Marker').style.left='calc(100% - 2px)';if(!type1Total)$('type1Note').textContent=`Under a true H₀, P(reject H₀) = ${fmt(exact)}.`;}
+  function fullUpdate(clear=true){if(clear){observed=null;repeatCounts=[];repeatRejects=0;type1Total=0;type1Errors=0;els.events.innerHTML='<span class="note">Press “Observe one period”.</span>';$('xCount').textContent='X = —';$('phat').textContent='λ̂ = —';$('decision').className='decision keep';$('decision').textContent='No observation yet';}updateLabels();updateProcess();drawDist();drawRepeat();updateType1();}
+  $('drawOne').addEventListener('click',()=>{if(animating)return;animating=true;$('drawOne').disabled=true;showObservation(samplePoisson(params().mu),true);setTimeout(()=>{animating=false;$('drawOne').disabled=false;},900);});
+  $('repeat200').addEventListener('click',()=>{const button=$('repeat200'),status=$('runStatus');button.disabled=true;button.textContent='Running 200 tests…';status.textContent='Simulating 200 independent observations…';requestAnimationFrame(()=>{const {mu,mu0,a,alt}=params(),c=crit(mu0,a,alt);repeatCounts=[];repeatRejects=0;for(let i=0;i<200;i++){const x=samplePoisson(mu);repeatCounts.push(x);if(isReject(x,c,alt))repeatRejects++;}drawRepeat();status.textContent=`Finished: ${repeatRejects} of 200 tests rejected H₀.`;button.disabled=false;button.textContent='Run 200 tests';$('repeatSection').scrollIntoView({behavior:'smooth',block:'start'});});});
+  $('runType1').addEventListener('click',()=>{const button=$('runType1');button.disabled=true;button.textContent='Running 1000 tests…';requestAnimationFrame(()=>{const {mu0,a,alt}=params(),c=crit(mu0,a,alt);type1Total=1000;type1Errors=0;for(let i=0;i<type1Total;i++)if(isReject(samplePoisson(mu0),c,alt))type1Errors++;updateType1();$('type1Note').textContent=`${type1Errors} of 1000 observations rejected a true H₀.`;button.disabled=false;button.textContent='Run 1000 tests with true λ = λ₀';});});
+  function toggleTruth(){truthRevealed=!truthRevealed;fullUpdate(false);}$('revealTruth').addEventListener('click',toggleTruth);$('truthBadge').addEventListener('click',toggleTruth);
+  document.querySelectorAll('.step').forEach(step=>step.addEventListener('click',()=>{document.querySelectorAll('.step').forEach(s=>{s.classList.toggle('active',s===step);s.removeAttribute('aria-current');});step.setAttribute('aria-current','step');const target=$(step.dataset.target);if(target)target.scrollIntoView({behavior:'smooth',block:'center'});}));
+  document.querySelectorAll('.scenario').forEach(button=>button.addEventListener('click',()=>{currentScenario=button.dataset.scenario;document.querySelectorAll('.scenario').forEach(b=>b.classList.toggle('active',b===button));const sc=scenarios[currentScenario];els.trueRate.value=sc.lambda;els.nullRate.value=sc.lambda0;els.exposure.value=sc.T;els.alpha.value=.05;els.alternative.value=sc.alt;truthRevealed=false;fullUpdate(true);}));
+  $('reset').addEventListener('click',()=>{const sc=scenarios[currentScenario];els.trueRate.value=sc.lambda;els.nullRate.value=sc.lambda0;els.exposure.value=sc.T;els.alpha.value=.05;els.alternative.value=sc.alt;truthRevealed=false;fullUpdate(true);});
+  [els.trueRate,els.nullRate,els.exposure,els.alpha,els.alternative].forEach(e=>e.addEventListener('input',()=>fullUpdate(true)));
+  fullUpdate(true);
+})();
+</script>
+</body>
+</html>
