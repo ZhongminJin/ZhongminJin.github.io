@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="加了poisson testing">
-      <change afterPath="$PROJECT_DIR$/myTeaching/local html/distribution-test-calculator.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myTeaching/local html/poisson-type-errors-simulator.html" afterDir="false" />
+    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="改了poisson , 加了个markov">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teaching.html" beforeDir="false" afterPath="$PROJECT_DIR$/teaching.html" afterDir="false" />
     </list>
@@ -54,61 +52,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000002543518053" />
-      <entry key="MS500" value="1.1453505057495188" />
-      <entry key="S2" value="3.0852281964355495" />
-      <entry key="S5" value="5.847715024456406" />
-      <entry key="S10" value="7.826212071461392" />
-      <entry key="S30" value="9.983080826990154" />
-      <entry key="S60" value="13.72510928747336" />
-      <entry key="M2" value="24.786600015927522" />
-      <entry key="M5" value="44.96840221069291" />
-      <entry key="M10" value="56.86900696548945" />
-      <entry key="M15" value="61.70918057006189" />
-      <entry key="M30" value="67.07732516429711" />
-      <entry key="H1" value="70.6559176424612" />
-      <entry key="H2" value="77.2477749626886" />
-      <entry key="H4" value="88.91272647633201" />
-      <entry key="D1" value="152.16597577975554" />
-      <entry key="W1" value="838.2618446284946" />
+      <entry key="MS100" value="1.0112896846941481" />
+      <entry key="MS500" value="1.5487407788295315" />
+      <entry key="S2" value="3.3983287400925777" />
+      <entry key="S5" value="5.269183089612882" />
+      <entry key="S10" value="6.40298498739184" />
+      <entry key="S30" value="7.863547997288232" />
+      <entry key="S60" value="10.63865808598778" />
+      <entry key="M2" value="19.32708900263241" />
+      <entry key="M5" value="40.99242125069824" />
+      <entry key="M10" value="56.726083134259014" />
+      <entry key="M15" value="63.67115085790331" />
+      <entry key="M30" value="71.71273149658911" />
+      <entry key="H1" value="76.86149563894033" />
+      <entry key="H2" value="84.26083247934234" />
+      <entry key="H4" value="96.34312031645122" />
+      <entry key="D1" value="160.00322716587777" />
+      <entry key="W1" value="846.133847487161" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="1.1046726970293857E-200" />
-      <entry key="S2" value="1.0251998921345801E-50" />
-      <entry key="S5" value="1.0135543138215336E-20" />
-      <entry key="S10" value="1.087429702229497E-10" />
-      <entry key="S30" value="7.839893608601412E-4" />
-      <entry key="S60" value="0.04680715644113321" />
-      <entry key="M2" value="0.3715044630940601" />
-      <entry key="M5" value="1.2983289103155415" />
-      <entry key="M10" value="1.9729231020777442" />
-      <entry key="M15" value="2.2685533921198116" />
-      <entry key="M30" value="2.608671705332987" />
-      <entry key="H1" value="2.797476368027746" />
-      <entry key="H2" value="2.896962431962922" />
-      <entry key="H4" value="2.9480294306441026" />
-      <entry key="D1" value="2.9912748130892006" />
-      <entry key="W1" value="2.9987519825426956" />
+      <entry key="MS500" value="6.973073378445215E-281" />
+      <entry key="S2" value="9.138106297697292E-71" />
+      <entry key="S5" value="9.679793396561138E-29" />
+      <entry key="S10" value="1.0627001012986828E-14" />
+      <entry key="S30" value="3.611159569272201E-5" />
+      <entry key="S60" value="0.010045707147235166" />
+      <entry key="M2" value="0.17210685283492158" />
+      <entry key="M5" value="0.9543735153611644" />
+      <entry key="M10" value="1.6915194026734113" />
+      <entry key="M15" value="2.0473568954297137" />
+      <entry key="M30" value="2.4782305299538128" />
+      <entry key="H1" value="2.7266385089085334" />
+      <entry key="H2" value="2.8600487253381877" />
+      <entry key="H4" value="2.9291870081279856" />
+      <entry key="D1" value="2.9880798226577854" />
+      <entry key="W1" value="2.99829420483115" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.979422782864149" />
-      <entry key="MS500" value="1.1405113849657562" />
-      <entry key="S2" value="3.081743192611422" />
-      <entry key="S5" value="5.844970319486717" />
-      <entry key="S10" value="7.82433725174517" />
-      <entry key="S30" value="9.982844028194059" />
-      <entry key="S60" value="13.765080420740365" />
-      <entry key="M2" value="25.132979151785097" />
-      <entry key="M5" value="46.232371943519745" />
-      <entry key="M10" value="58.816000984186175" />
-      <entry key="M15" value="63.95790279825894" />
-      <entry key="M30" value="69.6746206526215" />
-      <entry key="H1" value="73.44730071478489" />
-      <entry key="H2" value="80.14158238390988" />
-      <entry key="H4" value="91.85914910559394" />
-      <entry key="D1" value="155.1569767901345" />
-      <entry key="W1" value="841.2605537953839" />
+      <entry key="MS100" value="0.9905544933192216" />
+      <entry key="MS500" value="1.5429349093648894" />
+      <entry key="S2" value="3.3952771827444885" />
+      <entry key="S5" value="5.2672443242411875" />
+      <entry key="S10" value="6.401788221662125" />
+      <entry key="S30" value="7.863069931769594" />
+      <entry key="S60" value="10.646993112447031" />
+      <entry key="M2" value="19.48743166525275" />
+      <entry key="M5" value="41.92148768211254" />
+      <entry key="M10" value="58.39534648714446" />
+      <entry key="M15" value="65.70059334251572" />
+      <entry key="M30" value="74.18014619384633" />
+      <entry key="H1" value="79.58219091407494" />
+      <entry key="H2" value="87.11776427856249" />
+      <entry key="H4" value="99.27070973433375" />
+      <entry key="D1" value="162.9910333017843" />
+      <entry key="W1" value="849.1320988576613" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -144,7 +142,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "vcs.Git",
+    "settings.editor.selected.configurable": "com.intellij.air.settings.ai.providers",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -159,7 +157,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-WS-262.9437.145" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-WS-262.10968.77" />
       </set>
     </attachedChunks>
   </component>
@@ -176,7 +174,8 @@
       <workItem from="1677332390912" duration="2156000" />
       <workItem from="1788884921191" duration="2385000" />
       <workItem from="1788968716006" duration="3524000" />
-      <workItem from="1789516898202" duration="4708000" />
+      <workItem from="1789516898202" duration="6995000" />
+      <workItem from="1792505441384" duration="157000" />
     </task>
     <task id="LOCAL-00001" summary="delete old ones">
       <created>1662988353213</created>
@@ -367,7 +366,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789979022889</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="改了poisson , 加了个markov">
+      <option name="closed" value="true" />
+      <created>1790000457777</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1790000457777</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -415,6 +422,7 @@
     <MESSAGE value="加了fish mark 模型 html" />
     <MESSAGE value="加了binomial testing" />
     <MESSAGE value="加了poisson testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="加了poisson testing" />
+    <MESSAGE value="改了poisson , 加了个markov" />
+    <option name="LAST_COMMIT_MESSAGE" value="改了poisson , 加了个markov" />
   </component>
 </project>
