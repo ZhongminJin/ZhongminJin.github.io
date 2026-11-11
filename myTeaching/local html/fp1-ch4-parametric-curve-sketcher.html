@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Offline V1 · FP1 Parametric Curve Sketching - Complete Worked Example</title>
+  <style>
+    :root {
+      --ink: #17324d;
+      --muted: #66768a;
+      --line: #d8e0e9;
+      --paper: #ffffff;
+      --page: #edf2f7;
+      --soft: #f4f7fa;
+      --teal: #118c86;
+      --blue: #2e6fc2;
+      --orange: #d97824;
+      --purple: #7657b6;
+      --green: #3b8a5e;
+      --shadow: 0 18px 50px rgba(23, 50, 77, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    .page {
+      width: min(1160px, calc(100% - 32px));
+      margin: 28px auto;
+      padding: 40px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      align-items: flex-start;
+      padding-bottom: 24px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 8px; font-size: clamp(28px, 4vw, 43px); line-height: 1.12; }
+    h2 { margin-bottom: 14px; font-size: 23px; }
+    h3 { margin-bottom: 8px; font-size: 17px; }
+    .subtitle { margin: 0; color: var(--muted); }
+
+    .formula-card {
+      min-width: 330px;
+      padding: 16px 20px;
+      background: var(--soft);
+      border-left: 5px solid var(--teal);
+      border-radius: 10px;
+      text-align: center;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      white-space: nowrap;
+    }
+
+    .formula-card small {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      font-size: 13px;
+    }
+
+    section { margin-top: 34px; }
+
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .analysis-card {
+      padding: 18px 20px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    .math {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 18px;
+    }
+
+    .analysis-card p:last-child { margin-bottom: 0; }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+      background: var(--paper);
+    }
+
+    th, td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      background: var(--soft);
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+    td.math-cell { font-family: Georgia, "Times New Roman", serif; }
+
+    .plot-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-end;
+      margin-bottom: 14px;
+    }
+
+    .plot-heading p { margin: 0; color: var(--muted); }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    button {
+      min-height: 42px;
+      padding: 9px 15px;
+      border: 1px solid #aab7c5;
+      border-radius: 9px;
+      background: var(--paper);
+      color: var(--ink);
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button:hover { background: var(--soft); }
+    button:focus-visible { outline: 3px solid rgba(46, 111, 194, 0.3); outline-offset: 2px; }
+    button[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .print-button { margin-left: auto; }
+
+    .step-note {
+      min-height: 30px;
+      margin-bottom: 10px;
+      padding: 8px 12px;
+      color: var(--ink);
+      background: var(--soft);
+      border-left: 4px solid var(--teal);
+      border-radius: 6px;
+    }
+
+    .plot-shell {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--paper);
+      overflow: hidden;
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-height: 520px;
+    }
+
+    .grid-line { stroke: var(--line); stroke-width: 1; }
+    .frame-line { stroke: #aab7c5; stroke-width: 1.2; fill: none; }
+    .axis-line { stroke: var(--ink); stroke-width: 1.8; fill: none; }
+    .curve { fill: none; stroke-linejoin: round; stroke-linecap: round; }
+    .point { fill: #fff; stroke: var(--ink); stroke-width: 2.2; }
+    .self-point { fill: var(--teal); stroke: #fff; stroke-width: 2.2; }
+    .axis-label, .tick-label, .point-label, .movement-label, .limit-label {
+      fill: var(--ink);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+    }
+    .tick-label { fill: var(--muted); font-size: 12px; }
+    .axis-label { font-size: 15px; font-weight: 700; }
+    .point-label, .limit-label { font-size: 13px; font-weight: 600; }
+    .movement-label { font-size: 13px; font-weight: 700; }
+    .tangent { stroke: var(--muted); stroke-width: 1.4; }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      counter-reset: sketch;
+      padding: 0;
+      list-style: none;
+    }
+
+    .checklist li {
+      counter-increment: sketch;
+      padding: 16px;
+      background: var(--soft);
+      border-radius: 10px;
+    }
+
+    .checklist li::before {
+      content: counter(sketch);
+      display: inline-grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      margin-right: 8px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    footer {
+      margin-top: 34px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      .page { width: 100%; margin: 0; padding: 22px 16px; border: 0; border-radius: 0; }
+      header, .plot-heading { display: block; }
+      .formula-card { min-width: 0; margin-top: 18px; white-space: normal; }
+      .analysis-grid, .checklist { grid-template-columns: 1fr; }
+      .print-button { margin-left: 0; }
+      svg { min-height: 420px; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { width: 100%; margin: 0; padding: 20px; border: 0; border-radius: 0; box-shadow: none; }
+      .controls, .print-button { display: none !important; }
+      .plot-shell { break-inside: avoid; }
+      section { break-inside: avoid; }
+      .analysis-card { background: #fff; }
+    }
+  </style>
+
+<style id="offline-web-pack-nav-style">
+  body { padding-top: 62px; }
+  .offline-pack-nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 9999;
+    display: flex; align-items: center; gap: 9px; flex-wrap: wrap;
+    min-height: 52px; padding: 8px 16px;
+    background: rgba(23,50,77,.96); color: #fff;
+    box-shadow: 0 5px 18px rgba(23,50,77,.22);
+    backdrop-filter: blur(8px);
+  }
+  .offline-pack-nav a, .offline-pack-nav button {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 34px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.38);
+    border-radius: 8px; background: transparent; color: #fff;
+    font: 750 13px/1.2 Inter, "Segoe UI", Arial, sans-serif;
+    text-decoration: none; cursor: pointer;
+  }
+  .offline-pack-nav a:hover, .offline-pack-nav button:hover { background: #118c86; }
+  .offline-pack-label { margin-left: auto; font: 800 12px/1 Inter, "Segoe UI", Arial, sans-serif; opacity: .8; }
+  @media (max-width: 650px) {
+    body { padding-top: 106px; }
+    .offline-pack-label { width: 100%; margin-left: 0; order: -1; }
+  }
+  @media print { body { padding-top: 0; } .offline-pack-nav { display: none; } }
+</style>
+
+</head>
+<body>
+
+<nav class="offline-pack-nav" aria-label="Offline teaching pack navigation">
+  <a href="fp1-ch4-coordinate-systems-offline.html#g=1&p=0">← 返回完整课堂版</a>
+  <a href="fp1-ch4-coordinate-systems-linear.html#41-parametric-equations">4.1 顺排讲义</a>
+  <button type="button" onclick="window.print()">打印 / 保存 PDF</button>
+  <span class="offline-pack-label">FP1 Chapter 4 · Offline Pack V1</span>
+</nav>
+
+  <main class="page">
+    <header>
+      <div>
+        <h1>Parametric Curve Sketching</h1>
+        <p class="subtitle">A complete FP1 worked example: key points, monotonicity, self-intersection and the final sketch.</p>
+      </div>
+      <div class="formula-card" aria-label="Parametric equations">
+        x = t<sup>2</sup> - 3,&nbsp;&nbsp; y = t<sup>3</sup> - 3t
+        <small>-&infin; &lt; t &lt; +&infin;</small>
+      </div>
+    </header>
+
+    <section aria-labelledby="analysis-title">
+      <h2 id="analysis-title">1. Analyse before drawing</h2>
+      <div class="analysis-grid">
+        <article class="analysis-card">
+          <h3>Symmetry</h3>
+          <p class="math">x(-t) = x(t), &nbsp; y(-t) = -y(t)</p>
+          <p>The curve is symmetric about the <strong>x-axis</strong>.</p>
+        </article>
+        <article class="analysis-card">
+          <h3>Derivatives</h3>
+          <p class="math">dx/dt = 2t, &nbsp; dy/dt = 3(t<sup>2</sup> - 1)</p>
+          <p class="math">dy/dx = 3(t<sup>2</sup> - 1)/(2t), &nbsp; t &ne; 0</p>
+        </article>
+        <article class="analysis-card">
+          <h3>Critical parameter values</h3>
+          <p><span class="math">t = -1, 1</span>: horizontal tangents.</p>
+          <p><span class="math">t = 0</span>: vertical tangent.</p>
+          <p>The two derivatives are never zero together, so the curve is regular.</p>
+        </article>
+        <article class="analysis-card">
+          <h3>Self-intersection</h3>
+          <p class="math">x = 0 &Rightarrow; t = &plusmn;&radic;3, &nbsp; y = 0</p>
+          <p>The curve crosses itself at <span class="math">(0, 0)</span>.</p>
+          <p class="math">Slopes: -&radic;3 and +&radic;3</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="points-title">
+      <h2 id="points-title">2. Key values in parameter order</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Parameter</th><th>x</th><th>y</th><th>Meaning</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="math-cell">t &rarr; -&infin;</td><td class="math-cell">+∞</td><td class="math-cell">-∞</td><td>Lower-right infinite branch</td></tr>
+            <tr><td class="math-cell">t = -&radic;3</td><td>0</td><td>0</td><td>First passage through the self-intersection</td></tr>
+            <tr><td class="math-cell">t = -1</td><td>-2</td><td>2</td><td>Horizontal tangent</td></tr>
+            <tr><td class="math-cell">t = 0</td><td>-3</td><td>0</td><td>Vertical tangent; leftmost point</td></tr>
+            <tr><td class="math-cell">t = 1</td><td>-2</td><td>-2</td><td>Horizontal tangent</td></tr>
+            <tr><td class="math-cell">t = &radic;3</td><td>0</td><td>0</td><td>Second passage through the self-intersection</td></tr>
+            <tr><td class="math-cell">t &rarr; +&infin;</td><td class="math-cell">+∞</td><td class="math-cell">+∞</td><td>Upper-right infinite branch</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="mono-title">
+      <h2 id="mono-title">3. Monotonicity table</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Interval</th><th>Sign of dx/dt</th><th>Sign of dy/dt</th><th>Motion as t increases</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="math-cell">(-&infin;, -1)</td><td>negative</td><td>positive</td><td>x decreases, y increases &nbsp; &nwarr;</td></tr>
+            <tr><td class="math-cell">(-1, 0)</td><td>negative</td><td>negative</td><td>x decreases, y decreases &nbsp; &swarr;</td></tr>
+            <tr><td class="math-cell">(0, 1)</td><td>positive</td><td>negative</td><td>x increases, y decreases &nbsp; &searr;</td></tr>
+            <tr><td class="math-cell">(1, +&infin;)</td><td>positive</td><td>positive</td><td>x increases, y increases &nbsp; &nearr;</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="sketch-title">
+      <div class="plot-heading">
+        <div>
+          <h2 id="sketch-title">4. Build the sketch in three stages</h2>
+          <p>Use the buttons to reveal the construction in the same order used on the board.</p>
+        </div>
+      </div>
+      <div class="controls" aria-label="Sketch stages">
+        <button type="button" data-stage="1" aria-pressed="true">1. Key points only</button>
+        <button type="button" data-stage="2" aria-pressed="false">2. Join by monotonicity</button>
+        <button type="button" data-stage="3" aria-pressed="false">3. Final annotated curve</button>
+        <button type="button" class="print-button" onclick="window.print()">Print / Save as PDF</button>
+      </div>
+      <div id="step-note" class="step-note" aria-live="polite"></div>
+      <div class="plot-shell">
+        <svg id="curve-plot" viewBox="0 0 860 650" role="img" aria-labelledby="plot-title plot-desc">
+          <title id="plot-title">Parametric curve construction</title>
+          <desc id="plot-desc">An interactive three-stage construction of x equals t squared minus three and y equals t cubed minus three t.</desc>
+        </svg>
+      </div>
+    </section>
+
+    <section aria-labelledby="check-title">
+      <h2 id="check-title">5. Final drawing checklist</h2>
+      <ol class="checklist">
+        <li>Plot points in increasing order of <span class="math">t</span>.</li>
+        <li>Use the derivative signs to choose each direction.</li>
+        <li>Mark horizontal, vertical and crossing tangents.</li>
+        <li>Join smoothly and add arrows for increasing <span class="math">t</span>.</li>
+      </ol>
+    </section>
+
+    <footer>FP1 Chapter 4 - Parametric equations and curve sketching</footer>
+  </main>
+
+  <script>
+    (() => {
+      const svg = document.getElementById('curve-plot');
+      const note = document.getElementById('step-note');
+      const buttons = [...document.querySelectorAll('[data-stage]')];
+      const NS = 'http://www.w3.org/2000/svg';
+      const plot = { left: 105, top: 52, size: 540 };
+      const xMin = -4.5, xMax = 4.5, yMin = -4.5, yMax = 4.5;
+      let stage = 1;
+
+      const colors = {
+        ink: '#17324d', muted: '#66768a', line: '#d8e0e9', teal: '#118c86',
+        blue: '#2e6fc2', orange: '#d97824', purple: '#7657b6', green: '#3b8a5e', white: '#ffffff'
+      };
+
+      const notes = {
+        1: 'Begin with the critical points, the self-intersection and the two infinite directions. Do not draw the curve yet.',
+        2: 'Connect the points using the signs of dx/dt and dy/dt. Every arrow points in the direction of increasing t.',
+        3: 'Final check: x-axis symmetry, a vertical tangent at (-3, 0), horizontal tangents at (-2, ±2), and a crossing at the origin.'
+      };
+
+      const f = t => ({ t, x: t * t - 3, y: t * t * t - 3 * t });
+      const X = x => plot.left + (x - xMin) / (xMax - xMin) * plot.size;
+      const Y = y => plot.top + plot.size - (y - yMin) / (yMax - yMin) * plot.size;
+
+      function el(tag, attrs = {}, text = '') {
+        const node = document.createElementNS(NS, tag);
+        Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, value));
+        if (text) node.textContent = text;
+        svg.appendChild(node);
+        return node;
+      }
+
+      function addMarker(defs, id, color) {
+        const marker = document.createElementNS(NS, 'marker');
+        marker.setAttribute('id', id);
+        marker.setAttribute('viewBox', '0 -5 10 10');
+        marker.setAttribute('refX', '8');
+        marker.setAttribute('refY', '0');
+        marker.setAttribute('markerWidth', '7');
+        marker.setAttribute('markerHeight', '7');
+        marker.setAttribute('orient', 'auto');
+        const path = document.createElementNS(NS, 'path');
+        path.setAttribute('d', 'M0,-5L10,0L0,5Z');
+        path.setAttribute('fill', color);
+        marker.appendChild(path);
+        defs.appendChild(marker);
+      }
+
+      function line(x1, y1, x2, y2, attrs = {}) {
+        return el('line', { x1, y1, x2, y2, ...attrs });
+      }
+
+      function text(x, y, value, cls, anchor = 'start', fill = '') {
+        return el('text', { x, y, class: cls, 'text-anchor': anchor, ...(fill ? { fill } : {}) }, value);
+      }
+
+      function pathFor(t0, t1, samples = 260) {
+        const values = [];
+        for (let i = 0; i <= samples; i++) values.push(f(t0 + (t1 - t0) * i / samples));
+        return values.map((d, i) => `${i ? 'L' : 'M'}${X(d.x).toFixed(2)},${Y(d.y).toFixed(2)}`).join(' ');
+      }
+
+      function directionArrow(t, dt, color, marker) {
+        const a = f(t), b = f(t + dt);
+        line(X(a.x), Y(a.y), X(b.x), Y(b.y), {
+          stroke: color, 'stroke-width': 3, 'marker-end': `url(#${marker})`
+        });
+      }
+
+      function drawBase() {
+        svg.replaceChildren();
+        const title = document.createElementNS(NS, 'title');
+        title.id = 'plot-title';
+        title.textContent = 'Parametric curve construction';
+        const desc = document.createElementNS(NS, 'desc');
+        desc.id = 'plot-desc';
+        desc.textContent = 'An interactive three-stage construction of x equals t squared minus three and y equals t cubed minus three t.';
+        svg.append(title, desc);
+
+        const defs = document.createElementNS(NS, 'defs');
+        addMarker(defs, 'arrow-ink', colors.ink);
+        addMarker(defs, 'arrow-teal', colors.teal);
+        addMarker(defs, 'arrow-blue', colors.blue);
+        addMarker(defs, 'arrow-orange', colors.orange);
+        addMarker(defs, 'arrow-purple', colors.purple);
+        addMarker(defs, 'arrow-green', colors.green);
+        svg.appendChild(defs);
+
+        for (let v = -4; v <= 4; v++) {
+          line(X(v), Y(yMin), X(v), Y(yMax), { class: 'grid-line' });
+          line(X(xMin), Y(v), X(xMax), Y(v), { class: 'grid-line' });
+        }
+        el('rect', { x: plot.left, y: plot.top, width: plot.size, height: plot.size, class: 'frame-line' });
+        line(X(xMin), Y(0), X(xMax) - 7, Y(0), { class: 'axis-line', 'marker-end': 'url(#arrow-ink)' });
+        line(X(0), Y(yMin), X(0), Y(yMax) + 7, { class: 'axis-line', 'marker-end': 'url(#arrow-ink)' });
+
+        [-4, -3, -2, -1, 1, 2, 3, 4].forEach(v => {
+          text(X(v), Y(0) + 20, String(v), 'tick-label', 'middle');
+          text(X(0) - 10, Y(v) + 4, String(v), 'tick-label', 'end');
+        });
+        text(X(xMax) - 2, Y(0) - 10, 'x', 'axis-label', 'end');
+        text(X(0) + 11, Y(yMax) + 16, 'y', 'axis-label');
+      }
+
+      function drawInfinity() {
+        const lowerA = f(-2.0), lowerB = f(-2.22);
+        const upperA = f(2.0), upperB = f(2.22);
+        line(X(lowerA.x), Y(lowerA.y), X(lowerB.x), Y(lowerB.y), {
+          stroke: colors.ink, 'stroke-width': 2.5, 'marker-end': 'url(#arrow-ink)'
+        });
+        line(X(upperA.x), Y(upperA.y), X(upperB.x), Y(upperB.y), {
+          stroke: colors.ink, 'stroke-width': 2.5, 'marker-end': 'url(#arrow-ink)'
+        });
+        text(680, 126, 't → +∞: x → +∞, y → +∞', 'limit-label');
+        text(680, 533, 't → −∞: x → +∞, y → −∞', 'limit-label');
+      }
+
+      function point(x, y, label, dx, dy, self = false, anchor = 'start') {
+        el('circle', { cx: X(x), cy: Y(y), r: self ? 7 : 6, class: self ? 'self-point' : 'point' });
+        text(X(x) + dx, Y(y) + dy, label, 'point-label', anchor);
+      }
+
+      function drawPoints() {
+        point(-2, 2, 't = −1   (−2, 2)', 12, -12);
+        point(-3, 0, 't = 0   (−3, 0)', -12, -13, false, 'end');
+        point(-2, -2, 't = 1   (−2, −2)', 12, 21);
+        point(0, 0, 't = ±√3   (0, 0)', 12, -13, true);
+      }
+
+      function drawStageTwo() {
+        const pieces = [
+          { a: -2.22, b: -1, color: colors.blue, marker: 'arrow-blue', t: -1.58, label: 'x↓  y↑', dx: 12, dy: -13 },
+          { a: -1, b: 0, color: colors.orange, marker: 'arrow-orange', t: -0.52, label: 'x↓  y↓', dx: -48, dy: -13 },
+          { a: 0, b: 1, color: colors.purple, marker: 'arrow-purple', t: 0.52, label: 'x↑  y↓', dx: -46, dy: 24 },
+          { a: 1, b: 2.22, color: colors.green, marker: 'arrow-green', t: 1.58, label: 'x↑  y↑', dx: 12, dy: 24 }
+        ];
+        pieces.forEach(p => {
+          el('path', { d: pathFor(p.a, p.b), class: 'curve', stroke: p.color, 'stroke-width': 4 });
+          directionArrow(p.t, 0.14, p.color, p.marker);
+          const d = f(p.t);
+          text(X(d.x) + p.dx, Y(d.y) + p.dy, p.label, 'movement-label', 'start', p.color);
+        });
+      }
+
+      function drawStageThree() {
+        el('path', { d: pathFor(-2.22, 2.22, 520), class: 'curve', stroke: colors.teal, 'stroke-width': 4.5 });
+        [-1.62, -0.55, 0.55, 1.62].forEach(t => directionArrow(t, 0.14, colors.teal, 'arrow-teal'));
+        line(X(-2) - 26, Y(2), X(-2) + 26, Y(2), { class: 'tangent' });
+        line(X(-3), Y(0) - 28, X(-3), Y(0) + 28, { class: 'tangent' });
+        line(X(-2) - 26, Y(-2), X(-2) + 26, Y(-2), { class: 'tangent' });
+
+        text(680, 250, 'Horizontal tangents:', 'point-label');
+        text(680, 274, 't = −1 and t = 1', 'limit-label');
+        text(680, 322, 'Vertical tangent:', 'point-label');
+        text(680, 346, 't = 0', 'limit-label');
+        text(680, 394, 'Self-intersection:', 'point-label');
+        text(680, 418, 't = ±√3 at (0, 0)', 'limit-label');
+      }
+
+      function render() {
+        drawBase();
+        if (stage === 2) drawStageTwo();
+        if (stage === 3) drawStageThree();
+        drawInfinity();
+        drawPoints();
+        note.textContent = notes[stage];
+      }
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          stage = Number(button.dataset.stage);
+          buttons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+          render();
+        });
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>
