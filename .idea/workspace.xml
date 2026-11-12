@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="update 网盘链接">
+    <list default="true" id="ee764c73-cf4a-46ad-8e46-f2095d697b23" name="Changes" comment="add edexcel fp1 chapter 4  bug fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teaching.html" beforeDir="false" afterPath="$PROJECT_DIR$/teaching.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,61 +51,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.001410087105003" />
-      <entry key="MS500" value="1.2701568117274853" />
-      <entry key="S2" value="2.4433946423561173" />
-      <entry key="S5" value="5.9305521608049006" />
-      <entry key="S10" value="9.76694541145703" />
-      <entry key="S30" value="14.8644886789228" />
-      <entry key="S60" value="18.746791560548388" />
-      <entry key="M2" value="27.85207600483824" />
-      <entry key="M5" value="49.88144983845587" />
-      <entry key="M10" value="65.98073711548203" />
-      <entry key="M15" value="73.1182535985246" />
-      <entry key="M30" value="81.40381903868631" />
-      <entry key="H1" value="86.6966581260797" />
-      <entry key="H2" value="94.17101864430438" />
-      <entry key="H4" value="106.29219614191184" />
-      <entry key="D1" value="169.98946259589556" />
-      <entry key="W1" value="856.1237580175267" />
+      <entry key="MS100" value="1.0000000222766916" />
+      <entry key="MS500" value="1.0352717168967793" />
+      <entry key="S2" value="1.864475809513955" />
+      <entry key="S5" value="2.83667627099729" />
+      <entry key="S10" value="4.096029350864429" />
+      <entry key="S30" value="12.172292966228897" />
+      <entry key="S60" value="20.70255301827323" />
+      <entry key="M2" value="28.309428393396082" />
+      <entry key="M5" value="34.695841642583595" />
+      <entry key="M10" value="37.228722421362995" />
+      <entry key="M15" value="38.124781114050876" />
+      <entry key="M30" value="39.04979510778204" />
+      <entry key="H1" value="40.06593768931354" />
+      <entry key="H2" value="50.19058985167297" />
+      <entry key="H4" value="87.44335162854208" />
+      <entry key="D1" value="250.0915698581076" />
+      <entry key="W1" value="961.4095885667846" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="4.208666615011998E-287" />
-      <entry key="S2" value="2.5470430063776777E-72" />
-      <entry key="S5" value="2.3117353648605638E-29" />
-      <entry key="S10" value="5.193339764863269E-15" />
-      <entry key="S30" value="2.8444088258810444E-5" />
-      <entry key="S60" value="0.008915653518595868" />
-      <entry key="M2" value="0.16213788278726246" />
-      <entry key="M5" value="0.9318648117933465" />
-      <entry key="M10" value="1.6714533140305192" />
-      <entry key="M15" value="2.0311331771508723" />
-      <entry key="M30" value="2.468391971328465" />
-      <entry key="H1" value="2.7212207581325436" />
-      <entry key="H2" value="2.857205895999057" />
-      <entry key="H4" value="2.9277308705135003" />
-      <entry key="D1" value="2.987832202361152" />
-      <entry key="W1" value="2.9982587083195895" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="3.826678082618E-311" />
+      <entry key="S60" value="1.0341133345092243E-155" />
+      <entry key="M2" value="5.521943714186947E-78" />
+      <entry key="M5" value="2.411214817164268E-31" />
+      <entry key="M10" value="8.502286715589094E-16" />
+      <entry key="M15" value="1.294293381883581E-10" />
+      <entry key="M30" value="1.970431267174001E-5" />
+      <entry key="H1" value="0.007688424567835426" />
+      <entry key="H2" value="0.1518722156730059" />
+      <entry key="H4" value="0.6749934331001392" />
+      <entry key="D1" value="2.3396502280967373" />
+      <entry key="W1" value="2.8953223490985582" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9807729435518794" />
-      <entry key="MS500" value="1.263765577195519" />
-      <entry key="S2" value="2.436079825327556" />
-      <entry key="S5" value="5.919296805553009" />
-      <entry key="S10" value="9.757287732399558" />
-      <entry key="S30" value="14.859770709806078" />
-      <entry key="S60" value="18.751809059300015" />
-      <entry key="M2" value="28.00188485396179" />
-      <entry key="M5" value="50.788091865131484" />
-      <entry key="M10" value="67.62993972619965" />
-      <entry key="M15" value="75.13144134027924" />
-      <entry key="M30" value="83.86135135670219" />
-      <entry key="H1" value="89.4119040125555" />
-      <entry key="H2" value="97.02508897206403" />
-      <entry key="H4" value="109.21831934201369" />
-      <entry key="D1" value="172.97701932120935" />
-      <entry key="W1" value="859.1219736330115" />
+      <entry key="MS100" value="0.972654968930174" />
+      <entry key="MS500" value="1.0295123268621877" />
+      <entry key="S2" value="1.861838781469809" />
+      <entry key="S5" value="2.8350871951227306" />
+      <entry key="S10" value="4.094890459016656" />
+      <entry key="S30" value="12.171154790759102" />
+      <entry key="S60" value="20.70157466093153" />
+      <entry key="M2" value="28.30875489881868" />
+      <entry key="M5" value="34.69550999251205" />
+      <entry key="M10" value="37.22854421611074" />
+      <entry key="M15" value="38.12465938799269" />
+      <entry key="M30" value="39.04975235366505" />
+      <entry key="H1" value="40.073577347258286" />
+      <entry key="H2" value="50.34227664980455" />
+      <entry key="H4" value="88.11796032993112" />
+      <entry key="D1" value="252.43099962601414" />
+      <entry key="W1" value="964.3048685121984" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -176,7 +175,7 @@
       <workItem from="1788968716006" duration="3524000" />
       <workItem from="1789516898202" duration="6995000" />
       <workItem from="1792505441384" duration="3551000" />
-      <workItem from="1794416415551" duration="441000" />
+      <workItem from="1794416415551" duration="1844000" />
     </task>
     <task id="LOCAL-00001" summary="delete old ones">
       <created>1662988353213</created>
@@ -383,7 +382,31 @@
       <option name="project" value="LOCAL" />
       <updated>1792505639726</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="add edexcel fp1 chapter 4">
+      <option name="closed" value="true" />
+      <created>1794416885440</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1794416885440</updated>
+    </task>
+    <task id="LOCAL-00029" summary="add edexcel fp1 chapter 4">
+      <option name="closed" value="true" />
+      <created>1794416992715</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1794416992715</updated>
+    </task>
+    <task id="LOCAL-00030" summary="add edexcel fp1 chapter 4  bug fix">
+      <option name="closed" value="true" />
+      <created>1794417643793</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1794417643793</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -433,6 +456,8 @@
     <MESSAGE value="加了poisson testing" />
     <MESSAGE value="改了poisson , 加了个markov" />
     <MESSAGE value="update 网盘链接" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 网盘链接" />
+    <MESSAGE value="add edexcel fp1 chapter 4" />
+    <MESSAGE value="add edexcel fp1 chapter 4  bug fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="add edexcel fp1 chapter 4  bug fix" />
   </component>
 </project>
