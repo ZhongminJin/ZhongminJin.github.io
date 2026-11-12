@@ -321,6 +321,18 @@ h1, h2, h3 { break-after: avoid; }
   .routine-card-head { display: flex; align-items: center; gap: 9px; margin-bottom: 9px; }
   .routine-card-head h3 { margin: 0; color: #17324d; font-size: 17px; }
   .routine-card p { margin: 7px 0; color: #3e586c; font-size: 13px; line-height: 1.5; }
+  .routine-card, .routine-callout { position: relative; }
+  .block-zoom-button { display: inline-flex; align-items: center; gap: 4px; margin: 8px 0 0; padding: 5px 10px; border: 1px solid #92bbb9; border-radius: 7px; background: #edf8f7; color: #0c6662; font: inherit; font-size: 12px; font-weight: 750; cursor: pointer; }
+  .block-zoom-button:hover, .block-zoom-button:focus-visible { background: #d8f0ed; }
+  .block-zoom-overlay { position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(14, 30, 44, .7); }
+  .block-zoom-overlay.is-open { display: flex; }
+  .block-zoom-dialog { position: relative; width: min(900px, 100%); max-height: min(88vh, 900px); overflow: auto; padding: clamp(24px, 4vw, 48px); border-radius: 16px; background: #fff; box-shadow: 0 18px 60px rgba(0,0,0,.3); }
+  .block-zoom-close { position: sticky; top: 0; float: right; margin: -16px -16px 8px 12px; padding: 4px 12px; border: 1px solid #b9c5d1; border-radius: 8px; background: #fff; color: #17324d; font: inherit; font-size: 23px; cursor: pointer; }
+  .block-zoom-content > .routine-card, .block-zoom-content > .routine-callout { margin: 0; padding: 0; border: 0; box-shadow: none; background: #fff; }
+  .block-zoom-content .routine-card-head h3 { font-size: clamp(24px, 3vw, 34px); line-height: 1.25; }
+  .block-zoom-content .routine-card p, .block-zoom-content .routine-callout p { font-size: clamp(18px, 2vw, 23px); line-height: 1.65; margin: 18px 0; }
+  .block-zoom-content .routine-callout > div { font-size: clamp(21px, 2.5vw, 30px); line-height: 1.3; }
+  .block-zoom-content .routine-code { font-size: 16px; min-height: 36px; padding: 5px 13px; }
   .routine-code { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; min-width: 54px; min-height: 27px; padding: 3px 9px; border-radius: 999px; background: #168a86; color: #fff; font-size: 12px; font-weight: 900; }
   .routine-question-order { padding-top: 7px; border-top: 1px dashed #c6d3dc; color: #0e6966 !important; }
   .slide-page > section > h2[id^="parabola-practice"],
@@ -2324,6 +2336,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         <div class="deck-actions">
           <a class="deck-action" href="fp1-ch4-parametric-curve-sketcher.html">Parametric curve lab</a>
+          <button class="deck-action" type="button" id="toggle-fullscreen">⛶ Full screen</button>
           <button class="deck-action" type="button" id="print-current">Print current page</button>
         </div>
       </div>
@@ -2415,6 +2428,14 @@ document.addEventListener('DOMContentLoaded', () => {
     slide.querySelectorAll('img').forEach(img => {
       if (img.dataset.src) img.src = img.dataset.src;
     });
+    slide.querySelectorAll('.routine-card, .routine-callout').forEach(block => {
+      const button = document.createElement('button');
+      button.className = 'block-zoom-button';
+      button.type = 'button';
+      button.textContent = '⤢ 放大阅读';
+      button.setAttribute('aria-label', '放大阅读此内容');
+      block.appendChild(button);
+    });
     breadcrumb.textContent = labels(g.title);
     stageTitle.textContent = p.title;
     pageCount.textContent = `Page ${activePage + 1} of ${g.pages.length}`;
@@ -2428,7 +2449,49 @@ document.addEventListener('DOMContentLoaded', () => {
   previous.addEventListener('click', () => goRelative(-1));
   next.addEventListener('click', () => goRelative(1));
   shell.querySelector('#print-current').addEventListener('click', () => window.print());
+  const fullscreenButton = shell.querySelector('#toggle-fullscreen');
+  fullscreenButton.addEventListener('click', async () => {
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      else await document.documentElement.requestFullscreen();
+    } catch (error) { fullscreenButton.textContent = 'Full screen unavailable'; }
+  });
+  document.addEventListener('fullscreenchange', () => {
+    fullscreenButton.textContent = document.fullscreenElement ? '⛶ Exit full screen' : '⛶ Full screen';
+  });
+  const blockZoomOverlay = document.createElement('div');
+  blockZoomOverlay.className = 'block-zoom-overlay';
+  blockZoomOverlay.setAttribute('aria-hidden', 'true');
+  blockZoomOverlay.innerHTML = '<div class="block-zoom-dialog" role="dialog" aria-modal="true" aria-label="放大阅读"><button class="block-zoom-close" type="button" aria-label="关闭">×</button><div class="block-zoom-content"></div></div>';
+  document.body.appendChild(blockZoomOverlay);
+  let blockZoomReturnFocus = null;
+  const closeBlockZoom = () => {
+    blockZoomOverlay.classList.remove('is-open');
+    blockZoomOverlay.setAttribute('aria-hidden', 'true');
+    blockZoomOverlay.querySelector('.block-zoom-content').replaceChildren();
+    blockZoomReturnFocus?.focus();
+  };
+  slide.addEventListener('click', event => {
+    const button = event.target.closest('.block-zoom-button');
+    if (!button) return;
+    const block = button.closest('.routine-card, .routine-callout');
+    if (!block) return;
+    blockZoomReturnFocus = button;
+    const enlarged = block.cloneNode(true);
+    enlarged.querySelector('.block-zoom-button')?.remove();
+    blockZoomOverlay.querySelector('.block-zoom-content').replaceChildren(enlarged);
+    blockZoomOverlay.classList.add('is-open');
+    blockZoomOverlay.setAttribute('aria-hidden', 'false');
+    blockZoomOverlay.querySelector('.block-zoom-close').focus();
+  });
+  blockZoomOverlay.addEventListener('click', event => {
+    if (event.target === blockZoomOverlay || event.target.closest('.block-zoom-close')) closeBlockZoom();
+  });
   window.addEventListener('keydown', event => {
+    if (blockZoomOverlay.classList.contains('is-open')) {
+      if (event.key === 'Escape') { event.preventDefault(); closeBlockZoom(); }
+      return;
+    }
     if (document.querySelector('.ms-modal.is-open')) return;
     if (event.target.matches('input, textarea, select, button, a')) return;
     if (event.key === 'ArrowRight') goRelative(1);
