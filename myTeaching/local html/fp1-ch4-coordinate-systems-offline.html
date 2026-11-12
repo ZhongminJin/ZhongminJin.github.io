@@ -2414,7 +2414,6 @@ document.addEventListener('DOMContentLoaded', () => {
     slide.replaceChildren(rendered);
     slide.querySelectorAll('img').forEach(img => {
       if (img.dataset.src) img.src = img.dataset.src;
-      img.addEventListener('click', () => img.classList.toggle('is-zoomed'));
     });
     breadcrumb.textContent = labels(g.title);
     stageTitle.textContent = p.title;
@@ -2456,9 +2455,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <button class="zoom-button" type="button" data-zoom-action="in" aria-label="Zoom in">＋</button>
         <span class="zoom-percent">100%</span>
         <button class="zoom-button" type="button" data-zoom-action="fit">Fit width</button>
-        <span class="zoom-readout">Wheel/trackpad: continuous zoom · drag: move · double-click: fit width</span>
+        <span class="zoom-readout">Two-finger scroll: move · pinch: zoom · drag: move · double-click: fit width</span>
       </div>
-      <p class="ms-dialog-hint">Continuous zoom range: 10%-1200%. Click outside the panel, press Esc, or use × to close.</p>
+      <p class="ms-dialog-hint">Pinch to zoom on a trackpad. Two-finger scroll moves the image. Click outside, press Esc, or use × to close.</p>
       <div class="ms-images"><div class="zoom-canvas"></div></div>
     </section>`;
   document.body.appendChild(modal);
@@ -2733,9 +2732,26 @@ document.addEventListener('DOMContentLoaded', () => {
   viewport.addEventListener('wheel', event => {
     if (!modal.classList.contains('is-open')) return;
     event.preventDefault();
-    const factor = Math.exp(-event.deltaY * 0.0016);
-    setZoom(zoomState.scale * factor, event.clientX, event.clientY);
+    if (event.ctrlKey) {
+      const factor = Math.exp(-event.deltaY * 0.01);
+      setZoom(zoomState.scale * factor, event.clientX, event.clientY);
+    } else {
+      const unit = event.deltaMode === WheelEvent.DOM_DELTA_LINE ? 16 : event.deltaMode === WheelEvent.DOM_DELTA_PAGE ? viewport.clientHeight : 1;
+      zoomState.x -= event.deltaX * unit;
+      zoomState.y -= event.deltaY * unit;
+      applyTransform();
+    }
   }, { passive: false });
+  let gestureScale = 1;
+  viewport.addEventListener('gesturestart', event => {
+    event.preventDefault();
+    gestureScale = zoomState.scale;
+  }, { passive: false });
+  viewport.addEventListener('gesturechange', event => {
+    event.preventDefault();
+    setZoom(gestureScale * event.scale, event.clientX, event.clientY);
+  }, { passive: false });
+  viewport.addEventListener('gestureend', event => event.preventDefault(), { passive: false });
   viewport.addEventListener('pointerdown', event => {
     if (event.button !== 0) return;
     zoomState.dragging = true;
@@ -2803,6 +2819,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const syllabusImage = event.target.closest('.syllabus-screenshot');
     if (syllabusImage) {
       openViewer(syllabusImage.dataset.viewerTitle || 'Pearson Edexcel specification extract', [syllabusImage.src], syllabusImage.alt);
+      return;
+    }
+
+    const slideImage = event.target.closest('.slide-page img');
+    if (slideImage) {
+      openViewer(slideImage.alt || 'Chapter image', [slideImage.src], slideImage.alt || 'Chapter image');
       return;
     }
 
